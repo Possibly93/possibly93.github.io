@@ -8044,7 +8044,7 @@ system42.on("explorer:ready", function(f) {
 			move: function(e) {
 				e = $drag.zone || this, p[0] && p[0].el && p[0].el.parentNode !== e ? $(e, function(e, t, n, o) {
 					$file.move(e, t, function(e) {
-						"/a/trash/WINDOWS 93.lnk42" === e && function() {
+						"/c/trash/WINDOWS 93.lnk42" === e && function() {
 							Date.now();
 							var e = new Image,
 								t = document.createElement("div");
