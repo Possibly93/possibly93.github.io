@@ -491,6 +491,12 @@ system42("desktop", function (le) {
       col: 5,
     },
     {
+      name: "README.txt.lnk42",
+      exe: 'iframe /c/readme.txt --width=450 --height="300" --bodyClass="skin_light skin_inset"',
+      row: 8,
+      col: 7,
+    },
+    {
       name: "MANIFESTO.lnk42",
       exe: "manifesto",
       row: 8,
