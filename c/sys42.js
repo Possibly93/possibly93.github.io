@@ -5881,9 +5881,9 @@ system42("settings", function(s) {
 	s._settings = $store("settings.json", s._settings, function(t) {
 		s._settings = t
 	}, function() {
-		return s._settings
+		return s._settings //home function
 	}), "string" == typeof s._settings ? s._settings = t : s._settings = Object.assign(t, s._settings), s._settings.skin = "w93", s._init.home = function() {
-		s._path.home = "/a/", s._path.key.home = "", s._path.desktop = "/a/desktop/", s._path.key.desktop = "desktop/", s._path.skin = "/c/sys/skins/" + s._settings.skin + "/"
+		s._path.home = "/c/", s._path.key.home = "", s._path.desktop = "/c/desktop/", s._path.key.desktop = "desktop/", s._path.skin = "/c/sys/skins/" + s._settings.skin + "/"
 	}, s._init.home()
 });
 ///home/zo/__/www/win3/public/42/os/boot/storage.js
