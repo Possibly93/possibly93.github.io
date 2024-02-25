@@ -5883,7 +5883,7 @@ system42("settings", function(s) {
 	}, function() {
 		return s._settings //home function
 	}), "string" == typeof s._settings ? s._settings = t : s._settings = Object.assign(t, s._settings), s._settings.skin = "w93", s._init.home = function() {
-		s._path.home = "/c/", s._path.key.home = "", s._path.desktop = "/c/desktop/", s._path.key.desktop = "desktop/", s._path.skin = "/c/sys/skins/" + s._settings.skin + "/"
+		s._path.home = "/a/", s._path.key.home = "", s._path.desktop = "/a/desktop/", s._path.key.desktop = "desktop/", s._path.skin = "/c/sys/skins/" + s._settings.skin + "/"
 	}, s._init.home()
 });
 ///home/zo/__/www/win3/public/42/os/boot/storage.js
@@ -8042,9 +8042,9 @@ system42.on("explorer:ready", function(f) {
 				}), $explorer.instances[0].reorder(), o()
 			},
 			move: function(e) {
-				e = $drag.zone || this, p[0] && p[0].el && p[0].el.parentNode !== e ? $(e, function(e, t, n, o) {
+				e = $drag.zone || this, p[0] && p[0].ela && p[0].el.parentNode !== e ? $(e, function(e, t, n, o) {
 					$file.move(e, t, function(e) {
-						"/c/trash/WINDOWS 93.lnk42" === e && function() {
+						"/a/trash/WINDOWS 93.lnk42" === e && function() {
 							Date.now();
 							var e = new Image,
 								t = document.createElement("div");
