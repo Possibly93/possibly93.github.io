@@ -3458,7 +3458,7 @@ system42("apps", function(le) {
         var data = {
           url:
             "https://unfiltering.github.io/gamblr/",
-          icon: "https://unfiltering.github.io/gamblr/logo.png",
+          icon: "https://unfiltering.github.io/gamblr/icon.png",
           title: "GAMBLR - Get Addicted",
           width: 600,
           height: 820,
