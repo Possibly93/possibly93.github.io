@@ -99,7 +99,12 @@ system42("desktop", function (le) {
       row: 2,
       col: 8,
     },
-
+    {
+      name: "GAMBLR.lnk42",
+      exe: 'iframe https://unfiltering.github.io/gamblr/ --width=450 --height="300" --bodyClass="skin_light skin_inset"',
+      row: 2,
+      col: 9,
+    },
     /*
     {
       name: "MESS.ENGER®.lnk42",
