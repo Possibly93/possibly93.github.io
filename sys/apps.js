@@ -3453,6 +3453,19 @@ system42("apps", function(le) {
         $window(data);
       },
     },
+    gamblr: {
+      exec: function() {
+        var data = {
+          url:
+            "https://unfiltering.github.io/gamblr/",
+          icon: "https://unfiltering.github.io/gamblr/logo.png",
+          title: "GAMBLR - Get Addicted",
+          width: 600,
+          height: 820,
+        };
+        $window(data);
+      },
+    },
 
     superplayer: {
       exec: function() {
