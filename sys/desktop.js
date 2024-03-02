@@ -101,7 +101,7 @@ system42("desktop", function (le) {
     },
     {
       name: "GAMBLR.lnk42",
-      exe: 'iframe https://unfiltering.github.io/gamblr/ --width=450 --height="300" --bodyClass="skin_light skin_inset"',
+      exe: 'gamblr',
       row: 2,
       col: 9,
     },
