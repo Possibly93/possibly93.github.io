@@ -5,10 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
   <title>WINDOWS93</title>
-  <meta http-equiv="Permissions-Policy" content="">
-  <meta http-equiv="Feature-Policy" content="">
-  <meta name="description" content="Ported to Github by unfiltering">
-  <meta name="author" content="jankenpopp, zombectro, unfiltering">
+
+  <meta name="description" content="hug + hack = infinity">
+  <meta name="author" content="jankenpopp, zombectro">
   <meta http-equiv="Content-Language" content="en_US" />
   <meta name="google" content="notranslate" />
   <link href="/rss" rel="alternate" type="application/rss+xml" title="windows93" />
@@ -297,7 +296,7 @@
           !(function() {
             "use strict";
 
-            var lastUpdate = {"title":"VERSION 3 PUBLIC BETA OPEN","link":"http:\/\/www.windows93.net\/","pubDate":"Tue, 14 Feb 2023 20:55:29 GMT","description":"\n\n<img align=\"left\" hspace=\"10\" vspace=\"10\" src=\"https:\/\/www.windows93.xyz\/c\/sys\/img\/windows93-kiss-48.png\"\/>\n<br\/>\n<br\/>\n<a target=\"_blank\" href=\"https:\/\/v3.windows93.xyz\/\">https:\/\/v3.windows93.xyz\/<\/a>\n<br\/>\n<br\/>\n\n"};
+            var lastUpdate = {"title":"!READ ME!","link":"http:\/\/www.possibly93.github.io\/","pubDate":"Fri, 12 Apr 2024 22:00:00 EST","description":"\n\nThis website is hosted on something called a static host.\n<br>This means that some apps will download a .PHP file.\n<br> There is no way to prevent this. So just don't use the apps that do that.\n<br>- Thanks, N8\n<br\/>\n\n"};
 
             system42({
                 _apps: {},
@@ -453,15 +452,13 @@
                     };
                     le.canvas.add();
 
-                    /*
                     if (le.devmode) {} else {
                       if (
-                        lastUpdate
-                        // lastUpdate &&
-                        // Math.round(
-                        //   (Date.now() - Date.parse(lastUpdate.pubDate)) /
-                        //   (1000 * 60 * 60 * 24)
-                        // ) < 16
+                        lastUpdate &&
+                        Math.round(
+                          (Date.now() - Date.parse(lastUpdate.pubDate)) /
+                          (1000 * 60 * 60 * 24)
+                        ) < 16
                       ) {
                         setTimeout(function() {
                           lastUpdate.description = lastUpdate.description.replace(
@@ -474,10 +471,9 @@
                           );
                           // lastUpdate.delay = true;
                           $notif(lastUpdate, document.getElementById("w93_feed"));
-                        }, 2000); 
+                        }, 2000);
                       }
                     }
-                    */
 
                     // cleanup
                     document.onkeydown = null;

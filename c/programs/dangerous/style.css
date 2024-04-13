@@ -28,7 +28,7 @@ body, html {
 
 .fire:before {
   content:"";
-  position:absolute;     background:url('../img/zelda_fire_render.gif');
+  position:absolute;     background:url('img/zelda_fire_render.gif');
   height:50px;
   width:50px;
   -webkit-background-size: cover;
@@ -40,7 +40,7 @@ body, html {
 
 .fire:after {
   content:"";
-  position:absolute; background:url('../img/zelda_fire_render.gif');
+  position:absolute; background:url('img/zelda_fire_render.gif');
   height:50px;
   width:50px;
   -webkit-background-size: cover;
@@ -52,7 +52,7 @@ body, html {
 }
 
 .oldMan {
- background:url('../img/oldman.png');
+ background:url('img/oldman.png');
   height:50px;
   width:65px;
   -webkit-background-size: cover;
@@ -63,7 +63,7 @@ body, html {
 }
 
 .sword {
-   background:url('../img/sword.png');
+   background:url('img/sword.png');
 width:23px; height:60px;
   -webkit-background-size: contain;
   -moz-background-size: contain;
