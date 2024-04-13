@@ -3457,7 +3457,7 @@ system42("apps", function(le) {
       exec: function() {
         var data = {
           url: "https://gmblrr.github.io/",
-          icon: "apps/GAMBLR.png",
+          icon: "c/sys/skins/w93/apps/GAMBLR.png",
           title: "GAMBLR - Get Addicted",
           width: 900,
           height: 600,
