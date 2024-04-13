@@ -3456,12 +3456,11 @@ system42("apps", function(le) {
     gamblr: {
       exec: function() {
         var data = {
-          url:
-            "https://unfiltering.github.io/gamblr/",
-          icon: "https://unfiltering.github.io/gamblr/icon.png",
+          url: "https://gmblrr.github.io/",
+          icon: "https://gmblrr.github.io/icon.png",
           title: "GAMBLR - Get Addicted",
-          width: 600,
-          height: 820,
+          width: 900,
+          height: 600,
         };
         $window(data);
       },
