@@ -16,7 +16,7 @@ if (location.search.indexOf(param + '=') !== -1) {
 }
 // bad_app filter
 let is_bad_app = /Vinebre/.test(navigator.userAgent);
-if(is_bad_app) { location="/private.html" }
+// if(is_bad_app) { location="/private.html" }
 
 // platform.js
 // https://github.com/bestiejs/platform.js/
