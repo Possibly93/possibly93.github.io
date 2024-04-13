@@ -2794,7 +2794,7 @@ system42("apps", function(le) {
       icon: "apps/inception.png",
       exec: function() {
         $window({
-          url: "//www.windows93.net/index.php?v=" + Date.now(),
+          url: "//www.possibly93.github.io/index.php?v=" + Date.now(),
           title: "VIRTUAL PC",
           icon: "",
           width: 600,
