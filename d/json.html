@@ -70,6 +70,7 @@
         }
     </style>
   </head>
+  <script src="jpath.js"></script>
   <body>
       <div class="container">
           <h1>URLs to JPath Converter</h1>
@@ -83,25 +84,18 @@
               <button onclick="copyJSON()">Copy JSON</button>
           </div>
       </div>
-
       <div class="download-link">
           <p>Download JPATH.py to work with the JSON files you've converted:</p>
           <a href="JPATH.py" download="JPATH.py">Download JPATH.py</a>
       </div>
-      <script src="jpath.js"></script>
       <script>
           function generateJSON() {
               let inputTextarea = document.getElementById('input');
               let text = inputTextarea.value.trim();
               let finalJSON = jpath.create(text); // Use the create method from the jpath library
-
               let outputTextarea = document.getElementById('output');
               outputTextarea.value = finalJSON; // Set the JSON output directly
-
-              // You can remove the console.log statement as it's not needed anymore
           }
-
-          // Remaining functions as per your existing HTML
       </script>
   </body>
   </html>
