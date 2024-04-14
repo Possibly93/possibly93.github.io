@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JPATH Converter</title>
-    <style>
+<style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -69,79 +69,39 @@
             margin: 5px 0;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>URLs to JPath Converter</h1>
-        <p>Paste any text containing URLs below and click the button to generate the JSON with a path:</p>
-        <div class="input-container">
-            <textarea id="input" rows="10" placeholder="Paste your text here"></textarea>
-            <button onclick="generateJSON()">Generate JSON</button>
-        </div>
-        <div class="output-container">
-            <textarea id="output" rows="20" readonly></textarea>
-            <button onclick="copyJSON()">Copy JSON</button>
-        </div>
-    </div>
+  </head>
+  <body>
+      <div class="container">
+          <h1>URLs to JPath Converter</h1>
+          <p>Paste any text containing URLs below and click the button to generate the JPath.</p>
+          <div class="input-container">
+              <textarea id="input" rows="10" placeholder="Paste your text here"></textarea>
+              <button onclick="generateJSON()">Generate JSON</button>
+          </div>
+          <div class="output-container">
+              <textarea id="output" rows="20" readonly></textarea>
+              <button onclick="copyJSON()">Copy JSON</button>
+          </div>
+      </div>
 
-    <div class="download-link">
-        <p>Download JPATH.py to work with the JSON files you've converted:</p>
-        <a href="JPATH.py" download="JPATH.py">Download JPATH.py</a>
-    </div>
+      <div class="download-link">
+          <p>Download JPATH.py to work with the JSON files you've converted:</p>
+          <a href="JPATH.py" download="JPATH.py">Download JPATH.py</a>
+      </div>
+      <script src="https://raw.githubusercontent.com/unfiltering/JPATH/main/jpath.js"></script>
+      <script>
+          function generateJSON() {
+              let inputTextarea = document.getElementById('input');
+              let text = inputTextarea.value.trim();
+              let finalJSON = jpath.create(text); // Use the create method from the jpath library
 
-    <script>
-        function generateJSON() {
-            let inputTextarea = document.getElementById('input');
-            let text = inputTextarea.value.trim();
-            let urls = extractURLs(text);
+              let outputTextarea = document.getElementById('output');
+              outputTextarea.value = finalJSON; // Set the JSON output directly
 
-            let nestedJSON = {};
-            urls.forEach(url => {
-                let parts = url.split('/');
-                let currentNode = nestedJSON;
-                for (let i = 3; i < parts.length; i++) {
-                    if (!currentNode[parts[i]]) {
-                        currentNode[parts[i]] = {};
-                    }
-                    currentNode = currentNode[parts[i]];
-                }
-                currentNode[parts[parts.length - 1]] = 0;
-            });
+              // You can remove the console.log statement as it's not needed anymore
+          }
 
-            // Convert the nested JSON to the desired format
-            let finalJSON = convertToDesiredFormat(nestedJSON);
-
-            let outputTextarea = document.getElementById('output');
-            // Minify the JSON output
-            outputTextarea.value = JSON.stringify(finalJSON);
-        }
-
-        function extractURLs(text) {
-            // Regular expression to match URLs
-            let regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
-            return text.match(regex) || [];
-        }
-
-        function convertToDesiredFormat(nestedJSON) {
-            let finalJSON = {};
-            for (let key in nestedJSON) {
-                if (nestedJSON.hasOwnProperty(key)) {
-                    let value = nestedJSON[key];
-                    if (typeof value === 'object' && Object.keys(value).length === 1 && value.hasOwnProperty(key)) {
-                        finalJSON[key] = 0;
-                    } else {
-                        finalJSON[key] = convertToDesiredFormat(nestedJSON[key]);
-                    }
-                }
-            }
-            return finalJSON;
-        }
-
-        function copyJSON() {
-            let outputTextarea = document.getElementById('output');
-            outputTextarea.select();
-            document.execCommand('copy');
-        }
-    </script>
-</body>
-</html>
+          // Remaining functions as per your existing HTML
+      </script>
+  </body>
+  </html>
