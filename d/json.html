@@ -3,15 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URLs to JSON Converter</title>
+    <title>JPATH Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .input-container, .output-container {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output-container button {
+            margin-top: 10px;
+        }
+
+        .download-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .download-link p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>URLs to JSON Converter</h1>
-    <p>Enter the URLs below (one per line) or paste any text containing URLs and click the button to generate the JSON:</p>
-    <textarea id="input" rows="10" cols="50"></textarea><br>
-    <button onclick="generateJSON()">Generate JSON</button><br><br>
-    <textarea id="output" rows="20" cols="50"></textarea><br><br>
-    <button onclick="copyJSON()">Copy JSON</button>
+    <div class="container">
+        <h1>URLs to JPath Converter</h1>
+        <p>Paste any text containing URLs below and click the button to generate the JSON with a path:</p>
+        <div class="input-container">
+            <textarea id="input" rows="10" placeholder="Paste your text here"></textarea>
+            <button onclick="generateJSON()">Generate JSON</button>
+        </div>
+        <div class="output-container">
+            <textarea id="output" rows="20" readonly></textarea>
+            <button onclick="copyJSON()">Copy JSON</button>
+        </div>
+    </div>
+
+    <div class="download-link">
+        <p>Download JPATH.py to work with the JSON files you've converted:</p>
+        <a href="JPATH.py" download="JPATH.py">Download JPATH.py</a>
+    </div>
 
     <script>
         function generateJSON() {
