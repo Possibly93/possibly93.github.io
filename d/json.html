@@ -8,20 +8,22 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 1px;
             background-color: #f4f4f4;
+            text-align: center;
         }
 
         .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
+          width: 90%;
+          max-width: 800px;
+          height: 90%;
+          max-height: 750px;
+          margin: 0 auto;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
         }
 
         h1 {
@@ -32,18 +34,18 @@
         p {
             color: #666;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .input-container, .output-container {
             flex: 1;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         textarea {
             width: calc(100% - 20px);
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
             resize: vertical;
@@ -51,7 +53,7 @@
         }
 
         button {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 10px 0;
             background-color: #007bff;
             color: #fff;
@@ -64,26 +66,31 @@
             background-color: #0056b3;
         }
 
-        .download-link {
+        .download-link a {
             text-align: center;
-            margin-top: 20px;
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            transition: background-color 0.3s ease; /* Add smooth transition on hover */
         }
 
-        .download-link p {
-            margin: 5px 0;
+        .download-link a:hover {
+            transition: background-color 0.3s ease;
+            color: #555; /* Darker color on hover */
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>URLs to JPath Converter</h1>
+    <h1>URLs to JPath</h1>
     <p>Paste any text containing URLs below and click the button to generate the JPath.</p>
     <div class="input-container">
         <textarea id="input" rows="10" placeholder="Paste your text here"></textarea>
         <button onclick="generateJSON()">Generate JPATH</button>
     </div>
     <div class="output-container">
-        <textarea id="output" rows="20" readonly></textarea>
+        <textarea id="output" rows="10" readonly></textarea>
         <button onclick="copyJSON()">Copy JPATH</button>
     </div>
 </div>

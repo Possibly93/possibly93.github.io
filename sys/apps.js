@@ -3417,7 +3417,7 @@ system42("apps", function(le) {
       exec: function() {
         var data = {
           automaximize: true,
-          url: "/c/programs/kof93/fix.html",
+          url: "/c/programs/kof93/index.html",
       help:
         "<strong>King of fighters 93</strong><br>a game for 2 players" +
         '<p><strong>Player1 (GIEF): </strong><br>' +
@@ -3453,6 +3453,7 @@ system42("apps", function(le) {
         $window(data);
       },
     },
+
     jpath: {
       exec: function() {
         var data = {
@@ -3466,6 +3467,7 @@ system42("apps", function(le) {
         $window(data);
       },
     },
+
     superplayer: {
       exec: function() {
         var data = {
