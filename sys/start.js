@@ -87,7 +87,7 @@ system42("start", function(le) {
     settings: function() {
       //$alert('coming soon...')
       $window({
-        title: "Settings",
+        title: "Debug | Settings",
         html: $form.build(le._settings).el,
         width: 400,
         btnOk: "OK",
@@ -118,8 +118,12 @@ system42("start", function(le) {
       items: function() {
         return menuFromFileTree(le._files.c, "c/");
       },
+    }, /*Settings usually commented*/
+    {
+      name: 'Debug',
+      icon: '/c/sys/skins/'+le._settings.skin+'/settings.png',
+      action: actions.settings
     },
-    //{name: 'Settings', icon: '/c/sys/skins/'+le._settings.skin+'/settings.png', action: actions.settings},
     {
       name: "Fullscreen",
       icon: "/c/sys/skins/" + le._settings.skin + "/shutdown.png",
