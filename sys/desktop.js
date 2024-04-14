@@ -99,12 +99,7 @@ system42("desktop", function (le) {
       row: 2,
       col: 8,
     },
-    {
-      name: "GAMBLR.lnk42",
-      exe: 'gamblr',
-      row: 2,
-      col: 9,
-    },
+
     /*
     {
       name: "MESS.ENGER®.lnk42",
@@ -494,12 +489,6 @@ system42("desktop", function (le) {
       exe: 'iframe /c/credits.html --width=450 --height="300" --bodyClass="skin_light skin_inset"',
       row: 8,
       col: 5,
-    },
-    {
-      name: "README.txt.lnk42",
-      exe: 'iframe /c/readme.txt --width=450 --height="300" --bodyClass="skin_light skin_inset"',
-      row: 8,
-      col: 7,
     },
     {
       name: "MANIFESTO.lnk42",

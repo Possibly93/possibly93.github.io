@@ -555,7 +555,7 @@ system42("apps", function(le) {
       accept: "application/javascript",
       exec: function() {
         var url = this.arg.arguments.join(" ");
-
+        
         if (!url) {
           $log("Usage: js [PATH/CODE]");
           $log('e.g. : "js /a/hello.js", "js alert(42)"');
@@ -1256,7 +1256,7 @@ system42("apps", function(le) {
                   },
                 },
               ]
-            },
+            },            
           ],
         });
       },
@@ -1275,7 +1275,7 @@ system42("apps", function(le) {
           "a Sega Master System emulator in Javascript<br>"+
           "By <a href='https://xania.org/'>Matt Godbolt</a>\n"+
           "Based on <a href='http://matt.west.co.tt/category/javascript/jsspeccy/'>JSSpeccy</a> by <a href='http://matt.west.co.tt/'>Matt Westcott</a><br>"+
-          "..which in turn is based on <a href='http://fuse-emulator.sourceforge.net/'>Fuse</a> by Philip Kendall et al. Icons from <a href='http://www.icon-king.com/projects/nuvola/'>Nuvola</a> by David Vignoni.</p>"+
+          "..which in turn is based on <a href='http://fuse-emulator.sourceforge.net/'>Fuse</a> by Philip Kendall et al. Icons from <a href='http://www.icon-king.com/projects/nuvola/'>Nuvola</a> by David Vignoni.</p>"+                  
           "<p><b>Keyboard Controls:</b>\nQ or A = fire1.\n W or Z= fire2.\nE = Reset.\nP = Pause.\nArrows = Direction pad.</p><p><b>Gamepad Controls:</b>\nSupported.</b></p>";
         $window.call(this, {
           url:
@@ -1330,7 +1330,7 @@ system42("apps", function(le) {
                   },
                 },
               ]
-            },
+            },            
           ],
         });
       },
@@ -1402,7 +1402,7 @@ system42("apps", function(le) {
                   },
                 },
               ]
-            },
+            },            
           ],
         });
       },
@@ -1474,7 +1474,7 @@ system42("apps", function(le) {
                   },
                 },
               ]
-            },
+            },            
           ],
         });
       },
@@ -2794,7 +2794,7 @@ system42("apps", function(le) {
       icon: "apps/inception.png",
       exec: function() {
         $window({
-          url: "//www.possibly93.github.io/index.php?v=" + Date.now(),
+          url: "//www.windows93.net/index.php?v=" + Date.now(),
           title: "VIRTUAL PC",
           icon: "",
           width: 600,
@@ -3413,7 +3413,7 @@ system42("apps", function(le) {
     kof93: {
       categories: "Game",
       name: "KOF93",
-      icon: "/c/programs/kof93/gief.gif",
+      icon: "/c/programs/kof93/gief.gif",      
       exec: function() {
         var data = {
           automaximize: true,
@@ -3449,18 +3449,6 @@ system42("apps", function(le) {
           title: "Potato.yt",
           width: 560,
           height: 315,
-        };
-        $window(data);
-      },
-    },
-    gamblr: {
-      exec: function() {
-        var data = {
-          url: "https://gmblrr.github.io/",
-          icon: "c/sys/skins/w93/apps/GAMBLR.png",
-          title: "GAMBLR - Get Addicted",
-          width: 900,
-          height: 600,
         };
         $window(data);
       },

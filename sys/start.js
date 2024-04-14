@@ -119,7 +119,7 @@ system42("start", function(le) {
         return menuFromFileTree(le._files.c, "c/");
       },
     },
-    {name: 'Settings', icon: '/c/sys/skins/'+le._settings.skin+'/settings.png', action: actions.settings},
+    //{name: 'Settings', icon: '/c/sys/skins/'+le._settings.skin+'/settings.png', action: actions.settings},
     {
       name: "Fullscreen",
       icon: "/c/sys/skins/" + le._settings.skin + "/shutdown.png",
