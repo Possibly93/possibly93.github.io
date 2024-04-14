@@ -1,4 +1,4 @@
-(function () {
+var jpath = (function () {
     // Function to extract URLs from text
     function extractURLs(text) {
         var urlRegex = /(https?:\/\/[^\s]+)/g;
