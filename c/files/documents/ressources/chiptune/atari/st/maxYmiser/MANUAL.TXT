@@ -1,0 +1,1078 @@
+                     ____
+  ___________________\   |____   _____________________________________________
+ _\__    ________    |   |   /___\   ____     ___\___/    ___/____   /       /
+ |   |   |   |       |_  /  _|   |   |   \   /   |   |____   |   /   |   |   |
+ |:  |   |   |:  |   |:  \   |:  |   |:  |   |   |:  |:  /   |: /____|:  |___\
+ /___|___|___/_______/___|   |____   |___|___|___/___/_______\_______/___|gwEm
+ ========================|___\ltk/___|========================================
+
+                              maxYMiser Live v1.24
+                             (c) Gareth Morris 2008
+
+
+                                  User Manual
+
+       maxYMiser works on any Atari 16/32 platform or competent emulation
+        STe, Mega STe, TT or Falcon required for STe DMA sound features
+                        Monochrome screens NOT supported
+________________________________________________________________________________
+
+(0) Contents
+============
+0.......Contents
+1.......E-Mail
+2.......Credits
+3.......Licence
+4.......Introduction
+4.1         520, 1mb, and 2mb versions
+5.......Basic Principals
+5.1         Patterns and songs
+5.2         Sequences and instruments
+5.3         Ways to make sound
+5.4         The 'N' key
+5.5         Operation without screen
+6.......Tracker Display
+6.1         Note
+6.2         Instrument
+6.3         Volume
+6.4         Effects 1 & 2
+6.5         Sample number
+7.......Instrument Editor
+7.1         Instrument Selector
+7.2         Instrument Parameters
+7.3         Sequence Editor
+7.4         DigiDrums
+8.......Sub-Menus
+8.1         Escape
+8.2         About
+8.3         Help
+8.4         Normal
+8.5         Configuration
+8.6         Zap/Pack
+8.7         Transpose
+8.8         Advanced edit
+8.9         Play song
+8.10        Play pattern
+8.11        Stop
+8.12        Record song
+8.13        Record pattern
+8.14        Disk operations
+8.15        Sequence and sample editor extension
+9.......Tracker Effects
+10......MIDI Controllers
+10.1        Tracker controllers
+10.2        Instrument controllers
+11......Jam Mode
+11.1        Looping pattern
+12......MIDI / Sync24 Output
+13......MMC
+14......Replaying maxYMiser Music
+14.1        Technical
+14.2        Tips for low CPU consumption
+15......Finally
+________________________________________________________________________________
+
+(1) E-Mail
+==========
+For all information, help, or questions:
+gwem@preromanbritain.com
+
+To  register  your  interest in maxYMiser please joint the mailing list, details
+at:
+http://www.preromanbritain.com/maxymiser
+________________________________________________________________________________
+
+(2) Credits
+===========
+Code, design and manual.......................................Gareth Morris:gwEm
+Design........................................Mathieu Stempell:Dma-Sc/Sector One
+Graphics.............................................Sebastien Larnac:STSurvivor
+
+Falcon DSP clock detection.......................Denis Huget:ST Ghost/Sector One
+ICE pack algorithm.....ripped by Phil Graham:Grazey/PHF, original by Axe/Delight
+ASCII logo...........................................Stefan Benz:Lotekstyle/tSCc
+
+Its true that most of the grind work on maxYMiser was done by me (Gareth Morris)
+but  we  should  not  forget the work of these other guys who all made maxYMiser
+what it is today, so thanks again this crew.
+
+Extra  mention  this  time  to Ultra/Cream for the loan of his Roland TR606 drum
+machine.
+________________________________________________________________________________
+
+(3) Licence
+===========
+I'm  bored  of  releasing freeware software that gets a huge number of downloads
+but  receives  little  or  no  feedback,  except  from people who I usually know
+personally. So:
+
+maxYMiser  is FREE, but if you make music or sounds with this software which are
+released  either  in  any  kind  of commercial or non-commercial way, you should
+mention  somehow that you used maxYMiser in its production. In case you wonder -
+this is serious. I think its a small price for quality free software.
+
+maxYMiser  maybe  distributed freely, but only with this text document and other
+associated files. None of the files may be modified in any way.
+
+maxYMiser  comes  with  no  warranty  of  any  kind: It may very well trash your
+machine/files/music etc etc
+________________________________________________________________________________
+
+(4) Introduction
+================
+The Atari ST has many good music editors for the built-in YM2149 sound chip. The
+problem  is  though  that,  in  someway,  every  one of them sucks. When I first
+discussed  the  project  with Dma-Sc, he said I should make 'the music editor of
+our dreams'. Later I decided to change this goal and just tried to make the best
+sound  chip editor on any platform. With such high aims this was a long project,
+however  I am happy with the end result - even if in many ways I regret starting
+it.
+
+You'll  notice  the interface and keyboard layout borrows (steals ;) ) much from
+the PC sample tracker 'FastTracker 2'.... of course, because this is my absolute
+favourite  tracker.  I  made changes to the things I disliked about this editor,
+and  also  made  changes to make the interface fit to YM2149 sound chip editing.
+The  many  fans  of  FastTracker 2 should have no problems to adapt to maxYMiser
+though I think.
+
+maxYMiser  is  not a program for a beginner - it needs a decent knowledge of the
+YM2149  sound  chip.  You can read the YM2149 datasheet to give yourself a crash
+course,  or  use  a different editor. I heartily recommend MusicMon2.5, which is
+easy to learn and has an advanced sound system.
+
+Recently Dma-Sc and 505 have produced a newbie guide, and some free instruments,
+to stay up to date with cool developments like this, visit the maxYMiser webpage
+often :)
+
+maxYMiser  has  no  guards  over  CPU  utilisation, with certain combinations of
+effect you can easily use more than 100% CPU, which has easy to imagine results.
+The  composer  has no restriction over combinations of effect types and channels
+and  there  are  also  no lame 'are you sure about this' type screens - so watch
+out.  If  you  need  some  guidance about what effects use how much CPU, look in
+Section 10.2
+
+(4.1) 520, 1mb, and 2mb versions
+--------------------------------
+There are three versions of maxYMiser included:
+
+For  machines with only  half a megabyte of RAM - 520ST, 520STF, 520STFM, 520STe
+etc  use MYM_520.PRG.  A few features had  to be removed for this version. These
+features  are the  STSurvior intro  screen, all  features relating  to digi  and
+sample  playback,  STe microwire and  ICE pack/depack. The powerful maxYMiser YM
+engine is still intact.
+
+For  machines with  more memory - MYM_1MB.PRG is guaranteed to work correctly on
+machines  with  1mb of  RAM. MYM_2MB.PRB might  also work in  most cases, but no
+promises. In the version for 1mb machines, sample memory has been limited to 8kb
+per sample, in the 2mb version you get the full 32kb.
+
+The  rest  of the manual related to the 2mb version, so please be aware of these
+differences if using a different version.
+________________________________________________________________________________
+
+(5) Basic Principals
+====================
+Here  I  discuss  some of the basic ideas, terms and concepts used in maxYMiser.
+Some  basic  tracker  knowledge  could help here - I suggest newbies consult the
+famous 'Trackers Handbook'.
+
+(5.1) Patterns and songs
+------------------------
+On  first  appearances  maxYMiser  looks  like  it  takes  the  song and pattern
+structure  from FastTracker 2 or ProTracker. This was my intention, but actually
+its  not  the  case.  In FastTracker, 2 dimensional patterns are linked together
+into  a  one dimensional song list. In maxYMiser songs are 2 dimensional and the
+patterns  are  1  dimensional.  This makes for a saving in file size, and offers
+some ease of use to the composer. Some preset patterns exist for ease of use, eg
+'empty pattern' and 'note off'.
+
+(5.2) Sequences and instruments
+-------------------------------
+When  I  was  designing  maxYMiser  I  wanted  to  give the composer the maximum
+possibilities  of  the  YM sound chip. This meant a low-level instrument editor,
+and  so  I  devised sequences. A sequence is a list of binary words that you can
+use  to  vary  some  parameter  of the sound over time. To give, for instance, a
+classic  arpeggiated  chord, or a wobbly vibrato effect. A sequence is also used
+to  produce  a  volume  envelope, or to define a SID waveform. For more details,
+read the instrument editor part of this manual.
+
+(5.3) Ways to make sound
+------------------------
+I  already  suggested  to  read the YM2149 data sheet, so please do. Anyhow, the
+YM2149  can  produce sounds formed from combining square wave, buzzer and noise.
+On  Atari  ST  we  have  a  fourth  possibility  -  the MFP or timer. Timers can
+interrupt  the  CPU  at regular intervals for manipulating the YM into producing
+various  effects.  This distributed version of maxYMiser has 3 specific types of
+timer effects. Each channel uses its own separate timer, if its enabled that is.
+The effects include:
+
+    * 'DigiDrums'  which  play  a 4bit sample, typically a drum sound or special
+        effect
+    * 'SID'  produces a software generated waveform. In the past this has always
+        been  a  fixed  waveform  (usually  square),  maxYMiser  allows  you the
+        possibility  to  program  this  yourself,  eg  for  sine  or fake-buzzer
+        waveforms.
+    * 'SyncBuzzer'  retriggers  the buzzer waveform at audio frequency intervals
+        to  create  synchronisation  effects  in  the  same  way  as  the 'sync'
+        function works on an analogue synthesiser.
+
+On  STe  machines  and higher we have even a fifth possibility to make sound - a
+simple  DMA  sound  chip. maxYMiser offers quite optimised mixing and resampling
+routines  and a simple interface to allow this DMA chip to be used together with
+our old friend the YM for hybrid composing.
+
+(5.4) The 'N' key
+-----------------
+In  many  of the editors and screens pressing 'N', 'shift+N' or 'control+N' will
+select  the next unused pattern or sequence. Remembering this will save you time
+and effort - thanks 505 ;)
+
+(5.5) Operation without screen
+------------------------------
+maxYMiser  includes  some  file  auto-loading  functions to allow the use of the
+program without needing a big and heavy screen - for example as a part of a live
+performance, or when using maxYMiser as a MIDI sound module.
+
+To do this, you might setup a floppy disk as follows:
+
+A:\AUTO        - here put your maxYMiser program file
+
+A:\            - here include your default voice sets and configurations:
+  \MYM.CNF     - first the usual maxYMiser configuration file is loaded
+  \DEFAULT.SND - a default SNDH file is attempted next, if not...
+  \DEFAULT.MYS -    then tries to load a default song...
+  \DEFAULT.MYV -    and voice set
+  \DEFAULT.MYI -        if this also fails, tries to load a default instrument
+                            otherwise, no default files are loaded
+
+So  by  including  maxYMiser  in  an auto folder, and a default file in the root
+directory  is  possible to boot from a floppy and have some pre-made voices or a
+tune loaded automatically when you power on the machine.
+________________________________________________________________________________
+
+(6) Tracker Display
+===================
+As  you  can see the tracker display consists of three large vertical columns of
+codes.  Each  vertical  column  corresponds  to  one  of  the three YM2149 sound
+channels.
+
+The  number at the top of each channel shows the current pattern being displayed
+there.  Pressing 'Play Pattern' plays the current patterns without reloading the
+current  patterns  from  the  song list. This allows you to demo combinations of
+patterns  without  changes  to  the  song.  These  patterns  can be changed with
+keyboard  shortcuts,  or  by modifying these fields with a new pattern number or
+preset.
+
+Like  many  trackers the patterns are 64 steps long, which nicely corresponds to
+4  musical  bars, with each step equal to one 1/16th note. Pattern break tracker
+commands allow you to shorten this length.
+
+For  each step in each column of YM tracker data there are seven pieces of info.
+Lets illustrate them below:
+
+|             |            |        |             .       |            .       |
+| Note-Octave | Instrument | Volume | FX 1 : Type . Value | FX 2: Type . Value |
+|             |            |        |             .       |            .       |
+
+The  same  patterns are also used for the STe DMA track. Here the meaning of the
+data is a bit different:
+
+|               .          .          |               .          .          |
+| Note-Octave 1 . Sample 1 . Volume 1 | Note-Octave 2 . Sample 2 . Volume 2 |
+|               .          .          |               .          .          |
+
+There  are  no effects (except volume) on the STe DMA track - but you do get two
+independent channels for sample playback!
+
+(6.1) Note
+----------
+This  column  holds  the note data for that step. If this is blank the currently
+playing  note  is unaffected. CapsLock can be used to enter a universal note off
+here.  Notes  can  be entered either in real or step time, and using an external
+MIDI keyboard, or the Atari keyboard (here we show mapping on a UK system):
+
+(Upper octave)
+ 2 3   5 6 7   9 0   =      =>     C# D#    F# G# A#    C# D#    F#
+Q W E R T Y U I O P [ ]     =>    C  D  E  F  G  A  B  C  D  E  F  G
+
+(Lower octave)
+   S D   G H J   L :        =>        C# D#    F# G# A#    C# D#
+  Z X C V B N M , . /       =>       C  D  E  F  G  A  B  C  D  E
+
+Octaves  can  be changed with the function keys. maxYMiser supports all notes in
+the YM frequency range, even if the very high notes are not useful musically.
+
+The  octave  reached  by  press  'F9'  maps  each key to middle C on a different
+instrument, useful for entering rhythms.
+
+(6.2) Instrument
+----------------
+If  an  instrument  number  is present here then the sound is triggered from the
+start  so, to avoid retriggering, simply omit this column. The instrument number
+to  be  entered  in  this  column  can  be selected with the numeric keypad, the
+instrument editor, or via a 'MIDI patch change'.
+
+(6.3) Volume
+------------
+The volume number in this column is an attenuation level. A dash means no change
+to  the  current  attenuation  level.  A $0 gives the loudest volume, and $F the
+quietest. Usually a dash is entered in this column, but you can change this with
+the 'vol' field in the 'normal' menu.
+
+(6.4) Effects 1 & 2
+-------------------
+Effects  type  is  an  alphanumeric  value, in other words 0-9 and A-Z. The full
+details  of  these  effects  are  provided  later  on  in  this  manual, and are
+summarised in the online help system.
+
+The  effects  value which corresponds to this type is shown by the adjoining two
+nibbles,  which  form  a  hexadecimal value in the range $00-$FF. The meaning of
+this value depends on the effects type.
+
+The  single  effect  columns  previously  available on existing YM trackers were
+thought  not  to  be  sufficient for the complex compositions with adjustment in
+instrument  parameters  that  maxYMiser  was  designed for. Therefore two effect
+columns are provided, which offer exactly the same features.
+
+(6.5) Sample number
+-------------------
+On  the  STe  DMA  track we have sample number instead of instrument number. The
+tracker plays back samples loaded into the digidrum banks, and the sample number
+here  corresponds  to  the  digidrum sample number. Samples are played back with
+middle C corresponding to 8287Hz.
+________________________________________________________________________________
+
+(7) Instrument Editor
+=====================
+The  right  half  of  the screen allows selection and editing of the instruments
+used in your composition. Almost every instrument parameter can be adjusted with
+tracker commands. For an in-depth tutorial of the maxYMiser instrument editor by
+Dma-Sc check the maxYMiser website.
+
+(7.1) Instrument Selector
+-------------------------
+maxYMiser  has  four banks of eight instruments, giving 32 instruments in total.
+Instrument banks maybe selected with the buttons to the top right of the screen,
+or with keyboard shortcuts on the numeric keypad.
+
+Within  each bank you can select instruments with a left mouse click. Highlights
+appear over the instrument name and the instrument number. These can be selected
+independently for copy and remapping operations. Right clicking on an instrument
+name allows editing.
+
+(7.2) Instrument Parameters
+---------------------------
+From the top down:
+
+The   'de-tune  matrix'  allows  you  to  enable  different  instrument  effects
+(portamento,  vibrato  etc)  on  different parts of your sound (the square wave,
+buzzer  or  timer  generated  effect). Fixing the frequency of the sound using a
+fixed  frequency  sequence  (fix  freq)  disallows  all other effects except for
+vibrato,  it  is  also  no  longer  possible to play notes with this part of the
+sound.  Selecting  'fixed  frequency'  and 'fixed de-tune' bypasses the need for
+specifying  fixed  frequencies  with  a  sequence,  instead  the fine and coarse
+instrument  parameters  allow  you  to  fix the frequency, this allows the fixed
+frequency to be adjust via tracker commands if required. The transpose effect is
+controlled  by the transpose tracker command. As you can recognise, the 'de-tune
+matrix'  gives  many  possibilities  for de-tuning sounds, for ravey stabs, fake
+resonant effects etc.
+
+Below  the  matrix  you  can  select  sequences  to  change the sound over time.
+Sequences can be shared between sounds.
+
+'Vol'  sequence  changes  the note volume over time $F=maximum level $0=minimum.
+Volume sequences do not affect digi and buzzer sounds for technical reasons.
+
+'Arp'  sequence  allows complex arpeggios to be performed. The sequence provides
+the  number of semi-tones the note is to be adjusted by over time. The number is
+interpreted  as  signed 2's compliment, so $FFFF is a -1 semitone adjustment for
+example.
+
+'Vib',  or vibrato, works similarly to the arpeggio except the adjustment is not
+tuned  by  semitones,  rather  YM  frequency  register  value.  This allows fine
+adjustments - however they are not in tune over a wide frequency range.
+
+'Mix'  allows  for  changing the state of the YM mixer over time. The details of
+the  YM  mixer  appear in the online help. The first nibble enables and disables
+the  noise  generator,  the  second  nibble enables and disables the square wave
+generator.  The  third nibble enables the buzzer. The final nibble allows you to
+select which timer-based effect (for example SID or digidrums) will be used.
+
+'Noi',  short  for  noise,  allows  you  to adjust the frequency of the YM noise
+generator  over  time. As the YM sound chip just has one noise generator, higher
+number YM channels have the priority over setting this frequency. Adjust between
+$00 to $1F.
+
+'Fix',  for  fixed  frequency,  is  a rarely used but powerful sequence. You can
+specify  actual YM frequency register values changing over time. The online help
+provides  all  the  formulae you need to calculate these values. If a particular
+frequency  step  is  set to $FFFF then fixed frequency is ignored and the normal
+note is played - useful for combining instruments.
+
+'Tim'  provides never before seen possibilities in a YM tracker, and is arguably
+the most powerful feature of maxYMiser. In short it allows you fine control over
+many  of  the  timer  effects.  In the case of SID, this sequence configures the
+software  waveform  that  is generated by the SID timer interrupt. For example a
+sequence  $F,$0  gives  a  square  wave.  $F,$F,$F,$0  gives  a  pulse waveform.
+$F,$A,$5,$0  a  rough  saw  waveform  and  so on (sine wave is also possible for
+example). Up to 16 steps maybe used in a SID waveform, and fewer steps mean less
+CPU  utilisation.  In  the  case  of  syncbuzzer each step in the 'Tim' sequence
+represents  a buzzer waveform, allowing you to form complex alternating waveform
+syncbuzzer  effects. Up to 8 steps maybe used in a syncbuzzer effect, and number
+of steps does not effect CPU utilisation.
+
+Below the sequence selection fields are instrument parameters that do not change
+over time:
+
+'Seq  Speed'  allows  the user to set the speed with which all the sequences are
+processed. A higher number means slower sequence effects.
+
+'Buzz Wave' sets the buzzer waveform associated with this sound. The online help
+section  has  a list of the different possibilities. As with the noise generator
+YM2149  just  has one buzzer to share with all voices. Higher number YM channels
+take priority over the buzzer effect.
+
+'Start  Syn'  allows effects only previously possible with the MusicMon2 editor.
+Other  YM editors passed this little gem by, but here again it appears. Enabling
+this field forces the instrument to synchronise all its tuned components (square
+wave,  buzzer  and timer) when the note is triggered, for repeatable phasing. It
+is  not  possible  to  guarantee  synchronisation of the YM2149 square wave with
+precision  of greater than 180degrees - this leads to 2 possible phasing effects
+in this case.
+
+'Fix  Det'.  If  fixed  de-tune  is enabled by the de-tune matrix then these two
+fields  affect  the  sound.  The  coarse  de-tune  allows  de-tuning in semitone
+intervals. The fine de-tune allows de-tuning in YM frequency register intervals.
+
+'Digi  Sample'  allows  you  to pick a digidrum sample from the 8 that maxYMiser
+supports. For more information see the DigiDrum section. A value of zero in this
+field means no digidrum sample is selected.
+
+'Rate'  allows  you  to  set  the  replay  frequency of the digi sample. You are
+altering  timer  register values, however these are also converted to Hz to make
+things  easier.  So called 'tempered' digi sounds are not easily possible (so it
+is  not  convenient  to  play  tuned  notes  with them). However this is not the
+purpose  of  digidrums  (a  hint  there  in  the  name ;) ) - and in the case of
+percussive  samples I believe that fine control over replay frequency is better.
+maxYMiser gives you the finest control possible with the hardware.
+
+'Instrument  volume'  specifies  the  amount  of  attenuation  applied  to  this
+instrument.  This  means a value of zero gives the loudest sound, and a value of
+$F, the smallest. Make sure you have a defined volume sequence or a buzzer based
+sound.... otherwise you hear nothing ;)
+
+(7.3) Sequence Editor
+---------------------
+This  word  editor allows you to define the sequences used by the instruments. I
+believe usage of this editor to be self-explaining, however:
+
+'Cpy' copies the current sequence to the 'Dest' sequence.
+
+'Clr' clears the current sequence.
+
+'Length' holds the length of the current sequence, and 'Repeat' holds its repeat
+point (if appropriate).
+
+(7.4) DigiDrums
+---------------
+This  small  menu  allows  you  to  load  new  digi  samples into your music for
+digidrums  or  STe  DMA.  8 samples are allowed, each of which can be applied to
+many  YM  instruments,  or  played  back  through the DMA sound chip. Select the
+sample  number you want to load into and then choose the 'Lod' button. Select an
+8bit  signed  headerless  sample  (eg  RAW  PCM  type  formats).  If  loading is
+successful  the sample length will be displayed. When playing back as a digidrum
+each  sample  is  automatically  converted for 4bit YM sample resolution using a
+highly accurate lookup table. Each digidrum can be up to 32kb in length.
+
+If you want to load a new sample simply pick the 'Lod' button.
+
+To save your sample, along with any editing use 'Sav'.
+
+Finally, to clear an unused sample simply pick the 'Clr' button.
+
+Its  also  possible to change the length of your sample by clicking on the 'Len'
+field.
+________________________________________________________________________________
+
+(8) Sub-Menus
+=============
+Here I describe the individual functions of each program sub-menu:
+
+(8.1) Escape
+------------
+You  reach  this  menu  by  clicking  on  the  top left corner of the screen, or
+pressing  the  escape  key.  'Quit'  exits  the program back to the GEM desktop.
+'Background'  partially restores your Atari to enable it to run desk accessories
+(eg  calculators, sound setup accessories etc) or, in a multi-tasking OS such as
+Mint, other programs. Select 'Foreground' to return to maxYMiser.
+
+(8.2) About
+-----------
+Displays  the  main  program credits. Right clicking on the 'Title' and 'Artist'
+fields allows the composer to edit the data for these SNDH format tags.
+
+(8.3) Help
+----------
+This help section provides the user with a quick reference to all tracker effect
+commands,  keyboard  shortcuts,  some  YM2149  and  DMA  low  level details, and
+information  about maxYMiser's MIDI implementation. Clicking the  buttons on the
+left  selects  which help you want to view. Then click on the help pane, and use
+the mouse to navigate through each screen.
+
+(8.4) Normal
+------------
+The  mini-tracker  display to the top right is the song editor. Here you can set
+how  your  patterns  will be sequenced to form a finished song. This mini-editor
+supports  many  cut and paste features of the main editor, so experiment. Preset
+patterns can be accessed as follows:
+
+Empty pattern    : Backspace
+Note off pattern : Caps Lock
+Looping pattern  : Spacebar
+
+For  more details of the Looping pattern see the Jam mode description, in normal
+playback, looping patterns are simply skipped over.
+
+The  arrows allow you to move up and down the song editor - right clicking moves
+to the song start and end.
+
+'Len' holds the length of the song, and 'Rep' the repeat point for the song.
+
+'Speed' holds the song speed in number of replay routine calls per 1/16th note.
+
+'BPM'  cannot be edited and is a rough calculation based on the replay speed and
+interrupt frequency.
+
+'TC' allows you to set the frequency that the maxYMiser replay routine is called
+by.  This  frequency  is synthesised from the 200Hz system tick. In this way you
+can select tempos with fine resolution.
+
+Beside  the  'TC'  setting  you have the possibility to toggle between using the
+Atari internal system clock, 'MIDI' clock input including Song Position Pointer,
+and  'SY24'  Sync24  input  using  a  special  joystick  port interface (see the
+maxYMiser  webpage  for  details  of how to make that. Sync24 input works better
+with faster Ataris. In MIDI and Sync24 modes the song speed may not be adjusted.
+
+The box below the interrupt setting gives the current playback mode, which makes
+it  easier  to use the 'jam' features included for realtime resequencing of your
+music.  For  more about jam mode, please read that section. Clicking on this box
+allows  toggling  between  normal  playback  and  jam mode, as well and song and
+pattern  play. Using this box to change the playback mode does not interrupt the
+playback of your music. You can use F10 / Shift+F10 to toggle this setting also.
+
+'Time' is self explaining ;)
+
+'Zync' shows the current demo zynchronisation code for easy editing.
+
+'Vol' holds the current note volume put in to the editor.
+
+'Add' holds the number of 1/16 steps skipped each time you enter a new note.
+
+Left  clicking  on the 'Chan' buttons mutes and unmutes that YM channel. A right
+click solos and unsolos that channel.
+
+(8.5) Configuration
+-------------------
+Here you select different options for the appearance and operation of maxYMiser.
+
+'Scroll'  activates  and  deactivates  pattern  scrolling  - useful for realtime
+editing!
+
+The controls just below 'scroll' allow you to setup different colour schemes for
+the editor.
+
+'Mouse' selects between 8 classic mouse pointer shapes ;)
+
+The 'Timers' check boxes activate and deactivate MFP timer based effects on each
+YM channel. This can also be changed dynamically whilst the song is playing with
+tracker  commands. This allows easy swapping of timer utilisation between the YM
+chip  music and any other demo effect you might be running. The timer activation
+and  deactivation  is  system friendly and fully restores the original settings.
+A bright block indicates when a timer is used.
+
+The  status  of  the STe DMA sound chip functions can be set. Either all STe DMA
+features  can  be  deactivated,  enabled  on standard resampling mode for 1 or 2
+channels,  or  enabled  for  a  single STe native frequency channel only. Single
+channel  STe  DMA  modes  boost the volume of the DMA sounds, and the native STe
+frequency mode has no CPU overhead for resampling.
+
+The  DMA  volume control allows the user to set the minimum volume level the STe
+channel will respond to. If you choose to allow less volume levels the memory is
+saved  in  STe native mode. On the single channel DMA mode then both CPU and RAM
+are saved by setting this control to zero.
+
+'Speaker'  enables  and  disables  TT/Falcon030  internal  speaker (assuming you
+didn't rip it out already ;) )
+
+'VB  Freq' - you can set this to high or low screen refresh setting on ST(e) and
+Falcon  platforms.  This  may  improve  your  display  quality  and  is  totally
+independent of the sound replay frequency.
+
+'Show  CPU'  enables  display  of the amount of CPU used by the maxYMiser replay
+routine. Interpret this with caution and knowledge! Timer effects will slow down
+the  CPU  at all times, not just when the replay routine is active. Better use a
+different system for more accurate CPU usage monitoring, for example SNDH_CPU.
+
+On  Falcon  030,  maxYMiser  supports external DSP clocks, and extra outputs. If
+your  sound system is not locked when maxYMiser is run, then external DSP clocks
+will be detected. You can see the frequency of this clock here. If you have dual
+DSP  clocks  (represented by an asterisk) then you can toggle which one is used.
+If  you  have  an  external  DSP  clock  then an external output, such a SP-DIF,
+Analog-8  etc  is automatically enabled. 44.1kHz is by default chosen if this is
+available.  Next  to  this  field  you can select what sound is put out over the
+external output. You can choose either YM or STe DMA sounds to be transmitted.
+
+The  'Year'  field  allows  you to enter the year of composition for your music.
+This information is used in work saved as an SNDH file.
+
+'Save  CNF' writes a file 'MYM.CNF' to the maxYMiser directory. This stores your
+configuration settings and will be reloaded each time maxYMiser is run.
+
+If 'Re-load' is enabled then your configuration will be reloaded after loading a
+SNDH  or song file. In this way settings stored in these files can be ignored if
+you wish.
+
+The  MIDI  settings on the screen allow access to maxYMiser's MIDI functions. YM
+tracks  1,2 and 3, and the 2 STe DMA channels can be assigned to a specific MIDI
+channel ($0-$F corresponding to channels 1-16), each with a different instrument
+or sample number. This instrument can also be changed with a 'MIDI patch change'
+separate of this sub-menu. If YM and DMA tracks are set to the same MIDI channel
+then  MIDI note input on this channel will be multi-plexed in a semi-intelligent
+way to give polyphonic abilities :)
+
+There  are  also  two  special  MIDI instrument numbers. When '--' is shown this
+track  is totally disabled. The 'DD' instrument allows support of MIDI drum kits
+to  play  maxYMiser  sounds.  The  'DD'  is a tribute to the Yamaha DD series of
+electronic  drum  sets - yo! In this mode each key plays middle C on a different
+sound. You can enable this mode for the editor by pressing 'F9'.
+
+You  can  enable  maxYMiser's ability to respond to MIDI controllers here too by
+toggling the 'cntrllers' setting.
+
+(8.6) Zap/Pack
+--------------
+The 'devastate' options allow you to trash your song, instruments, or both ;)
+
+The  'squish'  options  give  you  some  memory management functions. Duplicated
+patterns  and  sequences are removed and the remainder are stored in a way so as
+to reduce file size. Preset pattern are subsituted where applicable.
+
+You can also get some statistics about the last used sequence and pattern, which
+indicates  how  much  memory is used for storing these things. Press 'update' to
+update this display.
+
+(8.7) Transpose
+---------------
+Here  you  get  an  enhanced  version of FastTracker2's menu. In addition to the
+usual  32  transposition  possibilities  you  can  perform  16  different volume
+adjustments with this menu.
+
+(8.8) Advanced edit
+-------------------
+This menu gives powerful editing possibilities.
+
+'Copy'  copies  an  instrument  between  positions in the instrument editor. The
+small  'instrument  number'  highlight specifies the destination, and the larger
+'instrument name' highlight gives the source.
+
+'Track',  'Pattern',  'Song' and 'Block' allows you to re-map instruments within
+your song.
+
+'Xpand'  and  'Shrnk'  allows  to double and half speed the current pattern. Any
+part  of  the pattern 'cut off' by the expand operation is stored in the pattern
+edit buffer.
+
+You can select 'Overwrite', 'Overlay' and 'Underlay' paste modes.
+
+The  seven  button  toggle  below the paste mode selection allow masking of each
+column  of  tracker data for the cut and paste operations. Clicking on the 'all'
+text toggles all of the column masks on and off.
+
+(8.9) Play song
+---------------
+Selecting  with  the  left  mouse  button  plays  the song from the start of the
+current  pattern  onwards. A right click plays the song all the way through from
+the top.
+
+(8.10) Play pattern
+-------------------
+Left  clicking  plays the current pattern from the start without re-initialising
+them  from  the  song list. This allows you to try out patterns together without
+changing  the  song.  Right  clicking  has  the same effect, but starts from the
+current cursor position.
+
+(8.11) Stop
+-----------
+Stops play and record modes.
+
+(8.12) Record song
+------------------
+Only  left  click  has  an  effect.  Operates the same as play song, but enables
+record mode.
+
+(8.13) Record pattern
+---------------------
+Only  left  click  has an effect. Operates the same as play pattern, but enables
+record mode.
+
+(8.14) Disk operations
+----------------------
+maxYMiser  gives  you an array of loading and saving possibilities. You can work
+with  files  in  the  popular  Atari ST music format 'SNDH' (of course only SNDH
+files  created  with maxYMiser can be loaded into the editor). You can also save
+and  load  voice  sets  and song data separately for use with maxYMiser's binary
+replay  routine.  In  addition you can save your favourite instruments and trade
+with your friends ;)
+
+The  software  saves  and  loads  files packed with the famous ICE algorithm. To
+enable  saving with this packer, select the check box. The next file to be saved
+will  then  be  ice  packed  for  a significant file size reduction, however the
+packing operation can take some time, especially on a standard ST... Therefore I
+recommend  ICE packing only for distributing your finished music. All fully SNDH
+standard compliant players support playback of ICE packed files.
+
+Another  option  for  distributing  your finished music is the 'time' check box.
+Normally saved files loop continuously at the repeat point. However, by checking
+this  box  the  next  saved  SNDH  file  will have its track duration set by the
+current  track  timer.  Just play your track to its end point, and press stop to
+set  the  timer  appropriately.  Now  in  supporting players your music will end
+correctly.
+
+The  bottom  field on this panel gives the result of the last disk operation, so
+it is also displayed after loading digi samples.
+
+(8.15) Sequence and sample editor extension
+-------------------------------------------
+The  first half of this menu allows fast generation of sequence data. Sweeps and
+oscillations   can   be   easily   programmed  here.  'Minimum',  'Maximum'  and
+'Oscillations'  are  self  explaining.  You  can  'Gen'erate  a  new sequence or
+'Mod'ify an existing one.
+
+The  'Morph'  button  generates  sequences  that  fit in between the current and
+destination  sequences.  For  this  to work these sequences should have the same
+length.  Combining  this feature with tracker commands allows versatile morphing
+of sounds, eg SID-morph.
+
+The  second  half of the menu expands the abilities of the little digidrum panel
+into a minimalist sample editor.
+
+You can amplify or attenuate you sample in units of 1.5db.
+
+There  are fine tuning functions which allow you to pitch up or down your sample
+in  units  of an octave, a semi tone, and 1/8 of a semi tone fine tuning. Tuning
+down an octave includes interpolation for improved quality.
+
+The  YMise  function is not to be found on any other sample editor. Converts the
+sample  to  sound  like a YM digidrum - even on the STe DMA channel. This is for
+true digidrum freakz.
+
+Incase you loaded by mistake a sample in a really old fashioned unsigned format,
+have no stress and click the 'Sign/Unsign' button :)
+
+The  sample  start  point  can  be manually trimmed with the 'Start' field. This
+allows  for really old skool style sample editing found on classic samplers like
+Akai  S950.  To set this point really finely you could playback your sample at a
+very low pitch.
+
+Hint:  you  can  also  load  microsoft  .WAV files saved in PCM 8bit format into
+maxYMiser  without  too much effort. Firstly use 'sign/unsign' and then trim the
+first 44 bytes from the start of the sample.
+________________________________________________________________________________
+
+(9) Tracker Effects
+===================
+I did not follow the scheme of any previous tracker for this, rather my own idea
+of what's logical. You can look these up with the on-line help system.
+
+0
+1   set portamento enable flag mask
+2   set arpeggio enable flag mask
+3   set vibrato enable flag mask
+4   set transpose enable flag mask
+5   set fixed frequency enable flag mask
+6   set fixed de-tune enable flag mask
+7
+8
+9
+A   Arpeggio sequence + number
+B   pattern Break
+C   start synChronisation + value (on/off)
+D   Detune coarse + value
+E   dEtune fine + value
+F   Fixed frequency sequence + number
+G   diGi sample + number
+H
+I   tImer sequence + number
+J
+K
+L   voLume sequence + number
+M   Mixer sequence + number
+N   Noise sequence + number
+O   nOise transpose + amount
+P   Portamento + rate
+Q   seQuence speed + value
+R   digi Rate + value
+S   song Speed + value
+T   Transpose + number of semitones
+U   Uwire + value (this sets the LMC1992 sound adjustment circuit on STe and TT)
+                  (only operates when DMA sound is activated)
+        U00->0C     set the bass boost/cut - U06 is the default    (not on F030)
+        U10->1C     set the treble boost/cut - U16 is the default  (not on F030)
+        U80->A0     set the master volume level               (emulated on F030)
+        UC0->D0->E0 set the panning position                  (emulated on F030)
+V   Vibrato sequence + number
+W   buzzer Waveform value
+X   eXtra 2/3  step  arpeggio  (High and low nibbles give the number of semitone
+        variations - eg X47 gives major arpeggiated chord. If the second step is
+        set  to  $F  then  a  2  step arpeggio is produced eg XFC gives a 2 step
+        octave arpeggio)
+Y   dYnamic timer allocation mask eg 7=all timers, 2=timer B only etc
+Z   set demo Zynchronisation code
+________________________________________________________________________________
+
+(10) MIDI Controllers
+=====================
+For  maxYMiser  to respond to MIDI controllers, they first need to be enabled in
+the  'config'  menu.  MIDI  controllers  supported  by maxYMiser are split in to
+three  types  -  Tracker  controllers  and  Instrument  controllers.  Instrument
+controllers  are  sensitive  to MIDI channel, and operate only on the instrument
+editor  of  a  specific sound. Tracker controllers operate globally on maxYMiser
+itself, or a YM/DMA channel, they respond on all MIDI channels.
+
+(10.1) Tracker controllers
+--------------------------
+16,17,18,19,20  channel mutes
+21              song speed
+22              song position
+23              jam mode
+24              pattern/song play
+25              pattern position
+26              instrument select (disabled)
+27              mouse pointer type
+28              global noise transpose
+29,30,31        YM channel noise transpose
+32              global transpose
+33,34,35,36,37  track transpose
+38              global volume
+39,40,41,42,43  track volume
+44,45,46,47     next patterns (Jam mode)
+
+         (final controls set the LMC1992 sound adjustment circuit on STe and TT)
+         (only operates when DMA sound is activated)
+48              Uwire volume  (emulated on F030)
+49              Uwire pan     (emulated on F030)
+50              Uwire bass    (not on F030)
+51              Uwire treble  (not on F030)
+
+(10.2) Instrument controllers
+-----------------------------
+60              volume sequence
+61              arpeggio sequence
+62              vibrato sequence
+63              mixer sequence
+64              noise sequence
+65              fixed freq sequence
+66              timer sequence
+109             instrument volume
+110             sequence speed
+111             digi sample
+112             digi rate
+113             buzzer waveform
+114             start sync
+115             coarse tune
+116             fine tune
+________________________________________________________________________________
+
+(11) Jam Mode
+=============
+maxYMiser  also includes some features to allow rearrangement and sequencing for
+your songs in real-time. You can use these for live performance, and also to try
+out sequencing ideas before permanently tracking them.
+
+To enable jam mode press 'F10' or click in the right place in the 'Normal' menu.
+Press 'shift+F10' to disable the mode.
+
+Once  jam  mode  is  activated  song  and  pattern  play modes function slightly
+differently.
+
+When jam mode is activated during song playback the key combinations:
+                                  Control + cursor left / Control + cursor right
+can  be used to navigate the song. Normally changes to the current song position
+using  this  combination  occur  immediately,  but  in jam mode the new position
+selected  will  be jumped to after the current pattern finishes. This allows for
+smooth rerrangement of your music. For safety reasons pattern selection is
+disabled when in jam song mode.
+
+When jam mode is activated in pattern playback the key combinations:
+                                      Shift + cursor left / Shift + cursor right
+can be used to select the next pattern that will be played in the current track.
+Again,  the  new  patterns  selected  are jumped to after the current pattern is
+finished.  This  allows  the  user  a finer level of control for reworking their
+music. The patterns selectors above each column can be used as normal, including
+selection of preset patterns which is especially useful in jam mode.
+
+There are also some jamming aids which are activated constantly, irrespective of
+the status of jam mode.
+
+The  mute  mode  functions  differently from other trackers. Now the track mutes
+just  disable  the  sequencing for that track. Notes can still be played via the
+keyboard or over MIDI, allowing you to try out new solos, or to perform them for
+real in a live situation.
+
+Using the keyboard shortcuts allows the composer to select between record on/off
+and  pattern/song  play during playback, without retriggering the playback. This
+means  that you can switch between all these modes smoothly with no interruption
+in audio:
+
+Key           Playback stopped       Playback running
+-----------------------------------------------------------
+Return        Start song play        Switch to song mode
+#~            Start pattern play     Switch to pattern mode
+Right shift   Start pattern record   Toggle record on/off
+
+(11.1) Looping pattern
+----------------------
+In  the  song  editor  the spacebar can be used to add longer automatic loops to
+your  track. When jam mode is inactive, a song step containing a looping pattern
+is jumped over.
+
+In  jam  mode however when the song reaches a looping pattern playback continues
+immediately  after the previous looping pattern. If there is no previous looping
+pattern, than playback resumes from the beginning of the song.
+
+Combining  these  new  looping patterns with the jam mode behaviour described so
+far  gives  live  rearrangement  facilities  similar  to  the famous Alesis MMT8
+hardware sequencer.
+________________________________________________________________________________
+
+(12) MIDI / Sync24 Output
+=========================
+maxYMiser  constantly  outputs MIDI clock pulses, and Sync24 clock pulses during
+playback.  In  order  to  use  the  Sync24 clock output its necessary to build a
+special  interface, details of which are available on the the maxYMiser webpage.
+
+Due  to  the  limitations  of  the Atari (in other words - fixed system clock of
+200Hz)  and  certain Sync24 enabled equipment with slow CPUs (for example TB-303
+and  TR-606),  there  is  a  maximum  tempo  of  just  below 250bpm which can be
+reliably transmitted. Above this speed, Sync24 equipment will start to drift out
+of  sync.  However,  if  the song speed drops below this rate Sync24 will try to
+'catch-up'.
+
+MIDI and Sync24 output also works with MIDI or Sync24 input.
+________________________________________________________________________________
+
+(13) MMC
+========
+Mega-type  STs have a detachable keyboard. So that maxYMiser can be used without
+this keyboard I decided to support MMC messages for start and stop. These can be
+transmitted over MIDI by several external control surfaces.
+________________________________________________________________________________
+
+(14) Replaying maxYMiser Music
+==============================
+Files saved in the SNDH format can be played with any SNDH replayer. There are a
+number  of these for a variety of platforms. SNDH is a standard format for Atari
+ST  chip  music,  rather like the famous SID format on C64. For more information
+visit http://sndplayer.atari.org/
+
+Apart  from  the  SNDH  format  maxYMiser  voice  and song files can be combined
+together  in various ways and replayed in your productions by using the supplied
+binary  replayer.  For guidance on how do this please look at the example source
+code, which is for a multi sub-tune SNDH file. This example covers most possible
+replay  situations,  and  even novice level assembly programmers will be able to
+make use of maxYMiser music.
+
+(14.1) Technical
+----------------
+Here  are  details  for  the  header offsets of the maxYMiser replayer, run each
+routine in supervisor mode:
+
+MUSIC +$0                    = branch here for music initialise routine
+MUSIC +$4                    = branch here for music de-initialise routine
+MUSIC +$8                    = branch here for music interrupt routine
+MUSIC +$C  (binary replayer) = read here for demo zynchronisation byte
+      +$B8 (unmodified SNDH)
+      +$?? (modified SNDH - byte is present directly after HDNS tag)
+
+The  replay  routine  stored  within  the  SNDH  file, and the one in the binary
+replayer   are  virtually  identical.  There  is  little  advantage  either  way
+performance  wise. The replay routine is fully PC relative, and performs partial
+relocation on part of its code in the initialisation routine.
+
+You will probably notice that replaying maxYMiser music outside of the editor is
+a  little  faster  than inside it, this is due to the RLE algorithm used to pack
+the pattern data.
+
+The replay routine automatically detects processors without cache, and then uses
+self-modifying  code  routines for performance. This includes MegaSTe - although
+this  system  has  second  level  cache,  data  and  instruction  caches are not
+separated,  so there are no strange effects with using these self-modifying code
+routines.
+
+The  routine is generic, customised space-saving versions of the binary replayer
+can  be  made  available  depending  on  your specific application. Email me for
+details.
+
+(14.2) Tips for low CPU consumption
+-----------------------------------
+As a composer for music on any platform you have to be aware of using CPU. On PC
+and Mac, for example, any VST or other synth/effect you use takes some CPU time,
+so  you  can't  run  too  many  of  them. The same with Atari ST chip music, any
+special  effects  you  use will use some CPU, and with an old skool 8MHz machine
+you  can  easily  use  it  all  up  ;)  If you're working with a coder on a demo
+production,  they're sure to want some spare CPU time for running their effects.
+Depending  on  the  coder, you might not be allowed to use too much CPU for your
+music.  Even  if you chip just for fun, you can still easily use your machine up
+with too much of certain effect types.
+
+As  a  guide,  here is a list of different effect types, and some guidance about
+CPU usage.
+
+    * YM DigiDrums.  These are easily the most CPU eating effect. Best is not to
+       use them at all. To minimise the impact, use on one channel at once only,
+       and with the lowest possible sample rate for ok quality - maybe 6kHz.
+
+    * SID.  Software generated SID waveforms use less CPU than YM DigiDrums, but
+       they  can  still  eat  CPU.  Triple  classic SID tunes from the SID Sound
+       Designer  days  were notorious for eating much CPU. With the advanced SID
+       effects maxYMiser offers, a composer can easily use more. To minimise CPU
+       usage  its  recommended to use as few SID voices at once as possible. Use
+       the  minimum  number of steps in your SID waveform as you can for your YM
+       sound effect. Avoid using SID for high frequency notes.
+
+    * STe DMA channels.  maxYMiser  uses  quite optimised routines for resampled
+       STe  DMA  channels.  Even  so  each  DMA  channel can use around 10% CPU,
+       roughly  the  same as a SID voice. Try working with a single DMA channel,
+       with  STe  native sample rates only or no DMA ;) Lower frequencies do use
+       less CPU and STe DMA uses no timers.
+
+    * SyncBuzzer.  In  general  the same applies for syncbuzzer as SID, but with
+       some differences. SyncBuzzer does eat as much CPU as SID, in fact it uses
+       about half the amount of CPU. Also its only possible to use the buzzer on
+       one voice at once, so you have the enforced limitation of the hardware to
+       help too.
+
+    * Native STe DMA.  The  STe native frequency mode uses no CPU for resampling
+       on  STe, Mega STe and TT, and just a little overhead to parse the tracker
+       data.  The  volume  control is achieved by preshifting, and uses no extra
+       CPU  in this mode. Native STe rates on Falcon work for compatibility only
+       and  use the same CPU as a resampled DMA channel.
+
+    * Noise, square, buzzer. Normal 'native' YM effects not using timer or other
+       special  tricks use the least CPU possible. Roughly around 5%. Start sync
+       is not a CPU heavy effect, and nor is detuning.
+
+For  the  case  of an ST demo, a nice compromise would be one channel with timer
+effects  allowed,  limiting  yourself to maximum of 4 steps in you SID waveform.
+The  two  remaining  YM  channels could be used for buzzer and drums and classic
+squarewave effects.
+
+For  an  STe, where heavy blitter use might mean that no timer or interrupts can
+be used, then 3 channels of plain YM with a single STe DMA channel could also be
+a good tradeoff between CPU and interesting sound effects.
+________________________________________________________________________________
+
+(15) Finally
+============
+Have fun and stay Atari ;)                                    Gareth Morris/gwEm
+                                                                        Oct 2008

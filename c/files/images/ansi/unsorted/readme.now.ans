@@ -1,0 +1,28 @@
+------------------------------------------------------------------------------
+-[ Impulse 3.5 Release Notes ]-
+
+This is a relatively bare release in the terms of ansi and such.  I've come
+to a good conclusion that the ANSI is the job of the sysop, or the actual
+job of his to take care of.  Very few ansi will be included in any following
+releases of Impulse Host System.  Feel free to make and distribute menu sets
+as you see fit, but i see no reason for me to provide them.  This choice
+allows a wider range of bbs options out there.  If you haven't noticed, all
+obv boards look the same, no matter how they're configured. :)
+
+- Last minute junk -
+
+Thanks VERY VERY much to Ogre.  He provides me with an FTP site to place this
+thing at.  Without him, distrobution would be half of what it currently is.
+
+Be on the lookout for IMP35DEV.ZIP.  This is the Impulse Development Kit i have
+made for those "coders" out there who wish to write external programs and
+utils for my wonderful software.  It contains all Records types, and even demo
+procedures and functions to get you going on the right track.  And last but
+not least, it includes the Impulse COMM Library.  This is the actually unit
+i used for impulse's fabulous comm routines.  Have fun.
+
+NOTE:  To all Utility/External Authors.  Depending on the quality of your
+       contribution to Impulse, your support will be rewarded with my support.
+       If i like what you've done.  BOOM, Free Registration.
+
+------------------------------------------------------------------------------

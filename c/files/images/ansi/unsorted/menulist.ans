@@ -1,0 +1,781 @@
+Usage of Menu Editor
+To create commands that are at any menu, create a menu called GLOBAL.MNU,
+those commands will be at every menu.
+There are several possibilities for the menu types
+In the Pulldown Filename, there can be the following:
+  <blank>
+    Draws Menu Prompt with the name in the prompt in the prompt and does
+      standard input
+  ::X
+    where X is a letter in the alphabet
+    Puts as the input a character from A to the X character randomly
+  N
+    Writes the Name in the Prompt alone
+      with
+        ^R - Regular Color
+        ^S - Status Color
+        ^P - Prompt Color
+        ^E - Input Color
+        ^V - Inverse Color
+        ^X - Box Color
+        ^M - Goes down a line
+      there are possibilities for the ending character
+        / Yes/No Bar Prompt beginning with No
+        \ Yes/No Bar Prompt beginning with Yes
+        = Yes/No/Quit Bar Prompt Beginning with Yes
+        | Yes/No/Quit Bar Prompt Beginning with No
+        @ Yes/No/Quit Bar Prompt Beginning with Quit
+        * Inputs String
+        : Inputs String with a : in a different color
+        # Gets one character
+        ) Gets one character and echos it if its a low-ASCII character
+        ( Sets the string equal to the Input Question varaible set with
+          -I or -H)
+  Bx
+    Does Bar selection menu with x number of columns
+  <filename.ext>
+    Reads in the filename in the textfile directory with |XX marking the
+    color and position of option number XX when it is not highlighted and
+    %XX marking the color of the option when highlighted
+    Option numbers are assigned with the Pulldown ID,
+    when stacking commands, when the option is selected with the pulldown
+    bar, the input character is set to the key, so if you need to stack commands,
+    only give a pulldown ID to the first option in the stack
+  There is wildcarding for menu commands:
+    If you set the Key to X*, then you can put * in the Cstring and that will
+    put what follows the X in the Cstring.
+    This is advisable for such cases as file conference jumping such as
+    J* with would do JM with a Cstring of * so one could J1,J2, etc.
+  Also a possibility for CString is & in which is set to the input gotten
+  with -I, -H, or set with -*.
+Menu Commands
+- = Control Commands
+-A
+  Writes the CString in the header
+-B
+  Sets the Bad Prompt to CString
+-C
+  Clears the FailFlag
+-D
+  Sends string to modem ~=0.5 sec delay, ^X=Ctrl-X, |=Return
+-E
+  Writes Characters with ^ control char support
+-F
+  Prints the file in the text file directory with the filename of cstring
+-G
+  Goes in the x,y position specified in the CString by X,Y
+-H
+  Gets String with Hidden Input, maximum length for the string set to the value
+    in the CString
+-I
+  Gets String with Normal Input, maximum length for the string set to the value
+    in the CString
+-J
+  If the Sysop is not Available, the Fail Flag is Set to True
+  If he/she is available, the fail flag is set to false
+-K
+  Change Starting Menu to CString, so all -^ will set the fallback to the old
+  starting menu
+-L
+  Clears the Screen
+-M
+  If the string inputted with -I or -H is not the cstring, the fail flag is
+  set to true.
+-N
+  Displays the file in the current status screen library denoted by the
+  Cstring
+-O
+  Displays the file in the current menu library denoted by the Cstring
+-P
+  Pauses for the number of the seconds in the cstring
+-Q
+  Sets the current menu prompt to the value in the cstring
+-R
+  Prints a Return
+-S
+  Changes User Flags,
+    a + followed by certain letters will turn on the flags who have the letters
+    contained in the bunch of letters
+    a - followed by certain letters will turn off the flags who have the letters
+    contained in the bunch of letters
+-T
+  Sets the Status Library to the Value in the Cstring
+-U
+  Sets the Starting Menu to cstring and replaces the previous starting menu
+  on the menu fallback stack with cstring
+-V
+  Sets Menu Library to the Value in the CString
+-W
+  Writes CString in the Log
+-X
+  Returns failflag if file specified by CString does not exist
+-Z
+  Waits until output buffer is empty
+-/
+  Goes to the menu name in the Cstring and sets the fallback to the current
+  menu
+-\
+  Goes to the fallback menu and sets the fallback menu to the previous fallback
+-^
+  Goes to the menu name in the Cstring and sets the fallback to the starting
+  menu
+-*
+  Sets the input variable usually inputted with -I and -H to the string in the
+  Cstring
+-=
+  Sets User Level to value contained in the CString
+-&
+  After an execution of an external program via door commands, the errorlevel
+  with which the external programmed exited will be put into the input string,
+  the one that is also set with -I and -H.
+-(
+  Does hit return prompt and waits for a return.
+-{
+  Go to Menu but will not run FIRSTCMDs
+-}
+  Drop to previous menu but will not run FIRSTCMDs
+-]
+  Goes forward to menu but make starting menu fallback but will not
+  run FIRSTCMDs
+-:
+  Toggles Locking Output to the Modem
+-;
+  Toggles Locking Input from the Modem
+-$
+  Goes to a menu keeping the current fallback processing FIRSTCMDs
+-%
+  Goes to a menu keeping the current fallback without processing FIRSTCMDs& = MultiNode Commands
+--
+  Displays and gets input in the same form as the prompt string at a
+  promptless menu
+-#
+  Sets timeleft to value in the CString
+-+
+  Displays Random WELCOME.X file
+-|
+  Makes user fill out uncompleted infoforms
+-_
+  If User is wanted, sysop is paged
+-@
+  Reads Notices
+->
+  Sets infoform name to value in the CString
+-!
+  Displays current menu prompt using CString as name in prompt
+& = MultiNode Commands
+&A
+  Gets Page Status
+&C
+  MultiNode Chat
+&F
+  Forces a user into multinode chat
+&H
+  Checks for multinode messages
+&L
+  Views Log of User so far on that call on another node.
+&M
+  Sends a MultiNode Message to another node
+&N
+  Forces Offline User on another node
+&R
+  Join multinode split-screen chat
+&S
+  View MultiNode Status
+&[
+  Set User as Available for Multinode Chat
+&[
+  Set User as Unavailable for Multinode Chat
+{ = Matrix Commands
+{A
+  Applies as New User.  If User completed the application, failflag is set to
+  false, otherwise it is true.
+  Cstring is the handle with which the user will apply
+{C
+  Checks User Access.  If User is validated, failflag is set to false,
+  otherwise it is true.
+{D
+  Sets FailFlag to false if user is able to get to main system
+  with their account (no need for system pass) otherwise true
+{F
+  Leaves Feedback to the user number contained in the cstring
+{G
+  Logs Off From the Matrix
+{L
+  Launches Extra System format is
+    System Password,errorlevel
+  So if you want the system password to be Hi and the errorlevel 7, it would
+  be
+    Hi,7
+{P
+  Matrix Chat
+{S
+  Runs main system
+  If user does not exist and no system pass is set, returns with a failflag
+  set and the user's name in the InputQuest variable
+{T
+  Sets FailFlag to false if user is able to get to main system
+  otherwise true
+{X
+  Drops into the BBS
+! = Global Newscan Commands
+!A
+  Scans Message and File Conferences
+!F
+  Scans File Conferences
+!M
+  Scans Message Conference
+[ = Main Menu Commands
+[A
+  Edits AutoSig
+[C
+  Pages Sysop
+  If A is in CString, does not check availability
+  If N is in CString, does not ask for reason
+[D
+  Does the Infoform with the value contained in the Cstring
+[F
+  Fills out infoform into a file
+  CString Format: Infoform#, Template
+  Will fill put the infoform and put it into a file.  The template format
+  is the directory followed by a filename with no period or extension.
+  Lets say I had an Oblivion/2 application that I wanted to be filled out
+  into a file.  Lets say it was infoform #3, what I would do is this:
+  CMD  : [F
+  CSTR : 3,C:\OBVAPPS\APP
+  And it would fill out the files
+    APP.1
+    APP.2
+    And so on in the C:\OBVAPPS directory.
+
+[G
+  Logs Off
+[H
+  Quick Log off
+[I
+  Fills out Infoform
+[K
+  User Configuration - will use the cstrin as the config screen if it is not
+  blank, otherwise, it will use CONFSCR.ANS.
+[L
+  Lists Users
+[S
+  System Status
+[U
+  Time Bank
+    The format in the CString
+      {Maximum Total Time} {Maximum Time to Deposit Today}
+    So, if you want the maximum total time is 60, and the maximum to deposit
+    per day is 15, the format would be
+      60 15
+[V
+  Views Daily Log (CString for number of entries to display)
+[W
+  Last Callers 
+  If CString is not blank, it will denote the numbers of last callers to show
+  from 1 to 20.
+[X
+  Transfer to User
+[Y
+  Your Status
+[+
+  Change Password
+. = Door Commands
+.E
+  Executes file in your main BBS Directory specified in the CString
+.N
+  Makes Door RBBS DORINFO1.DEF File with COM0 in the DORINFO1.DEF if you are
+  local and executes the file in the door directory with the filename in the
+  cstring
+.R
+  Makes Door RBBS DORINFO1.DEF File with LOCAL in the DORINFO1.DEF if you are
+  local and executes the file in the door directory with the filename in the
+  cstring
+.S
+  Makes SRE DOOR.SR file and executes the file in the door directory with the
+  filename in the cstring
+.T
+  Makes TG DOOR.SYS file and executes the file in the door directory with the
+  filename in teh cstring
+* = Sysop Commands
+*#
+  Menu Editor
+*B
+  Deleted List
+*C
+  System Configuration
+*D
+  MiniDos
+*E
+  Edits Strings
+*I
+  Shows Infoforms
+*K
+  Clears Infoforms
+*L
+  Shows Logs
+*M
+  Make User
+*P
+  Protocol Editor
+*R
+  Configures Menu Prompts
+*S
+  Sets Libraries
+*T
+  Text Editor
+*U
+  User Editor
+*V
+  Event Editor
+*X
+  View Voting
+*Y
+  Configurable Levels Editor
+^ = New User Voting Commands
+^D
+  Goes through new user voting asking about skipping
+^L
+  Lists Users in the NUV
+^S
+  Goes through new user voting without asking about skipping
+  If CString is Q then the BBS will not allow the users to quit NUV.
+C = Conference Editor
+CA
+  Adds a Conference
+CD
+  Deletes a Conference
+CE
+  Edits a Conference
+CI
+  Inits Conference Editor
+CL
+  List Conferences
+CR
+  Reorders Conference
+CT
+  Selects Conference Type
+CU
+  List Users with Access to a Conference
+D = Data Option Menu
+DA
+  Adds Data
+DD
+  Deletes Data
+  IF value in CString, deletes that entry
+DE
+  Edits Selects Data Area
+DF
+  List Data w/o asking for range limits
+DG
+  Compiles a list of data and sends it
+DK
+  Deletes Selected Data Area
+DL
+  Lists Data w/ asking for range limits
+DM
+  Add Data Area
+DR
+  Random Data Display
+DS
+  Shows Data
+  If value in CString, shows that entry
+D*
+  Selects Data Area in the Cstring
+E = Email
+EA
+  Sysop Option to Scan Email
+EB
+  Looks in a User's Mail Box
+ED
+  Delete Incoming piece of Email with the number contained in the Cstring
+EE
+  Edits Outgoing Email with the number contained in the Cstring
+EF
+  Forwards Mail with the number contained in the Cstring
+EG
+  Edits Groups
+EI
+  Lists Incoming Mail
+EK
+  Kills Outgoing with the number contained in the Cstring
+EL
+  Lists Mail
+EN
+  Scans for Email
+EO
+  Lists Outgoing Mail
+EP
+  Replies to Incoming Email with the number contained in the Cstring
+ER
+  Read Incoming Mail with the number contained in the Cstring
+ES
+  Sends Email to the User Number in the Cstring
+ET
+  Shows Incoming/Outgoing Information
+EV
+  Views Outgoing Email with the number contained in the Cstring
+EX
+  Purges FileMail older than a number of days set in the config
+EZ
+  Packs Email, do this every once in a while
+E+ 
+  Makes it so user sees all mail
+E-
+  Makes it so user sess only mail address to them
+E$
+  Sets Email Incoming Tag to value in Cstring
+E#
+  Sets Email Outgoing Tag to value in Cstring
+
+F = File Commands
+FA
+  Lists File Areas
+FB
+  Batch Menu
+FC
+  Change Files with the first file to be entered in the list in the cstring
+FD
+  Downloads Files with the first file to be entered in the list in the cstring
+FE
+  Newscans Current File Area
+FF
+  Newscans File Areas without asking if you want to scan them all
+FG
+  Custom File Operations (See Docs)
+FI
+  Inits File Areas in the file conference selected
+FK
+  File List Config
+FL
+  Lists Files
+FM
+ Bidirectional transfer.  First file to be downloaded is in the CString
+FN
+  Newscans File Areas, asks if you want to scan them all
+FO
+  Shows info for files with the first file to be entered in the list in the
+  cstring
+FR
+  Resumes files with the first file to be entered in the list in the cstring
+FS
+  Sets File Area in the Cstring, if zero, prompts
+FT
+  Types files with the first file to be entered in the list in the cstring
+FU
+  Uploads
+FV
+  Views files with the first file to be entered in the list in the cstring
+FW
+  List Users with access to current file area
+FX
+  Extract files with the first file to be entered in the list in the cstring
+FY
+  File Status
+FZ
+  Search for File
+F[
+  Previous Area
+F]
+  Next Area
+F|
+  Generate Complete File List
+F=
+  If CString is Y, Scrollable file listing is turned on
+  If Cstring is N, Scrollable file listing is turned off
+  If CString is neither of the above scrollable file listing is toggled
+J = Join Conference
+JF
+  Joins Relative File Conference in the Cstring
+JM
+  Joins Relative Message Conference in the Cstring
+JS
+  Joins Absolute Message Conference in the Cstring
+JM
+  Joins Absolute File Conference in the Cstring
+M = Message Commands
+MB
+  Backwards title scan with message number of the value contained in the
+    Cstring
+MC
+  Newscan Config for this conference
+MD
+  Deletes a Message
+ME
+  Edits a Message
+MF
+  Message Newscans all areas
+MH
+  Sets Message Header to the value in the cstring
+    0 = Internal
+    1 = External
+    X = HEADER.X in status screen library
+MI
+  Inits Message Bases in this conferences
+ML
+  Lists Message Bases in this conference
+MN
+  Newscans w/ prompt to scan all
+MO
+  Newscan w/ type of newscan question
+MP
+  Posts Message
+MR
+  Reads Messages
+MS
+  Selects Message Base in the Cstring, if zero, prompts
+MT
+  Reads Messages in this base in reply reading newscan
+MU
+  Lists Users w/ access to this conference
+MV
+  Reads Messages in this base w/ normal reading newscan
+MW
+  Forward Title Scan starting at the value in Cstring
+M[
+  Previous Message Base
+  If Cstring is N, will not show BCHANGE.ANS
+M]
+  Next Message Base
+  If Cstring is N, will not show BCHANGE.ANS
+M!
+  Download Message Capture
+MZ
+  Executes News Scan
+N = Single Message Reading Command
+NA
+  Read Current Message Again
+NB
+  Backward Thread
+ND
+  Delete Current Message
+NE
+  Edit Current Message
+NF
+  Forward Title Scan with Advance
+NI
+  FailFlag is true if the user is at the last message
+NL
+  FailFlag is true if the user is at the last message base
+NN
+  Read Next Message
+NO
+  Backward Title Scan from current message
+NR
+  Reply to current message
+NT
+  Forward Title Scan from current message
+NU
+  Update Current Message to last read
+NX
+  Backward Message Scan with Retreat
+NY
+  Returns the failflag as true if the current message base is not in the
+    newscan
+N#
+  Read message who's number is in the CString
+Q = QWKMail Menu
+QD
+  Update Message Pointers to a certain date
+QM
+  Make QwkMail Packet
+QR
+  Receives Reply Packet
+QU
+  Update newscan pointers so there are no more new messages
+R = Top Ten Listing
+A Semicolon at teh end of the CString will make it so the BBS does not pause
+  after displaying the topten
+RA
+  Top Ten List by Top Uploaders with header in Cstring
+RB
+  Top Ten List by Worst Uploaders with header in Cstring
+RC
+  Top Ten List by Top Downloaders with header in Cstring
+RD
+  Top Ten List by Worst Downloaders with header in Cstring
+RE
+  Top Ten List by Top PCR with header in Cstring
+RF
+  Top Ten List by Worst PCR with header in Cstring
+RG
+  Top Ten List by Top K Uploaded with header in Cstring
+RH
+  Top Ten List by Worst K Uploaded with header in Cstring
+RI
+  Top Ten List by Top K Downloaded with header in Cstring
+RJ
+  Top Ten List by Worst K Downloaded with header in Cstring
+RK
+  Top Ten List by Top Posters with header in Cstring
+RL
+  Top Ten List by Worst Posters with header in Cstring
+RM
+  Top Ten List by Top Callers with header in Cstring
+RN
+  Top Ten List by Worst Callers with header in Cstring
+S = Message Base Sponsor
+SE
+  Edit Current Message Base
+SK
+  Kill Current Message Base
+SM
+  Make Message Base
+SP
+  Packs Message Bases
+SR
+  Reorders Message Bases
+S@
+  Toggles access to all message bases
+T = File Sponsor Commands
+TA
+  Add Files
+TC
+  Offline Clean Up
+TD
+  Delete Files with list starting in Cstring
+TE
+  Edit Current File Area
+TF
+  Move Files with list starting in Cstring
+TG
+  Generate File Catalog
+TH
+  Pack File Description File
+TJ
+  Justify file paths:
+    If file does not exist according to the path in the file record, its
+    path will be changed to that of the area.
+TK
+  Kill Current File Area
+TM
+  Make File Area
+TP
+  Global Point Reassign
+TR
+  Reorder Areas
+TS
+  Sort Areas
+TT
+  Offline Tag
+TU
+  Global Local Upload
+TV
+  File Validation
+T@
+  Toggles access to all file bases
+V = Voting Commands
+VA
+  Add Question
+VC
+  Checks for unanswered mandatory questions
+VD
+  Deletes voting question contained in the cstring, if blank prompts
+VL
+  Lists Voting Questions
+VR
+  Answers Voting Question Contained in Cstring, if zero prompts
+VS
+  Shows Results to Voting Question Contained in Cstring, if zero prompts
++ = Color Setting Commands
++1
+  Sets Regular Color to the value in the CString
++2
+  Sets Prompt Color to the value in the CString
++3
+  Sets Input Color to the value in the CString
++4
+  Sets Inverse Color to the value in the CString
++5
+  Sets Stat Color to the value in the CString
++6
+  Sets Box Color to the value in the CString
++S
+  Sets your colors to the default colors in the config
+ACS Parser
+() Codes Contained within take precedence
+|  Acts as Logic or between codes on left and right
++  True
+-  False
+~  Acts as not on code to the right
+\  Yes if Fail Flag
+=  Yes if Local
+[  Yes if Multinode
+;  If Input is not Broken by aborting with space or escape
+'  Gets Sysop Password
+A  Yes if Age greater than value on the right
+B  Yes if Baud Rate divided by 100 greater than value on the right
+C  Yes is user has had more calls since the last password change than the
+   value on the right.
+D  Yes if File Level greater than or equal to value on the right
+E  Yes if Calls Today is greater than or equal to the value on teh right
+F  Yes if following flag is true
+G  Yes if user is male and the value on the right is 0 or user is female
+   and the value at the right is 1
+H  Yes if user is using the menu set equal to the value on the right
+I  Yes if user is using the status screen set equal to the value on the
+   right
+J  Yes if user has ansi as emulation and value at right is 0
+       or user has avatar and the value at right is 1
+       or user has rip and the value at right is 2
+K  Yes if Absolute File Area Number is equal to the value on the right
+L  Yes if Absolute Message Area Number is equal to the value on the right
+M  Yes if Message Conference ID is equal to the value on the right
+N  Yes if File Conference ID is equal to the value on the right
+P  Yes if user has file points greater than or equal to the value on the right
+Q  Yes if the number of the users calls is greater than or equal to the value
+     on the right
+R  Yes if the total number of calls made to the BBS is greater or equal to the
+      value on the right
+S  Yes if user level greater than or equal to the value on the right
+T  Yes if user has time left greater than or equal to the value on the right
+U  Yes if user has the same user number as value on the right
+V  Yes if user is on the node whose number is the value on the right.
+Y  Yes if the number of minutes past midnight is greater than or equal to the
+   value on the right
+*  Yes if user passes PCR check
+@  Yes if user passes U/D Ratio Check
+#  Yes if User passes U/D K Ratio Check
+MCI Codes in printed text files
+UN Handle
+RN Real Name
+PN Phone Number
+AD Address
+LO Location
+UC UserNote
+UL Level
+FL File level
+FP File Points
+UK Uploaded K
+DK Downloaded K
+UP Uploads
+DN Downloads
+PS Posts
+CS Calls
+TL Time Left
+NF New Files
+NP New Posts
+CR Connect Rate
+TT Daily Time Limit
+LC Last Caller
+TC Total Calls
+CT Calls Today
+FT Files Uploadded or Added Today
+PT Messages Posts Today
+NT New Users Today
+UU User Number
+BN Board Name
+SN Sysop Name
+DT Date
+TM Time
+SS Current Status Screen Library Name
+MS Current Menu Library Name
+PC Post/Call Ratio
+NR U/D Ratio
+KR U/D K Ratio
+DU Days Until Expiration
+NN Node Number
+LD Last On Date
+VN Version Number
+VD Version Date
+TF Total Files
+TP Total Posts

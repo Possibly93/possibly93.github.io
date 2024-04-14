@@ -1,0 +1,1111 @@
+(*                      Eternity Bulletin Board System
+**         Copyright 1994-1995 by Isaac Oates.  All rights reserved.
+**
+**                      Data Types and Files Structures
+*)
+
+CONST
+  ver:string[30]='1.00';
+
+  maxboards=254;      { 1 - x }
+  maxuboards=143;     { 0 - x }
+  maxprotocols=120;   { 0 - x }
+  maxevents=10;       { 0 - x }   { #0 is Nightly Events (if active) }
+  maxarcs=8;          { 1 - x }
+  maxubatchfiles=10;
+  numvoteqs=20;
+  numvoteas=9;
+  maxmenucmds=50;
+
+TYPE
+  astr    = string[160];
+
+  acstring= string[20];               { access condition string              }
+  acrq    = '@'..'Z';                 { AR flags                             }
+
+  uflags  =
+   (rlogon,                           { L - Restricted to one call per day   }
+    rchat,                            { C - Not allowed to page SysOp        }
+    rvalidate,                        { V - All posts marked unvalidated     }
+    rbackspace,                       { B - Special effects (^B/^N) disabled }
+    ramsg,                            { A - Can't change the automessage     }
+    rpostan,                          { * - Can't post anonymously           }
+    rpost,                            { P - Can't post at all                }
+    remail,                           { E - Can't send any electronic mail   }
+    rvoting,                          { K - Not allowed to vote              }
+    rmsg,                             { M - Must delete all email            }
+    rip,                              { user has RIP graphics - session only }
+    onekey,                           { onekey input mode                    }
+    avatar,                           { user has AVATAR graphics             }
+    pause,                            { user has screen pauses enabled       }
+    novice,                           { user has menus turned on             }
+    ansi,                             { user has ANSI graphics               }
+    color,                            { user has a color monitor             }
+    alert,                            { makes noise when user logs on        }
+    smw,                              { short-message waiting for user       }
+    nomail,                           { user's mail-box is closed            }
+    fnodlratio,                       { 1 - No UL/DL ratio                   }
+    fnopostratio,                     { 2 - No post/call ratio               }
+    fnofilepts,                       { 3 - No file point checking           }
+    fnodeletion);                     { 4 - Protection from deletion         }
+  
+  clrs = array[FALSE..TRUE,0..9] of byte; { color records                    }
+  secrange= array[0..255] of integer; { security tables                      }
+
+  cpackdatetime=array[1..6] of byte;
+
+  mzscanr = set of 1..maxboards;
+  fzscanr = set of 0..maxuboards;
+  mhireadr= array[1..maxboards] of cpackdatetime;
+
+  dlnscan =set of 0..96;
+
+  mscanrec=                           { ????????.PTR : Forum flags/pointers  }
+  record
+    scan:boolean;                     { Whether this is in user's scan list  }
+    pointer:cpackdatetime;            { Last read message pointer            }
+  end;
+
+  smalrec=                            { USERS   .IDX : Sorted user index     }
+  record
+    name:string[36];                  { user name                            }
+    number:integer;                   { user number                          }
+  end;
+
+  userrec=                            { USERS   .DAT : User account records  }
+  record
+    name:string[36];                  { user name                            }
+    realname:string[36];              { real name                            }
+    pw:string[20];                    { user password                        }
+    ph:string[12];                    { user phone #                         }
+    bday:string[8];                   { user birthdate                       }
+    firston:string[8];                { firston date                         }
+    timeouts:integer;                 { # of timeout logoffs                 }
+    laston:string[8];                 { laston date                          }
+    disconnects:integer;              { # of dropped carriers                }
+    street:string[30];                { mailing address                      }
+    citystate:string[30];             { city, state                          }
+    zipcode:string[10];               { zipcode                              }
+    computer:string[30];              { type of computer                     }
+    occupation:string[40];            { occupation                           }
+    wherebbs:string[40];              { BBS reference                        }
+    note:string[39];                  { SysOp note                           }
+
+    lockedout:boolean;                { if locked out                        }
+    deleted:boolean;                  { if deleted                           }
+    lockedfile:string[8];             { lockout msg to print                 }
+
+    ac:set of uflags;                 { user restrictions                    }
+    ar:set of acrq;                   { AR flags                             }
+
+    zzdlnscn:dlnscan;                 { scan uboards flags                   }
+    zres:array[1..320] of byte;
+
+    vote:array[1..20] of byte;        { voting data                          }
+
+    sex:char;                         { user sex                             }
+
+    ttimeon:longint;                  { total mins spent on                  }
+    x1xx:integer;
+    uk:longint;                       { UL k                                 }
+    x2xx:integer;
+    dk:longint;                       { DL k                                 }
+    x3xx:integer;
+
+    uploads,downloads,                { # of ULs / # of DLs                  }
+    loggedon,                         { # times logged on                    }
+    tltoday,                          { # min left today                     }
+    msgpost,                          { # public posts                       }
+    emailsent,                        { # email sent                         }
+    feedback,                         { # feedback sent                      }
+    forusr,                           { forward mail to user #               }
+    filepoints:integer;               { # of file points                     }
+
+    waiting,                          { mail waiting                         }
+    linelen,                          { line length (# cols)                 }
+    pagelen,                          { page length (# rows)                 }
+    ontoday,                          { # times on today                     }
+    illegal,                          { # illegal logon attempts             }
+    sl,dsl:byte;                      { security level / download security   }
+
+    cols:clrs;                        { user's colors                        }
+
+    lastmsg,lastfil:byte;             { last msg/file areas                  }
+    credit:longint;                   { $$$ credit in dollars                }
+    x4xx:integer;
+    timebank:integer;                 { # mins in Time Bank                  }
+    boardsysop:array[1..5] of byte;   { msg board SysOp                      }
+
+    trapactivity,                     { if trapping users activity           }
+    trapseperate:boolean;             { if trap to seperate TRAP file        }
+
+    timebankadd:integer;              { time added to timebank TODAY         }
+    mpointer:longint;                 { pointer to entry in MACRO.LST        }
+    chatauto,                         { if auto chat trapping                }
+    chatseperate:boolean;             { if seperate chat file to trap to     }
+    userstartmenu:string[8];          { menu to start user out on            }
+    slogseperate:boolean;             { seperate SysOp log?                  }
+    clsmsg:byte;                      { 1 if clear-screen msg, 2 if not      }
+
+    flistopt:byte;                    { type of file list type to use        }
+    msgorder:byte;                    { 0:Chrono, 1:ReplyTree                }
+    avadjust:byte;                    { AVATAR color adjust: 1=no, 2=yes     }
+
+    menuset:byte;                     { Current menu set                     }
+    statset:byte;                     { Current stat set                     }
+    pubnote:string[30];               { Public user note                     }
+    curconf:integer;                  { User's current conference            }
+    curconfp:integer;                 { User's conference permindex          }
+
+    fse:boolean;                      { Use full-screen editor               }
+    lightbars:boolean;                { Whether to use lightbars             }
+    res:array[1..147] of byte;        { ------------- RESERVED ------------- }
+  end;
+
+  newuserrec=                         { USER    .LST : User account records  }
+  record
+    
+    { configuration information }
+    
+    name:string[36];                  { user name                            }
+    realname:string[36];              { real name                            }
+    street:string[30];                { mailing address                      }
+    citystate:string[30];             { city, state                          }
+    zipcode:string[10];               { zipcode                              }
+    ph:string[12];                    { user phone #                         }
+    bday:string[8];                   { user birthdate                       }
+    sex:char;                         { user sex                             }
+    
+    pw:string[20];                    { user password                        }
+    firston:string[8];                { firston date                         }
+    laston:string[8];                 { laston date                          }
+    
+    computer:string[30];              { type of computer                     }
+    occupation:string[40];            { occupation                           }
+    wherebbs:string[40];              { BBS reference                        }
+    pubnote:string[30];               { Public user note                     }
+    note:string[39];                  { SysOp note                           }
+    
+    lockedfile:string[8];             { lockout msg to print                 }
+{ } lockedout:boolean;                { if locked out                        }
+    cols:clrs;                        { user's colors                        }
+    linelen:byte;                     { line length (# cols)                 }
+    pagelen:byte;                     { page length (# rows)                 }
+    mpointer:longint;                 { pointer to entry in MACRO.LST        }
+    userstartmenu:string[8];          { menu to start user out on            }
+
+    { system access information }
+
+    sl:byte;                          { security level                       }
+    dsl:byte;                         { download security level              }
+    ar:set of acrq;                   { AR flags                             }
+    ac:set of uflags;                 { user restrictions                    }
+    
+    { message system information }
+
+    lastmsg:integer;                  { last message base #                  }
+    msgpost:word;                     { # public posts                       }
+    emailsent:word;                   { # email sent                         }
+    feedback:word;                    { # feedback sent                      }
+    forusr:integer;                   { forward mail to user #               }
+    credit:longint;                   { $$$ credit in dollars                }
+    
+    { file system information }
+
+    lastfil:byte;                     { last file base #                     }
+    uploads:integer;                  { # of uploads                         }
+    downloads:integer;                { # of downloads                       }
+    uk:longint;                       { amount uploaded (in kilobytes)       }
+    dk:longint;                       { amount downloaded (in kilobytes)     }
+    filepoints:integer;               { # of file points                     }
+    
+    { system usage information }
+
+    ttimeon:longint;                  { total mins spent on                  }
+    loggedon,                         { # times logged on                    }
+    tltoday,                          { # min left today                     }
+    
+    disconnects:integer;              { # of dropped carriers                }
+    timeouts:integer;                 { # of timeout logoffs                 }
+    ontoday,                          { # times on today                     }
+    illegal,                          { # illegal logon attempts             }
+    
+    { miscellaneous information }
+
+    vote:array[1..20] of byte;        { voting data                          }
+    
+    timebank:integer;                 { # mins in Time Bank                  }
+    timebankadd:integer;              { time added to timebank TODAY         }
+    
+    deleted:boolean;                  { if deleted                           }
+    trapactivity,                     { if trapping users activity           }
+    trapseperate:boolean;             { if trap to seperate TRAP file        }
+    chatauto,                         { if auto chat trapping                }
+    chatseperate:boolean;             { if seperate chat file to trap to     }
+    slogseperate:boolean;             { seperate SysOp log?                  }
+    clsmsg:byte;                      { 1 if clear-screen msg, 2 if not      }
+    fse:boolean;                      { Use full-screen editor               }
+
+    menuset:byte;                     { Current menu set                     }
+    statset:byte;                     { Current stat set                     }
+    curconf:integer;                  { Current conference                   }
+    curconfp:integer;                 { Current conference permindx          }
+
+    res:array[1..148] of byte;        { ------------- RESERVED ------------- }
+  end;
+
+
+  jinforec=
+  record
+    signature:longint;                { signature - $004D414A - 'JAM'#0 }
+    datecreated:longint;              { date created }
+    modcounter:longint;               { number of times modified }
+    activemsgs:longint;               { number of active messages }
+    passwordcrc:longint;              { CRC-32 of password to access this area }
+    basemsgnum:longint;               { lowest message number in index file }
+    reserved:array[1..1000] of char;  { reserved space }
+  end;
+  
+  jheaderrec=
+  record
+    signature:longint;                { signature - $004D414A - 'JAM'#0 }
+    revision:word;                    { JAM header revision (1) }
+    reserved:word;                    { reserved for future use }
+    sublen:longint;                   { length of subfields in bytes }
+    timesread:longint;                { number of times read }
+    MSGIDcrc:longint;                 { CRC-32 of MSGID line }
+    REPLYcrc:longint;                 { CRC-32 of REPLY line }
+    replyto:longint;                  { this msg is a reply to ... }
+    reply1st:longint;                 { first reply to this message }
+    replynext:longint;                { next message in reply chain }
+    datewritten:longint;              { when msg was written }
+    datereceived:longint;             { when msg was received }
+    dateprocessed:longint;            { when msg was tossed/scanned }
+    msgnumber:longint;                { message number (1 based) }
+    attribute:longint;                { message attributes }
+    attribute2:longint;               { message attributes - not used }
+    offset:longint;                   { offset of text in *.JDT file }
+    txtlen:longint;                   { length of message text }
+    pwCRC:longint;                    { CRC-32 of password to access message }
+    cost:longint;                     { cost of message }
+  end;
+
+  jlreadrec=
+  record
+    userCRC:longint;                  { CRC-32 of user name (lowercase) }
+    userid:longint;                   { user number }
+    lastmsg:longint;                  { last message # read }
+    highmsg:longint;                  { highest message # read }
+  end;
+
+  jindexrec=
+  record
+    user:longint;                     { CRC-32 of user name (lowercase) }
+    offset:longint;                   { offset in message header }
+  end;
+  
+  zlogrec=                            { ZLOG    .DAT : System history        }
+  record
+    date:string[8];                   { Date for this entry                  }
+    userbaud:array[0..4] of integer;  { 300,1200,2400,9600,14400 calls       }
+    active,                           { minutes active                       }
+    calls,                            { number of calls                      }
+    newusers,                         { number of new users                  }
+    pubpost,                          { number of public posts               }
+    privpost,                         { number of private posts              }
+    fback,                            { number of messages to user #1        }
+    criterr,                          { number of critical errors            }
+    uploads,                          { number of uploads                    }
+    downloads:integer;                { number of downloads                  }
+    uk,                               { number of K uploaded                 }
+    dk:longint;                       { number of K downloaded               }
+  end;
+
+  batchrec=                           { BATCH   .DAT : Temporary batch list  }
+  record
+    fn:string[65];                    { Path and filename                    }
+    stat:byte;                        { Status: 1=DL, 2=UL                   }
+    desc:string[60];                  { Primary description, used for upload }
+    area:integer;                     { Actual area (NOT COMPRESSED)         }  
+    pts:integer;                      { File points                          }
+    blks:longint;                     { File blocks                          }
+    tt:real;                          { Time for this file                   }
+    done:boolean;                     { Whether successfully sent/received   }
+  end;
+
+  filearcinforec=                     { ETERNITY.DAT : Archive configuration }
+  record
+    active:boolean;                   { whether this entry is active         }
+    ext:string[3];                    { 3-character file extension           }
+    listline,                         { /x for internal;
+                                        x: 1=ZIP, 2=ARC/PAK, 3=ZOO, 4=LZH    }
+    arcline,                          { compression cmdline                  }
+    unarcline,                        { de-compression cmdline               }
+    testline,                         { integrity test cmdline, '' for none  }
+    cmtline:string[25];               { comment cmdline, '' for none         }
+    succlevel:integer;                { success ERRORLEVEL, -1=ignore        }
+  end;
+
+  modemrec=                           { MODEM   .DAT : Modem parameters      }
+  record
+    comport:byte;                     { comport number                       }
+    comspeed:longint;                 { serial port speed                    }
+    init:string[80];                  { initialization string                }
+    answer:string[40];                { answer string                        }
+    hangup:string[40];                { hangup string                        }
+    offhook:string[40];               { phone off-hook string                }
+    nocallinittime:word;              { reinit modem every x minutes         }
+    
+    ctschecking,                      { whether CTS checking is on           }
+    usexonxoff:boolean;               { whether XON/XOFF is on               }
+    res:array[1..43] of byte;
+  end;
+
+  noderec=                            { NODEx   .DAT : Node-specific data    }
+  record
+    comport:byte;                     { comport number                       }
+    comspeed:longint;                 { serial port speed                    }
+    init:string[80];                  { initialization string                }
+    answer:string[40];                { answer string                        }
+    hangup:string[40];                { hangup string                        }
+    offhook:string[40];               { phone off-hook string                }
+    nocallinittime:word;              { reinit modem every x minutes         }
+    ctschecking,                      { whether CTS checking is on           }
+    usexonxoff:boolean;               { whether XON/XOFF is on               }
+    res1:array[1..43] of byte;
+  
+    temppath:string[79];              { this node's temporary path           }
+    res2:array[1..176] of byte;
+  end;
+  
+  fstringrec=                         { OLD STRINGS.DAT - NOT USED           }
+  record
+    ansiq:string[80];                 { "Do you want ANSI? " string }
+    note:array[1..2] of string[80];   { Logon notes (L #1-2) }
+    lprompt:string[80];               { Logon prompt (L #3) }
+    echoc:char;                       { Echo char for PWs }
+    sysopin,                          { "SysOp In" (inside SysOp hours)}
+    sysopout,                         { "SysOp Out" }
+    engage,                           { "Engage Chat" }
+    endchat,                          { "End Chat" }
+    wait,                             { "SysOp Working" }
+    pause,                            { "Pause" }
+    entermsg1,                        { "Enter Message" line #1 }
+    entermsg2,                        { "Enter Message" line #2 }
+    newscan1,                         { "NewScan begin" }
+    newscan2,                         { "NewScan done" }
+    scanmessage,                      { Message scanning prompt }
+    automsgt:string[80];              { Auto-Message title }
+    autom:char;                       { Auto-Message border characters }
+
+    shelldos1,                        { " >> SysOp shelling to DOS ..." }
+    shelldos2,                        { " ... thank you for waiting." }
+    chatcall1,                        { "Paging SysOp, please wait..." }
+    chatcall2,                        { ">>><*><<<" }
+    guestline,                        { "To be a guest ... " }
+    namenotfound,                     { "Name NOT found in user list." }
+    bulletinline,                     { Bulletin line }
+    thanxvote,                        { "Thanks for voting" }
+
+    listline,                         { "List files - P to pause" }
+    newline,                          { "Search for new files -" }
+    searchline,                       { "Search all dirs for file mask" }
+    findline1,                        { "Search for descriptions... " }
+    findline2,                        { "Enter the string to search for.." }
+    downloadline,                     { "Download - " }
+    uploadline,                       { "Upload - " }
+    viewline,                         { "View interior files - " }
+    nofilepts,                        { "Insufficient file points." }
+    unbalance,                        { "Your UL/DL ratio is unbalanced" }
+
+    pninfo,                           { "P to Pause, N for next dir" }
+    gfnline1,                         { "[Enter]=All files" }
+    gfnline2,                         { "File mask: " }
+    batchadd:string[80];              { "File added to batch queue." }
+  end;
+
+  oldsystatrec=                          { ETERNITY.DAT : General system info   }
+  record
+    gfilepath:string[79];             { path to DATA files                   }
+    afilepath:string[79];             { path to MISC files (text,tunes,etc)  }
+    menupath:string[79];              { path to MENU files (*.MNU)           }
+    trappath:string[79];              { path to LOGS (sysop logs, etc)       }
+    msgpath:string[79];               { path to MSGS (public/private mail)   }
+    tfilepath:string[79];             { path to TEXT (gfiles)                }
+    temppath:string[79];              { path to TEMP (temporary files)       }
+
+    bbsname:string[80];               { name of BBS                          }
+    bbsphone:string[12];              { phone number of BBS                  }
+    sysopname:string[30];             { registered name of SysOp             }
+    maxusers,                         { max number of users system can have  }
+    lowtime,                          { SysOp begin minute (in minutes)      }
+    hitime,                           { SysOp end time                       }
+    dllowtime,                        { normal downloading hours begin..     }
+    dlhitime:integer;                 { ..and end                            }
+    shuttlelog,                       { is Shuttle Logon active?             }
+    lock300:boolean;                  { lock out 300 baud?                   }
+    sysoppw,                          { SysOp PW                             }
+    newuserpw,                        { newuser PW (or NULL if none)         }
+    shuttlepw:string[20];             { Shuttle PW (if Shuttle active)       }
+    b300lowtime,                      { 300 baud calling hours begin..       }
+    b300hitime,                       { ..and end                            }
+    b300dllowtime,                    { 300 baud downloading hours begin..   }
+    b300dlhitime:integer;             { ..and end                            }
+    closedsystem:boolean;             { DON'T allow new users?               }
+    swapshell:boolean;                { is swap shell function enabled?      }
+    eventwarningtime:integer;         { time before event warning            }
+    tfiledate:string[8];              { last date text-files were inserted   }
+    lastmsgid:longint;                { last-used message ID (sequential)    }
+    numlastcallers:byte;              { number of last few callers to show   }
+    tchangup:boolean;                 { whether to hang up on users in tcan  }
+    swaptype:byte;                    { swap: 0=Disk, 1=EMS, 2=XMS, FF=Best  }
+    res1:array[1..17] of byte;        { ------------ RESERVED/1 ------------ }
+
+    sop,                              { SysOp                                }
+    csop,                             { Co-SysOp                             }
+    msop,                             { Message SysOp                        }
+    fsop,                             { File SysOp                           }
+    spw,                              { SysOp PW at logon                    }
+    seepw,                            { see SysOp PWs remotely               }
+    postpublic,                       { post public message                  }
+    postprivate,                      { post private message                 }
+    postnetmail,                      { post netmail message                 }
+    anonread,                         { see who post anonymous rumour        }
+    anonpost,                         { post anonymous rumour                }
+{ } anonprivpost,                     { send anon e-mail                     }
+    seeunval,                         { see unvalidated files                }
+    dlunval,                          { DL unvalidated files                 }
+    nodlratio,                        { no UL/DL ratio                       }
+    nopostratio,                      { no post/call ratio                   }
+    nofilepts,                        { no file points checking              }
+    ulvalreq:acstring;                { uploads require validation by SysOp  }
+    
+    fsecmd:string[60];                { full screen editor command           }
+    
+    res2:array[1..39] of byte;        { ------------ RESERVED/2 ------------ }
+
+    maxprivpost,                      { max e-mail can send per call         }
+    maxfback,                         { max feedback per call                }
+    maxpubpost,                       { max posts per call                   }
+    maxchat,                          { max chat-pages per call              }
+    maxwaiting,                       { max mail in mail-box                 }
+    csmaxwaiting,                     { max mail in mail-box for Co-SysOp +  }
+    maxlines,                         { max lines in message }
+    csmaxlines,                       { max lines in message for Co-SysOp +  }
+    maxlogontries,                    { tries allowed for PW's at logon      }
+    beepdelay,                        { delay between alert beeps            }
+    sysopcolor,                       { SysOp color in chat mode             }
+    usercolor:byte;                   { user color in chat mode              }
+    minspaceforpost,                  { minimum K drive space left to post   }
+    minspaceforupload:integer;        { minimum K drive space left to upload }
+    backsysoplogs,                    { days to keep SYSOP##.LOG             }
+    wfcblanktime:byte;                { minutes before blanking WFC screen   }
+    linelen,                          { default video line length            }
+    pagelen:byte;                     { default video page length            }
+    res3:array[1..18] of byte;        { ------------ RESERVED/3 ------------ }
+
+    specialfx,                        { WFC menu "special effects"           }
+    fossil,                           { make use of FOSSIL comm driver       }
+    allowalias,                       { allow alias's? (handles)             }
+    phonepw,                          { use phone number password in logon?  }
+    localsec,                         { is local security ON?                }
+    localscreensec,                   { is local screen-security ON?         }
+    globaltrap,                       { trap ALL USER'S activity?            }
+    autochatopen,                     { does chat buffer auto-open?          }
+    autominlogon,                     { Auto-Message in logon?               }
+    bullinlogon,                      { bulletins in logon?                  }
+    lcallinlogon,                     { "Last Few Callers" list in logon?    }
+    yourinfoinlogon,                  { "Your Info" in logon?                }
+    multitask,                        { is BBS multitasking?                 }
+    offhooklocallogon,                { take phone off-hook on local logons? }
+    forcevoting,                      { is manditory logon voting active?    }
+    compressbases,                    { "compress" file/msg base numbers?    }
+    searchdup:boolean;                { search for dup. filenames when UL?   }
+    slogtype:byte;                    { SysOp log type: File/Printer/Both    }
+    stripclog:boolean;                { strip colors from SysOp log output?  }
+    newapp,                           { u# to send new user application to   }
+    guestuser,                        { u# of guest user account             }
+    timeoutbell,                      { minutes before time-out bell         }
+    timeout:integer;                  { minutes before timeout (logoff)      }
+    usewfclogo:boolean;               { whether to use WFC menu logo         }
+    useems:boolean;                   { attempt to use EMS for overlay       }
+    usebios:boolean;                  { use ROM BIOS for local video output  }
+    cgasnow:boolean;                  { suppress snow on CGA systems         }
+    res4:array[1..16] of byte;        { ------------ RESERVED/4 ------------ }
+
+    filearcinfo:array[1..maxarcs] of filearcinforec; { archive specs         }
+    filearccomment:array[1..3] of string[80]; { BBS comments for archives    }
+    uldlratio,                        { are UL/DL ratios active?             }
+    fileptratio:boolean;              { is auto file-pt compensation active? }
+    fileptcomp,                       { file point compensation ratio        }
+    fileptcompbasesize,               { file point "base compensation size"  }
+    ulrefund,                         { percent time refund for ULs          }
+    tosysopdir:byte;                  { "To SysOp" file base                 }
+    validateallfiles:boolean;         { validate ALL FILES automatically?    }
+    remdevice:string[10];             { remote output device (COMx,etc)      }
+    maxintemp,                        { max K allowed in TEMP\3\             }
+    minresume:integer;                { min K to allow resume-later          }
+    maxdbatch,                        { max files in DL batch queue          }
+    maxubatch:byte;                   { max files in UL batch queue          }
+    dizlength:integer;                { max diz lines to import              }
+    res5:array[1..28] of byte;        { ------------ RESERVED/5 ------------ }
+
+    newsl,                            { newuser SL                           }
+    newdsl:byte;                      { newuser DSL                          }
+    newar:set of acrq;                { newuser AR                           }
+    newac:set of uflags;              { newuser AC                           }
+    newfp:integer;                    { newuser file points                  }
+    autosl,                           { auto-validation SL                   }
+    autodsl:byte;                     { auto-validation DSL                  }
+    autoar:set of acrq;               { auto-validation AR                   }
+    autoac:set of uflags;             { auto-validation AC                   }
+
+    allstartmenu:string[8];           { logon menu to start ALL users on     }
+    res7:array[1..26] of byte;        { RESERVED SPACE #7                    }
+    bulletprefix:string[8];           { default bulletins filename prefix    }
+    res6:array[1..15] of byte;        { RESERVED SPACE #6                    }
+
+    timeallow,                        { time allowance                       }
+    callallow,                        { call allowance                       }
+    dlratio,                          { # ULs/# DLs ratios                   }
+    dlkratio,                         { DLk/ULk ratios                       }
+    postratio:secrange;               { post/call ratios                     }
+
+    lastdate:string[8];               { last system date                     }
+    curwindow:byte;                   { SysOp window currently in use        }
+    istopwindow:boolean;              { is SysOp window on top of screen?    }
+    callernum:longint;                { total number of callers              }
+    numusers:integer;                 { number of users                      }
+
+    todayzlog:zlogrec;                { TODAY's ZLOG record                  }
+
+    postcredits:integer; {file points/upload credit compensation for posts   }
+    rebootforevent:boolean;           { reboot before events?                }
+    watchdogdoor:boolean;             { Telegard WatchDog active in doors?   }
+
+    windowon:boolean;                 { whether sysop window is on or off    }
+
+    swappath:string[79];              { swap shell path                      }
+    archiverpath:string[79];          { path to external archivers           }
+    protocolpath:string[79];          { path to external protocols           }
+
+    initdate:string[8];               { Date of initialization               }
+    nulogin:array[1..40] of byte;     { New user login procedure             }
+    location:string[40];              { location of this site                }
+    qwkfilename:string[8];            { base filename of QWK packet          }
+    res:array[1..20] of byte;         { ------------- RESERVED ------------- }
+  end;
+
+  systatrec=                          { ETERNITY.DAT : General system info   }
+  record
+    version:word;                     { version id (ie 1.51 = $0151          }
+
+    bbsname:string[80];               { name of BBS                          }
+    location:string[40];              { location of this site                }
+    bbsphone:string[12];              { phone number of BBS                  }
+    sysopname:string[36];             { registered name of SysOp             }
+    lowtime,                          { SysOp begin minute (in minutes)      }
+    hitime,                           { SysOp end time                       }
+    dllowtime,                        { normal downloading hours begin..     }
+    dlhitime:integer;                 { ..and end                            }
+    shuttlelog,                       { is Shuttle Logon active?             }
+    closedsystem:boolean;             { DON'T allow new users?               }
+    minlogonspeed,                    { minimum logon speed                  }
+    mindlspeed:longint;               { minimum upload/download speed        }
+    sysoppw,                          { SysOp PW                             }
+    newuserpw,                        { newuser PW (or NULL if none)         }
+    shuttlepw:string[20];             { Shuttle PW (if Shuttle active)       }
+    eventwarningtime:integer;         { time before event warning            }
+    initdate:string[8];               { Date of initialization               }
+    swapshell:boolean;                { is swap shell function enabled?      }
+    swaptype:byte;                    { swap: 0=Disk, 1=EMS, 2=XMS, 255=Best }
+    tfiledate:string[8];              { last date text-files were inserted   }
+    maxusers:integer;                 { max number of users system can have  }
+    res1:array[1..50] of byte;
+    
+    gfilepath:string[79];             { path to DATA files                   }
+    afilepath:string[79];             { path to MISC files (text/tunes/etc)  }
+    menupath:string[79];              { path to MENU files (*.MNU)           }
+    trappath:string[79];              { path to LOGS (sysop logs, etc)       }
+    msgpath:string[79];               { path to MSGS (public/private mail)   }
+    tfilepath:string[79];             { path to TEXT (gfiles)                }
+    archiverpath:string[79];          { path to external archivers           }
+    protocolpath:string[79];          { path to external protocols           }
+    swappath:string[79];              { location for disk swap files         }
+    res2:array[1..160] of byte;
+    
+    sop,                              { SysOp                                }
+    csop,                             { Co-SysOp                             }
+    msop,                             { Message SysOp                        }
+    fsop,                             { File SysOp                           }
+    spw,                              { SysOp PW at logon                    }
+    seepw,                            { see SysOp PWs remotely               }
+    postpublic,                       { post public message                  }
+    postprivate,                      { post private message                 }
+    postnetmail,                      { post netmail message                 }
+    anonread,                         { see who post anonymous rumour        }
+    anonpost,                         { post anonymous rumour                }
+{ } unused1,                          { unused access string                 }
+    seeunval,                         { see unvalidated files                }
+    dlunval,                          { DL unvalidated files                 }
+    nodlratio,                        { no UL/DL ratio                       }
+    nopostratio,                      { no post/call ratio                   }
+    nofilepts,                        { no file points checking              }
+    ulvalreq:acstring;                { uploads auto-credited                }
+    res3:array[1..42] of byte;
+    
+    maxprivpost,                      { max e-mail can send per call         }
+    maxfback,                         { max feedback per call                }
+    maxpubpost,                       { max posts per call                   }
+    maxchat,                          { max chat-pages per call              }
+{ } maxwaiting,                       { max mail in mail-box                 }
+{ } csmaxwaiting,                     { max mail in mail-box for Co-SysOp +  }
+    maxlines,                         { max lines in message }
+    csmaxlines,                       { max lines in message for Co-SysOp +  }
+    maxlogontries,                    { tries allowed for PW's at logon      }
+{ } unused2,                          { unused system variable               }
+{ } sysopcolor,                       { SysOp color in chat mode             }
+{ } usercolor:byte;                   { user color in chat mode              }
+    minspaceforpost,                  { minimum K drive space left to post   }
+    minspaceforupload:word;           { minimum K drive space left to upload }
+    backsysoplogs,                    { days to keep SYSOP##.LOG             }
+    wfcblanktime:byte;                { minutes before blanking WFC screen   }
+    linelen,                          { default video line length            }
+    pagelen,                          { default video page length            }
+    numlastcallers:byte;              { number of last few callers to show   }
+    res4:array[1..50] of byte;
+    
+    dizlength:integer;                { max diz lines to import              }
+    uldlratio,                        { are UL/DL ratios active?             }
+    fileptratio:boolean;              { is auto file-pt compensation active? }
+    fileptcomp,                       { file point compensation ratio        }
+    fileptcompbasesize,               { file point "base compensation size"  }
+    ulrefund,                         { percent time refund for ULs          }
+    tosysopdir:byte;                  { "To SysOp" file base                 }
+    validateallfiles:boolean;         { validate ALL FILES automatically?    }
+    maxintemp:word;                   { max K allowed in TEMP\3\             }
+    res5:array[1..50] of byte;
+
+{ } specialfx,                        { use special                          }
+{ } fossil,                           { make use of FOSSIL comm driver       }
+    allowalias,                       { allow alias's? (handles)             }
+    phonepw,                          { use phone number password in logon?  }
+    localsec,                         { is local security ON?                }
+    localscreensec,                   { is local screen-security ON?         }
+    globaltrap,                       { trap ALL USER'S activity?            }
+    autochatopen,                     { does chat buffer auto-open?          }
+{X} autominlogon,                     { Auto-Message in logon?               }
+{X} bullinlogon,                      { bulletins in logon?                  }
+{X} lcallinlogon,                     { "Last Few Callers" list in logon?    }
+{X} yourinfoinlogon,                  { "Your Info" in logon?                }
+    multitask,                        { is BBS multitasking?                 }
+    offhooklocallogon,                { take phone off-hook on local logons? }
+    forcevoting,                      { is manditory logon voting active?    }
+    compressbases,                    { "compress" file/msg base numbers?    }
+    searchdup:boolean;                { search for dup. filenames when UL?   }
+    slogtype:byte;                    { SysOp log type: File/Printer/Both    }
+{ } stripclog,                        { strip colors from SysOp log output?  }
+{ } usewfclogo,                       { whether to use WFC menu logo         }
+    usebios,                          { use ROM BIOS for local video output  }
+    cgasnow,                          { suppress snow on CGA systems         }
+    useems,                           { attempt to use EMS for overlay       }
+    tchangup:boolean;                 { whether to hang up on users in tcan  }
+    newapp,                           { u# to send new user application to   }
+    guestuser,                        { u# of guest user account             }
+    timeoutbell,                      { minutes before time-out bell         }
+    timeout:integer;                  { minutes before timeout (logoff)      }
+    res6:array[1..50] of byte;
+    
+    qwkfilename,                      { base filename of qwk packet          }
+    qwkwelcome,                       { welcome filename in qwk packet       }
+    qwknews,                          { news filename in qwk packet          }
+    qwkgoodbye:string[8];             { goodbye filename in qwk packet       }
+    qwklocalpath:string[79];          { local qwk path                       }
+    qwkmaxtotal,                      { max msgs per packet                  }
+    qwkmaxperbase:word;               { max msgs per base                    }
+    qwkignoredltime:boolean;          { ignore download time for qwk packets }
+    res7:array[1..50] of byte;
+    
+    newsl,                            { newuser SL                           }
+    newdsl:byte;                      { newuser DSL                          }
+    newar:set of acrq;                { newuser AR                           }
+    newac:set of uflags;              { newuser AC                           }
+    newfp:integer;                    { newuser file points                  }
+    autosl,                           { auto-validation SL                   }
+    autodsl:byte;                     { auto-validation DSL                  }
+    autoar:set of acrq;               { auto-validation AR                   }
+    autoac:set of uflags;             { auto-validation AC                   }
+    
+    allstartmenu:string[8];           { logon menu to start ALL users on     }
+    bulletprefix:string[8];           { default bulletins filename prefix    }
+    fsecmd:string[60];                { full screen editor command           }
+    etfse:boolean;                    { using Eternal-Edit                   }
+    res8:array[1..49] of byte;    
+
+    filearcinfo:array[1..maxarcs] of filearcinforec; { archive specs         }
+    filearccomment:array[1..3] of string[80]; { BBS comments for archives    }
+    res9:array[1..100] of byte;
+    
+    nulogin:array[1..40] of byte;     { New user login procedure             }
+    
+    timeallow,                        { time allowance                       }
+    callallow,                        { call allowance                       }
+    dlratio,                          { # ULs/# DLs ratios                   }
+    dlkratio,                         { DLk/ULk ratios                       }
+    postratio:secrange;               { post/call ratios                     }
+    res10:array[1..512] of byte;
+    
+    curwindow:byte;                   { SysOp window currently in use        }
+    istopwindow:boolean;              { is SysOp window on top of screen?    }
+    windowon:boolean;                 { whether sysop window is on or off    }
+    callernum:longint;                { total number of callers              }
+    numusers:integer;                 { number of users                      }
+    lastdate:string[8];               { last system date                     }
+    todayzlog:zlogrec;                { TODAY's ZLOG record                  }
+    res11:array[1..50] of byte;
+    
+    postcredits:integer;  { file points/upload credit compensation for posts }
+    rebootforevent:boolean;           { reboot before events?                }
+    watchdogdoor:boolean;             { Telegard WatchDog active in doors?   }
+    res12:array[1..1361] of byte;
+  end;
+  
+  tbflags=
+   (tbunhidden,                       { whether VISIBLE to users w/o access  }
+    tbnetlink,                        { whether Net-Linked to other boards   }
+    tbisdir);                         { if a text-file base directory        }
+
+  tfilerec=                           { GFILES  .DAT : Gfile records         }
+  record
+    title:string[40];                 { title of base / description of file  }
+    filen:string[12];                 { filename                             }
+    gdate:string[8];                  { date of Tfile / Tfile base           }
+    gdaten:integer;                   { numeric date for fast calculation    }
+    acs,                              { access requirement                   }
+    ulacs:acstring;                   { upload to base access requirement    }
+    tbstat:set of tbflags;            { text-file base status vars           }
+    permindx:longint;                 { permanent index #                    }
+    res:array[1..4] of byte;          { ------------- RESERVED ------------- }
+  end;
+  
+  smr=                                { SHORTMSG.DAT : Login notices         }
+  record
+    msg:astr;                         { Message to display to user           }
+    destin:integer;                   { User number that notice is for       }
+  end;
+
+  vdatar=                             { VOTING  .DAT : Voting records        }
+  record
+    question:string[79];              { voting question                      }
+    numa:integer;                     { number of user's who have answered   }
+    answ:array[0..numvoteas] of
+    record
+      ans:string[40];                 { answer description                   }
+      numres:integer;                 { # user's who picked this answer      }
+    end;
+  end;
+
+  mbflags=
+   (mbunhidden,                       { whether visible to anyone            }
+    mbrealname,                       { whether real names are forced        }
+    mboutbound,                       { whether there is outbound mail       }
+    mbmsgpath,                        { if *.BRD file stored in MSGPATH      }
+    mbfilter,                         { whether to filter ANSI/8-bit ASCII   }
+    mbskludge,                        { strip IFNA kludge lines              }
+    mbsseenby,                        { strip SEEN-BY lines                  }
+    mbsorigin,                        { strip origin lines                   }
+{*} mbscodes,                         { strip eternity-specific codes        }
+    mbnquote,                         { use network quote header             }
+{*} mbmcenter,                        { center boxed/centered lines          }
+    mbaddtear,                        { add tear/origin lines                }
+    mbinternet);                      { whether internet message area        }
+
+  boardrec=                           { BOARDS  .DAT : Message base records  }
+  record
+    name:string[40];                  { message base description             }
+    filename:string[8];               { jam message data filename            }
+    lastmsgid:longint;                { last message ID number               }
+    msgpath:string[40];               { messages pathname                    }
+    acs,                              { access requirement                   }
+    postacs,                          { post access requirement              }
+    mciacs:acstring;                  { MCI usage requirement                }
+    maxmsgs:word;                     { max message count                    }
+    unused:byte;
+    password:string[20];              { base password                        }
+    mbstat:set of mbflags;            { message base status vars             }
+    permindx:longint;                 { permanent index #                    }
+    mbtype:integer;                   { base type (0=Local,1=Echo,2=Group)   }
+    origin:string[50];                { origin line                          }
+    res2:array[1..4] of byte;         { ------------- RESERVED ------------- }
+    zone,                             { alternate address                    }
+    net,                              { (zone:net/node.point)                }
+    node,
+    point:integer;
+    posttype:byte;                    { privacy (0=no, 1=yes)                }
+    hwm:word;                         { highwater mark for echomail          }
+  end;
+
+  fbflags=
+   (fbnoratio,                        { if downloads are free from this dir  }
+    fbunhidden,                       { whether VISIBLE to users w/o access  }
+    fbcdrom,                          { whether this is a CD-ROM area        }
+    fbunused,                         { reserved for future use              }
+    fbusegifspecs,                    { whether to use GifSpecs              }
+    fbnetlink);                       { whether net-linked to other BBSes    }
+
+  ulrec=                              { TRANSFER.DAT : File base records }
+  record
+    name:string[40];                  { area description                     }
+    dlfilename,                       { download data filename (DIR/EXT)     }
+    ulfilename:string[12];            { upload data filename (DIR/EXT)       }
+    dlpath,                           { download path                        }
+    ulpath:string[40];                { upload path                          }
+    maxfiles:integer;                 { max files allowed                    }
+    password:string[20];              { password required                    }
+    arctype,                          { wanted archive type (0=inactive)     }
+    cmttype:byte;                     { wanted comment type (0=inactive)     }
+    res2:array[1..2] of byte;         { ------------- RESERVED ------------- }
+    fbstat:set of fbflags;            { file base status flags               }
+    acs,                              { access requirements                  }
+    ulacs,                            { upload requirements                  }
+    nameacs:acstring;                 { see-names requirements               }
+    res:array[1..10] of byte;         { ------------- RESERVED ------------- }
+  end;
+
+  filstat=
+   (notval,                           { if file is unvalidated               }
+    isrequest,                        { if file is offline                   }
+    resumelater);                     { if file is resume-later              }
+
+  ulfrec=                             { ????????.DIR : file records          }
+  record
+    filename:string[12];              { filename                             }
+    description:string[60];           { file description                     }
+    filepoints:integer;               { file points                          }
+    nacc:integer;                     { number of times downloaded           }
+    ft:byte;                          { file type (unused)                   }
+    blocks:integer;                   { number of 128 byte blocks            }
+    owner:integer;                    { uploader of file (user #)            }
+    stowner:string[36];               { uploader's name                      }
+    date:string[8];                   { date uploaded                        }
+    daten:integer;                    { date uploaded (numeric)              }
+    extpointer:longint;               { pointer to long desc (-1 if none)    }
+    filestat:set of filstat;          { file status                          }
+    extlength:longint;                { length of long description (if used) }
+    res:array[1..6] of byte;          { ------------- RESERVED ------------- }
+  end;
+
+  extrec=                             { ????????.EXT : Extended descriptions }
+  record
+    desc:string[50];                  { description text                     }
+    res:array[1..13] of byte;         { ------------- RESERVED ------------- }
+  end;
+
+  lcallers=                           { LASTON  .DAT : Last callers records  }
+  record
+    callernum:longint;                { system caller number                 }
+    name:string[36];                  { user name of caller                  }
+    number:integer;                   { user number of caller                }
+    usernote:string[30];              { user note of caller                  }
+    citystate:string[30];             { city/state of caller                 }
+    time:string[8];                   { time of call in xx:xx:xx format      }
+    date:string[8];                   { date of call in mm-dd-yy format      }
+    bps:string[6];                    { bps rate of caller                   }
+    wasnew:boolean;                   { whether caller was a new user        }
+  end;
+
+  eventrec=                           { EVENTS  .DAT : Event records         }
+  record
+    active:boolean;                   { whether active                       }
+    description:string[30];           { event description (for logs)         }
+    etype:char;                       { A:CS, C:hat, D:os call, E:xternal    }
+    execdata:string[20];              { errorlevel if "E", cmdline if "D"    }
+    busytime:integer;                 { off-hook time before; 0 if none      }
+    exectime:integer;                 { time of execution                    }
+    busyduring:boolean;               { busy phone DURING event?             }
+    duration:integer;                 { length of time event takes           }
+    execdays:byte;                    { bitwise days of week / day of month  }
+    monthly:boolean;                  { monthly event?                       }
+  end;
+
+  macrorec=                           { MACROS  .LST : Macro records         }
+  record
+    macro:array[1..4] of string[240]; { User macros                          }
+  end;
+
+  mnuflags=
+   (clrscrbefore,                     { C: clear screen before menu display  }
+    dontcenter,                       { D: don't center the menu titles!     }
+    nomenuprompt,                     { N: no menu prompt whatsoever?        }
+    forcepause,                       { P: force a pause before menu?        }
+    autotime,                         { T: is time displayed automatically?  }
+    fullinput);                       { F: force full line input?            }
+
+  menurec=                            { ????????.MNU : Menu records (text)   }
+  record
+    menuname:array[1..3] of string[100]; { generic menu title                }
+    directive,                        { help file displayed                  }
+    tutorial:string[12];              { tutorial help file                   }
+    menuprompt:string[160];           { menu prompt                          }
+    acs:acstring;                     { access requirements                  }
+    password:string[15];              { password required                    }
+    fallback:string[8];               { fallback menu                        }
+    forcehelplevel:byte;              { forced help level for menu           }
+    gencols:byte;                     { generic menus: # of columns          }
+    gcol:array[1..3] of byte;         { generic menus: colors                }
+    menuflags:set of mnuflags;        { menu status flags                    }
+    brackets:string[2];               { generic menu bracket characters      }
+  end;
+
+  cmdflags=
+   (hidden,                           { H: is command ALWAYS hidden?         }
+    unhidden);                        { U: is command ALWAYS visible?        }
+
+  commandrec=                         { ????????.MNU : Command records       }
+  record
+    ldesc:string[70];                 { long command description             }
+    sdesc:string[35];                 { short command description            }
+    ckeys:string[14];                 { command-execution keys               }
+    acs:acstring;                     { access requirements                  }
+    cmdkeys:string[2];                { command keys: type of command        }
+    mstring:string[50];               { MString: command data                }
+    commandflags:set of cmdflags;     { command status variables             }
+  end;
+
+  xbflags=
+   (xbactive,                         { whether protocol is active           }
+    xbisbatch,                        { whether protocol is batch            }
+    xbisresume,                       { whether protocol is resume           }
+    xbxferokcode,                     { result codes mean transfer ok        }
+    xbisbidir);                       { whether protocol is bidirectional    }
+
+  protrec=
+  record
+    xbstat:set of xbflags;            { protocol status flags                }
+    ckeys:string[14];                 { command keys                         }
+    descr:string[40];                 { description                          }
+    acs:acstring;                     { access string                        }
+    templog:string[25];               { temp. log file                       }
+    uloadlog,dloadlog:string[25];     { permanent log files                  }
+    ulcmd,dlcmd:string[78];           { UL/DL commandlines                   }
+    ulcode,dlcode:array [1..6] of string[6]; { UL/DL codes                   }
+    envcmd:string[60];                { environment setup cmd                }
+    dlflist:string[25];               { DL file lists                        }
+    maxchrs:integer;                  { max chrs in cmdline                  }
+    logpf,logps:integer;              { pos in log file for data             }
+    permindx:longint;                 { permanent index #                    }
+    res:array[1..11] of byte;         { ------------- RESERVED ------------- }
+  end;
+
+  datetimerec=
+  record
+    day,hour,min,sec:longint;
+  end;
+
+  cfilterrec=array[0..255] of byte;   { color filter record                  }
+
+  fidorec=                            { FIDONET .DAT : FidoMail information  }
+  record
+    zone:integer;                     { FidoNet zone number                  }
+    net:integer;                      { FidoNet net number                   }
+    node:integer;                     { FidoNet node number                  }
+    point:integer;                    { FidoNet point number                 }
+    origin:string[50];                { origin line                          }
+    normal_color:byte;                { color of kludge lines                }
+    quote_color:byte;                 { color of quoted text                 }
+    tear_color:byte;                  { color of tear line                   }
+    origin_color:byte;                { color of origin line                 }
+    skludge:boolean;                  { strip kludge lines?                  }
+    sseenby:boolean;                  { strip SEEN-BY lines?                 }
+    sorigin:boolean;                  { strip origin line?                   }
+    nquote:boolean;                   { use network quote header?            }
+    scodes:boolean;                   { strip eternity-specific codes?       }
+    mcenter:boolean;                  { center boxed/centered lines?         }
+    addtear:boolean;                  { add tear/origin lines?               }
+    defpath:string[60];               { default mail path                    }
+    kludge_color:byte;                { color of kludge lines                }
+    gateway:string[20];               { address of internet gateway          }
+    defcrash,                         { netmail default: crash               }
+    defhold,                          { netmail default: hold                }
+    defkillsent:boolean;              { netmail default: kill/sent           }
+    res:array[1..1892] of byte;       { ------------- RESERVED ------------- }
+  end;
+
+  screensetrec=                       { ????SET .DAT : Display sets          }
+  record
+    desc:string[64];                  { description of display set           }
+    path:string[79];                  { path to display files                }
+    res:array[1..113] of byte;        { ------------- RESERVED ------------- }
+  end;
+
+  rumourrec=                          { RUMOURS .DAT : Rumour data file      }
+  record
+    rum:string[79];                   { the rumour text                      }
+    author:string[36];                { user name of the author              }
+    anon:boolean;                     { whether the rumour is anonymous      }
+    deleted:boolean;                  { whether the rumour has been erased   }
+    res:array[1..9] of byte;          { ------------- RESERVED ------------- }
+  end;
+
+  onelinerrec=                        { ONELINER.DAT : Oneliners data file   }
+  record
+    ol:string[79];                    { the oneliner text                    }
+    author:string[36];                { user name of the author              }
+    res:array[1..13] of byte;         { ------------- RESERVED ------------- }
+  end;
+
+  fidomsgheader=                      { ????????.MSG : FTSC message format   }
+  record
+    sender:array[1..36] of char;      { name of sender                       }
+    receiver:array[1..36] of char;    { name of recipient                    }
+    title:array[1..72] of char;       { title of message                     }
+    datetime:array[1..20] of char;    { message date and time                }
+    times:word;                       { times that the message has been read }
+    destnode:word;                    { destination node number              }
+    orgnode:word;                     { Originating node number              }
+    cost:word;                        { Cost of message - set to 0 [NU]      }
+    orgnet:word;                      { Originating net number               }
+    destnet:word;                     { Destination net number               }
+    datewritten:longint;              { Date/time written, see below [NU]    }
+    sendreceived:longint;             { Date/time sent/rcvd, see below [NU]  }
+    replyto:word;                     { Number of next message in chain [NU] }
+    attribute:word;                   { Message status bits                  }
+    nextreply:word;                   { Previous message in chain [NU]       }
+  end;
+
+  colourrec=                          { COLOURS .DAT : General colour setup  }
+  record
+    sysop:array[0..255] of byte;      { sysop chat colours                   }
+    user:array[0..255] of byte;       { user chat colours                    }
+    autoborder:byte;                  { automessage border colour            }
+    autotext:byte;                    { automessage text colour              }
+    res:array[1..510] of byte;        { ------------- RESERVED ------------- }
+  end;
+
+  tunerec=                            { ????????.TUN : various system noises }
+  record
+    hz:integer;                       { the noise's frequency in hertz       }
+    len:integer;                      { the noise's length in milliseconds   }
+  end;
+
+  connectrec=                         { CONNECT .DAT : Connect messages      }
+  record
+    bps:longint;                      { bps rate (used in logs, etc)         }
+    msg:string[60];                   { connect string                       }
+  end;
+
+  tcr=                                { TRASHCAN.DAT : System Trashcan }
+  record
+    name:string[36];                  { name of user to blacklist            }
+    wc:boolean;                       { whether name is exact or wildcard    }
+    active:boolean;                   { whether this record is active        }
+  end;
+
+  confrec=                            { CONFER  .DAT : Conference records    }
+  record
+    name:string[40];                  { name of this conference              }
+    id:integer;                       { static ID, used for Cx and menu cmds }
+    acs:acstring;                     { access required for this conference  }
+    active:boolean;                   { whether this conference is active    }
+    res:array[1..20] of byte;         { ------------- RESERVED ------------- }
+  end;

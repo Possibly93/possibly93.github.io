@@ -1,0 +1,14 @@
+; Note: This file is used for auto group detections. Some groups include
+; specific files to mark their releases. You can create entries in the
+; following format:
+;
+;  <Group Filename>    <Group Name>
+;
+; Here are some samples:
+;
+flt.nfo FLT
+dream.nfo TDT
+razor.nfo RAZOR
+sinctaw.nfo LAMERS
+ntg-read.now LAMEMIKO
+-trsi-.nfo TRSI

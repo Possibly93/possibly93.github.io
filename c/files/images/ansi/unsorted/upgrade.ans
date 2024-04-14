@@ -1,0 +1,45 @@
+
+
+
+
+
+
+      The following may be modified at any time without notice.
+
+      A distribution and support BBS for SIO has been setup.  The
+      number is 1-703-494-0098.  The modem is a 16.8 USR Dual Standard. 
+      SIO users can register on line and immediately download their
+      registered version of SIO.  Use the ORDER command at the main BBS
+      menu.  Previously registered users that wish to increase their
+      number of ports can also place an ORDER and download immediately.
+
+      Registered users,  be sure to have your SIO serial number the
+      first time that you call the BBS, it will speed things up.  Note
+      that those that registered SIO prior to 1.20 were not given a
+      serial number.  A serial number will be assigned upon request.
+
+      Once in the BBS data base knows you as a registered user, the
+      BBS's UPDATE command can be used to obtain a new registered copy
+      of SIO at any time.  All "number of ports" versions of SIO are
+      available to registered users for immediate updating and
+      downloading.  Users that accidently overlay their registered
+      version of SIO can also use the UPDATE command to obtain a
+      replacement registered copy of SIO.  If you use the BBS's UPDATE
+      command THEN YOU DO NOT NEED TO RUN REREG.
+
+      Users that have a registered copy of SIO can also use REREG.EXE
+      to transfer the registration information to a new version of SIO. 
+      Simply unzip the new SIO files into a temporary directory, change
+      to that directory, execute REREG and answer the questions.  After
+      doing the above, all of the files in the temporary directory will
+      have been registered.  You must then copy all the SYS and EXE
+      files from the temporary directory to their normal directory
+      (overlaying the old registered version).  Then you must reboot. 
+      You may also want to check your CONFIG.SYS for the path of the
+      SIO/VSIO being loaded and make sure both the new ones are being
+      loaded.
+
+      If REREG will not transfer your registration information from a
+      previous version of SIO to the new version, then an upgrade must
+      be ordered on disk or obtained from the support BBS.
+

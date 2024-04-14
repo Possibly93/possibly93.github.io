@@ -1,0 +1,55 @@
+ÄÄÄ Release v1.00/1 Beta ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  1) Fixed upload/download ratios.  Due to the fact that Turbo Pascal was
+     changing data types automatically, therefore inverting numbers to their
+     negative equivelent.
+  
+  2) When starting up, Eternity will now create the directories UNDER the
+     temp directory if they don't exist.
+
+  3) Programmed more efficient newscan points, except that they are not JAM
+     standard.  You cannot, therefore, use an offline QWK reader or any other
+     JAM application that uses newscan pointers.  This should not make a
+     difference to almost anyone.
+     All NewScan pointers will be lost.  You can delete *.JLR in your MSGS
+     directory.
+
+  4) Added the capability to replace strings with files.  To use this feature,
+     make the first character of the string into a '%', and then follow that
+     directly with the filename.  You can also put a string after the file is
+     displayed, by putting a space after the filename and putting your string.
+
+  5) Fixed various bugs within the file flagging routine.
+
+  6) Added the 'K' command for SysOps while reading messages.  You can now
+     toggle whether kludge lines will be displayed or not.  By default, it
+     will pay attention to what you have set up on that particular message
+     base.
+
+ÄÄÄ Release v1.00/3 Beta ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  7) Added a feature to the -\ (return from menu) commandkeys.  If you try to
+     return to menu and there are no menus on the stack, it will return to the
+     fallback menu instead of not doing anything.  When SysOps didn't create
+     their menu structures properly, users would sometimes get locked into a
+     certain location on the system and have to hang up.
+
+ÄÄÄ Release v1.00/4 Beta ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  8) GLOBAL.MNU will not be loaded at the shuttle menu, or any other time when
+     a user is not logged on.
+
+  9) Fixed CHECK command at shuttle menu.
+
+ 10) Due to a typographical error, the message base editor was not displaying
+     the access required to join a message base.
+ 
+ 11) You can now create a global conference (a conference that a user may join
+     where it ignores conferences) by making the permanent ID -1.
+     
+ 12) There is now a minimum logon speed.  You can change it from the system
+     configuration section 'A'.
+
+ 13) Fixed quoting.
+
+ 14) Fixed many different glitches.

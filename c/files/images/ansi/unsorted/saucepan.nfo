@@ -1,0 +1,82 @@
+                             SAUCEPAN Documentation
+                                      by Darkened Enmity
+
+ Special Architecture for Universal Comment Extensions Plus Acronymical Names
+
+
+  SAUCEPAN is a SAUCE Comment to FILE_ID.DIZ convertor made for Oblivion/2
+sysops but is able to work with any software.  SAUCEPAN features generation
+by template as to make it a utility that should never need updating, but be
+warned, it will find a way to get it anyhow.  The format for SAUCEPAN is as
+follows:
+  SAUCEPAN <filename> <template name> <output DIZ name>
+
+<filename> is the filename which will have the SAUCE info extracted
+<template name> is the name of the template for the DIZ, see below
+<output DIZ name> is the name of the output file that will be generated
+  from the information in the other two files
+
+With the other two fields pretty self-explanatory, I will explain the template
+name and template structure.  The template name can have a ? mark in it, if
+SAUCEPAN finds a ? in the filename, it will replace it with the data type
+for the input file, the correspondence being:
+  Unknown Data Type                 - 0
+  Character Type (ANSI, RIP, etc)   - 1
+  Graphics Type                     - 2
+  Vector Type                       - 3
+  Sound Type                        - 4
+
+So TEMP?.ANS would be TEMP0.ANS for unknown types, TEMP1.ANS for character
+types, etc.
+
+The template file is a line by line listing of what will appear in the DIZ,
+  the following codes are supported:
+    |TI - Title
+    |AU - Author
+    |GR - Group
+    |DT - Data Type
+    |FT - File Type
+            For Character Types -
+              ASCII, ANSI, Ansimation, RIP, PCBoard, Avatar
+            For Graphics Types -
+              GIF, PCX, LBM/IFF, TGA, FLI, FLC, BMP, GL, DL, WPG,
+            For Vector Types -
+              DXF, DWG, WPG
+            For Sound Types -
+              MOD, 669, STM, S3M, MTM, FAR, ULT, AMF, DMF, OKT, ROL, CMF,
+              MIDI, SADT, VOC, WAV, SMP8, SMP8S, SMP16, SMP16S
+    |AI - Addition Information
+            Dimensions for character and graphics types
+    |FS - File Size
+    |AD - Date in American Format
+    |ED - Date in European Format
+    |CM - Comments
+            Will repeat line for as many lines of comments there are,
+              replacing CM with current comment line
+
+Example:
+  Template File:
+
+    |TI
+      by |AU
+        |GR
+    |AI
+    |AD
+    ³|CM
+
+  Output File:
+    Paradise Lost Ansi
+      by Some Artist
+        Some Art Group
+    80x25
+    05/30/94
+    ³Okay, I finished the ansi, would you stop
+    ³buggin' me and wash off your lips?
+
+That shold make the template format and my opinions clear.  Any comments and
+bug reports can be delivered to me on the Fringes or on ImpactNet.  Information
+on adding using SAUCEPAN with Oblivion/2 is in HISTORY.DOC.
+
+Greets: <why not>
+  Beastie - Thanks for the ansi.
+  Yakko, Wakko, and Dot - Faboom!

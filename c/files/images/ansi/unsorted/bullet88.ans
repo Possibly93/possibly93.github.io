@@ -1,0 +1,217 @@
+[1m[34;41m…ÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕª[40m
+[1m[34;41m∫[1m[37;41mSO YOU WANT TO BE A SYSOP? by Wally Byczek                                   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                              WallyWorld BBS 1989                            [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mTo start a BBS, you first need a computer. No matter what computer you       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mcurrently have, it won't be large enough or powerful enough for what you     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mintend to do. And since you can't take the board down (unless you run a      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mkiddy board that bounces up and down or runs only between the time           [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mschool lets out and Daddy comes home) to do your own work, you will need     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41manother computer that you can ill afford. Next you have to find a BBS        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41msoftware package. This can take months, or you can write your own if you     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mare so inclined. This can take years. Next, unless you are starting a        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mkiddy board, you will need a phone line other than the one that you          [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mnormally converse on. Depending on the Telco's mood, personnel, and the      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mimminence of a strike, this could be done in as little as 2 weeks or it      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmay never happen. Next, if you plan to run doors on your board, you must     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mnow spend long distance dollars in scouring other boards for evaluation and  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41maquisition of these games. Naturally, your external file protocols don't     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mcome with your BBS software, so you have to again scour the countryside to   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfind them. Utilities for your BBS are also an after thought and have to      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mbe obtained in a similar fashion. All of these external programs have to     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mbe registered after a while, since most stop working after a while or have   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41man annoying feature about them until they are registered. All of the above   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mitems take money! and plenty of it!                                          [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mWhile we are on the subject of money, you must obtain a modem. Whatever      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmodem you currently have will not be supported by the BBS software. This     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mis some sort of unwritten law pertaining to writing communication software.  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mBe prepared to open your wallet wide. No, your old Hayes 300 won't be good   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41menough. People even hate 1200 baud these days, and the teenagers seem to     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhave USR HST's these days and will complain vociferously if they can't       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41maccess you at 14.4.                                                          [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNow you pick a name for your BBS. Whatever you choose will be                [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mridiculed by 20% of those who see it. Another 50% will offer suggestions     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthat are worse than the one you chose. The remaining 30% won't care.         [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNext comes the wonderful task of installing your board. You have your        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmachine. If you just bought it, that means formatting your hard disk,        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41minstalling DOS, and ASNI drivers and Lord knows what else that you need      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfor your board. If you already have the machine, you may as well go ahead    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mand reformat it anyway. Something will guarantee that you will have to       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mdo this before you are done.                                                 [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mThe manual for the BBS software was most likely written                      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mby the author's 10 year old and was mimeographed. It got wet in the mail     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mand smeared as well, so at least 30% of the manual will be physically        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41museless. The rest is just procedurally useless.                              [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNext comes the fun task of deciding on your board structure. Who can do      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mwhat and when can they do it. You must design your menus and opening screens.[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mYou have to get a pretty good stock of files, because no one will upload to  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou unless you have something there for them to take first. (not that it     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmatters, I suppose, since even if you DO have files, they won't upload       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmuch anyway.)                                                                [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNext comes the security aspect. You can leave your board wide open so that   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41musers with the name of Benny Beanfart, Dr. Rape, Crack, Hack, File Attack,   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mDR DEATH, etc can come in and do anything they like. Or, you can lock it     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mup so tight that no one will call. There is no compromise on this.           [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNext you must build events or prepare to live at your keyboard. A BBS HAS    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mto be backed up. If you can't afford a high density backup medium such as    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mtape or cartridge, you will spend many many hours per week flipping          [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfloppies. Events are designed to allow the sysop the luxury of having the    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mboard do routine tasks at odd hours by itself- Backups, purges and so on.    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mThese never work as they come and will have to be extensively modified by    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou. And since they generally only run at 3 AM, you will have to be awake    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mto see just how they die and then try to fix it.                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mAlright... the big day is here. Your board is ready, your modem is ready,    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mTelco finally hooked you up, and then you start up. This is when after 2     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mdays of no one calling, despite your ad in computer shopper and having       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mplaced your number on every other BBS in existance, you discover that the    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41minit strings for the modem are wrong. You discover this by calling yourself  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfrom a friends' home. This takes calls to the author of the software, the    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmanufacturer of the modem and finally gets resolved by asking another sysop  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhow to do it.                                                                [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mOh Boy! Now we're in business! During your first caller's visit, someone     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mwill hit a telephone pole and you will lose power. Naturally, since the      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mboard is new, you didn't back it up. The power surge when the electricity    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mwas restored roached your hard disk. Go back to low level formating...       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mFinally, you're up and working. After about a week of gleefully seeing       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41msomeone call, you will encounter Benny Beanfart or his ilk. He will leave    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mpublic posts (always in caps and terribly mis-spelled) about what a really   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mlousey board this is and that the sysop is a three eyed twit. You            [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mautomaticly kill his account. But do you leave the message for the world     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mto see? hmmm... dilemma number 1. Killing Benny does no good because he      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mwill be back with another account such as SYSOP SUX or some such thing.      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mEventually he will tire of the game and go away, but he has given ideas to   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m30 of his friends who will also visit you sometime in the next week.         [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mThen you will be visited by the "smart kid" who can tell you everything      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthat's wrong with your machine, your software, etc. It doesn't matter that   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhe's calling you on a Timex Sinclair. He knows more about your 386 than      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mIntel.                                                                       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mBy now, your name has spread around. Probably, if you are in Worcester,      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthe college kids have your name and number. If it is Spetember or January    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou are in trouble. You will probably be bombarded with file requests for    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mcommercial software. Some will assist you by uploading Lotus 123 ver 3 that  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhas the copy-proofing removed. Whoever uploads this to you will then call    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mLotus Development Corp and tell them that you have a pirated version on your [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mboard (anonymously of course)                                                [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mIf you imposed an upload/download ratio such that users must upload one file [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mto get x numbers of files in return, then you will recieve 2K text files from[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthem. They will download 2Mb of Gif files in return.                         [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mBy now, you are disappointed with your message bases. You perhaps have (if yo[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mare fortunate) two or three users who post messages outside of private mail. [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mThese three users are symbionts who, if one of their number does not call    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfor 2 weeks, will not post because they miss their friend. Your message      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mbases will starve. You set up many areas for messages, all carefully listed  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mby topic. No public post will ever go into the area that it should be in.    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mYou will find a raunchy joke posted in the Bible topics area, technical      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mquestions asked in the political opinion area, and a message from one of     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mBenny Beanfart's croney's in the technical section.                          [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mYou will next encounter the user who can't do anything right. He will make   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou feel terribly guilty that you are running this system that seems to      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mrudely exclude him from enjoying it, because he cannot master the concept    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthat M means Message, F means Files, D means download etc. He DOES however   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mknow how to leave comments to the sysop.                                     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mAt first you will be responsive to all the user complaints and will make     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41ma valiant effort to obtain the special game that was requested as a door.    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mYou discover it on a board in the Fiji Islands and the off peak call cost    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou 32 dollars to download it. You find then that the game was written for   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41ma board other than the BBS that you run. You search the countryside for a    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mconversion interface. You find one in Omaha. add another 40 dollars in       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mphone bills from the search. You discover now that the game must be registere[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mwith the author. This is another 69 dollars. You discovered this because     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mafter the game was installed, you called from a friend's house to test it.   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mYou find out that while the console looks wonderful while it is being run,   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthe user sees a screen that informs him that the sysop is a cheap bum who    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mdidn't even bother to register this wonderful piece of software. Since the   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41msysop is such a creep, why do you call there? Naturally, you register it so  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthe annoyance screen goes away. After it has been on the board for 2 months  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou discover that only 1 person ever used it and he only went in there once, [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mdropped carrier and hung up the board because you later discovered that this [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m"wonderful" piece of software doesn't monitor carrier. Do you now register   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mWatchdog so this won't happen again or do you just scrap the game?           [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mThe work load is getting heavy on the board. Wow! It takes at least 2 hours  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mper day to stay up with things. Answering mail, hunting down Benny Beanfart's[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mlatest account, changing screens, moving messages back to the areas that     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthey truely belong in, adding new things, paying Telco, arguing with your    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mspouse, etc. You decide that perhaps it's time to enlist some help in the    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mform of an assistant sysop. This is a mistake. The assistant will pay little [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mattention to the needs of the board, but WILL experiment with things like    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mremote drop to dos. hehehehe! I think this needs little elaboration.         [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mBy now, you are conversant with the many user complaints. WHY aren't you     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41maround to answer the sysop page at 2:45 AM? Why does your message editor     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41muse A for abort instead of Q for quit? How come there aren't any nice ANSI   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mscreens? How come these crummy ANSI screens slow down the board? Why can't   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mI stay online for 3 hours at a time? Why can't my C64 see your graphics.. It [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmust be your crummy board! I never post messages because no one else ever    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mdoes! What do you mean you killed my upload of Dbase IV? I did upload        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41msomething a year ago.. so how come I can't download more than 100 files now? [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mHow come my friend has access level 50 and I only have level 40? Boy.. do you[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhave a bad attitude! I think the Silicon Sarcophagus is 100 times better than[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthis board! This is a free country.. I can say ANYTHING I want in public     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmessages. What are you.. Hitler or something? How come nobody ever send me   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmail? I used a bit editor on Procomm and now it won't work.. tell me how to  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfix it. That GIF file I downloaded didn't run... this stinks... you really   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmust be a lousey sysop if you don't check to see that it would work for me.  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mThen you will discover the wonders of sysop to user interactive chat. You    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mwill find this to be a most opportune time to get things done. Since the     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mmajority of users who will page you into chat type at about .000001 baud,    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41myou can have a conversation with the user and get things done like mowing    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthe lawn, making a three course meal, and cleaning out the garage before     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthe user has stated his request. Generally, the chat request was for         [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41msomething such as How do I get out of a file listing or something similar    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthat is well covered in the user manual that you have both as a file for     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mdownloading and as a bulletin for online reading.                            [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mOne admonition is to not get angry about carrier drop by the user. Remember  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthat the user is calling you through the telco. Chances are that no matter   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhow malicious or inept the user may be, the telco probably did it anyway.    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNext comes BBS software upgrade time! Such fun! You will find that the       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mauthor no longer supports your version. You have to upgrade. This means      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41monce again opening your wallet. The new version will not have the same       [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mreserved file names, nor will the file structures be the same. The author    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mgenerously supplies you with a conversion program. This program is designed  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mto assist you in making all the little changes needed to perform the upgrade.[1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mIt will automatically convert your file names and structures. There are two  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mtype of these programs. One that requires that you have 5Mb more free space  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mthan you do, and the other that will abort half way through the conversion   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mbecause of a bad disk sector read and didn't have a corresponding error      [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mtrap. Of the two, the latter is the more catastrophic, because now your data [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mcan't be read by either version of the software.                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mSince you successfully upgraded your software, you now discover what the     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mword Beta Site really means..                                                [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mNow since you've done so well to this point, it's time for the hardware to   [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfind something to compensate for all this good effort. Generally, the        [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhard drive controller is the most likely device to make this decision to     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mfail. It will not however abruptly die. It will instead, gradually mis-write [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mto disk over a period of several days before deciding not to work at all     [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41manymore. This has the advantage that your last backups will be no good at    [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mall once you replace the controller and reformat the drive.                  [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41mhehehe! Still want to be a sysop?                                            [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m∫[1m[37;41m                                                                             [1m[34;41m∫[40m
+[1m[34;41m»ÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕº[0m[37;40m

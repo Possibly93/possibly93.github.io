@@ -1,0 +1,14 @@
+In  the  case  that  your buzzer sounds
+are  not  as  expected  -  in  this new
+version  you  have  to  have a non-zero
+volume sequence.
+
+Just  change  your  volume  sequence to
+a  single  step $000F sequence, and all
+will be ok!
+
+This  change  was  necessary  to  allow
+track  volume  MIDI controllers to work
+logically with buzzer sounds.
+
+gwEm

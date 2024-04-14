@@ -1,0 +1,88 @@
+
+
+
+              ------  SIO/VSIO/VX00 Problem Report  ------
+
+          This form should be used to report suspected problems with the
+          communications drivers SIO/VSIO to the author, Ray Gwinn.
+
+          Please  provide as much information  as possible on your problem.
+          Feel free to add additional space, or remove sections of the form
+          that are not relevant to your problem.
+
+          CONTACT PERSON (Name and mailing address):
+           __________________________________
+           __________________________________
+           __________________________________
+           __________________________________
+
+          Your Email addresses (if any):
+           __________________________________
+           __________________________________
+           __________________________________
+
+          PHONE NUMBERS:
+          Days:           (____) ____-______ x_____
+          Evening:        (____) ____-______ x_____
+          FAX:            (____) ____-______
+          Modem:          (____) ____-______
+
+          SIO/VSIO version and Internal Update __________________
+          Note:     Internal update displayed at boot time.
+
+          CONFIG.SYS  - What are the  exact lines (DEVICE=)  lines that you
+          use to load SIO/VSIO/VX00?
+
+          _________________________________________________________________
+          _________________________________________________________________
+
+
+          DESCRIPTION OF THE SIO PROBLEM (as many lines as necessary):
+
+          _________________________________________________________________
+
+
+          Have  you   commented  (REMed)  out  or   removed  COM/VCOM  from
+          CONFIG.SYS?  (Y/N)  _______
+
+          OS/2 OPERATING SYSTEM SOFTWARE CONFIGURATION:
+          OS/2 Version 2.n .........: ____   CSD Level: _______
+
+
+          MODEM:
+          Manufacturer _____________   Model ___________________
+          Modem Init string ____________________________________
+
+          Modem configuration dump (see your modem manual):
+
+          ______________________________________________________
+
+          ______________________________________________________
+
+          Communications application program that demonstrates the problem?
+          Program: _________________________      Version: _______
+          Author or vendor: ________________
+          Have you reported your problem to the program provider? Y _   N _
+
+          HARDWARE CONFIGURATION (provide as much as possible):
+          Microprocessor:   Intel _  Other (specify) _______________
+          Type:     386SX _  386 _  486SX _   486 _ Speed: ___ MHz
+          Total RAM ....:   ___ MB
+          File System:   FAT _     HPFS _
+          Type: IDE _  SCSI _  MFM _  RLL _  Unknown _
+          Manufacturer     and     model     #    of     video     adapter:
+          __________________________
+
+          PLEASE REVIEW ALL OF THIS PROBLEM REPORT BEFORE SENDING. When you
+          are  ready to send  this SIO Problem  Report, send the  form as a
+          file,  message or  a FAX  to Ray  Gwinn at  one of  the following
+          addresses:
+
+                  CompuServe              71154,575
+                  Internet                p00321@psilink.com
+
+                  US Mail
+                  Raymond L. Gwinn
+                  12469 Cavalier Drive
+                  Woodbridge, VA 22192
+

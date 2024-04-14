@@ -1,0 +1,23 @@
+[0;1mI have a lot of people ask me how WallyWorld and Hazzard County co-exist on
+the same service.. Here's a diagram of how it all works...
+[34mT[46CL[15CB
+E[14CT[13CR   DOS 3.3[7CA UNIX 5.2[6CR  B
+L[14CW  P[10CS[17CN[15CO  A
+C  [37mÚÄÄÄÄÄÄÄ¿   [34mI  A[10C-   [37mÜÜÜÜÜÜÜÜÜÜ    [34mB [37mÛßßßßÛ[8C[34mA  N
+O  [37m³[7C³   [34mS  I[10C2   [37mÛ[7CÛÛ    [34mI [37mÛ[31m:::|[37mÛ[8C[34mD  D
+[37mÄÄÄ´[7C³   [34mT  R[10C3   [37mÛÜÜÜÜÜÜÜÛÛ    [34mO [37mÛÛÛÛÛÛ
+   ³[7C³[9CÜÜÜÜÜÜÜ [34m2 [37mÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜ [34mS [37mÛßßßßÛ
+   ³[7CÃÄÄÄÄÄÄÄÄÄÛ [31m....[37mÛÄÄÄÛÛÛÛÛÛÛÛÛ [31m====[37mÛÄÄÄÛßßßßÛÄÄÄÄÄÄÄ> [0;32mLAN
+   [1;37mÀÄÄÄÄÄÄÄÙ[9Cßßßßßßß   ßßßßßßßßßßßßßßß   ÛßßßßÛ
+    [0;32mSYS75 PBX[8CMODEM[5CTANDY 4000 SX[5C[1;37mßßßßßß  [0;32mNORTHSTAR SERVER
+[37mÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³   Your call comes into the PBX, which is[35C³
+³   hard wired to the modem. WallyWorld runs full time on the Tandy 4Ksx.    ³
+³   When you request HCL, the BBS software accesses the Northstar, which is  ³
+³   a multi-tasking machine running under unix to serve the LAN. The request ³
+³   to the lan invokes a DOS shell under UNIX (the operating system of the   ³
+³   server) and HCL's BBS software is loaded into that shell. The Tandy 4Ksx ³
+³   then acts as a terminal server between HCL and the modem. This system was³
+³   devised to increase the speed of both WallyWorld and HCL. You may have   ³
+³   noticed a vast improvement in performance since early October.[11C³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ[0m

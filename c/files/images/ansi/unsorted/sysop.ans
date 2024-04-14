@@ -1,0 +1,480 @@
+DnDBBS(R) v2.7a   SYSOP DOCUMENTATION -- INSTALLATION AND SETUP  (01/01/90)
+
+HARDWARE REQUIREMENTS
+---------------------
+The Adventure system requires you to have an IBM (or compatible) PC, XT, AT
+with DOS 3.0 or higher, Serial port and Hayes Smartmodem. A minimum of 384K
+is needed and an 80 column monitor. A fixed disk drive is highly recommended.
+
+FILE DISTRIBUTION
+-----------------
+The Adventure System (version 2.1) is distributed by PC-SIG on disk 1131.
+If you are installing DnDBBS onto a dual drive floppy system place the
+distribution diskette number one in drive A: and type INSTALL F. If you are
+installing DnDBBS onto a hard disk drive system place the two distribution
+disks into drives A: and B: and type INSTALL H.
+
+The Adventure System is also distributed to Bulletin Board Systems in four
+files called DND27-1.ZIP, DND27-2.ZIP, DND27-3.ZIP, and DND27-4.ZIP. You must
+use PKUNZIP.EXE to separate these files into their components.
+
+MODEM SWITCH SETTINGS
+---------------------
+The Hayes modem switch settings must be set similiar to the following:
+
+                       Switch           12345678
+                       Setting          UUDDDUUD
+
+Switch setting number 5 being the most important. It must be set to the
+down position so the modem does not automatically answer the phone. Instead, 
+DnDBBS will tell the modem to answer the phone on the first ring with the
+Hayes modem command ATA. DnDBBS configures serial ports for 300, 1200, 2400 or
+9600 baud at no parity, 8 data bits, 1 stop bit by reading in the Hayes
+connect string which is CONNECT and the baud rate (i.e. CONNECT 300).
+
+FOSSIL DEVICE DRIVER NOT REQUIRED!!
+--------------------
+Fossil is a generic driver which contains code for screen functions, keyboard
+functions, and most important, communications routines. DnDBBS can access
+these comm routines for its modem input and output, initializing, and xon/xoff
+and rts/cts flow control. Normally all you need to do is put the statement
+DEVICE=X00.SYS in your CONFIG.SYS file and boot up to install the driver.
+This will operate comm port number 1. If you are running port 2, or even 8
+ports, fossil will take care of them. X00.SYS does not need to be installed
+if you are running DnDBBS in the local mode. The default configuration is
+NOT to load fossil support. This option in config modem variables can be
+toggled on for fido and opus systems.
+
+The fossil driver is available for downloading on most BBSes as X00_109C.ZIP
+or X00V111B.ZIP or filenames similar to these.
+
+RECORD LOCKING WITH SHARE
+-------------------------
+A requirement of operating DnDBBS in multiple partitions is to use SHARE.EXE
+This program is located on your DOS disk. Install it by placing the program
+in your boot root directory and adding the statement SHARE to your AUTOEXEC
+batch file. DnDBBS will not run properly without share installed. If you
+operate several partitions (i.e. doubledos) without share, then you run the
+risk of having FAT or disk sectors scrambled. Share intercepts the DOS calls
+to file accesses and compares them to an internal table of locked records.
+This allows DnDBBS to be fully compatible with multiple partitions.
+
+CONSOLE ANSI SUPPORT
+--------------------
+DnDBBS sends color code changes directly to the ANSI.SYS device driver. This
+is done by calling an assembly program distributed with the source called
+SCRN.ASM (compiled with MASM as SCRN.OBJ). The ANSI driver is found on your
+DOS disk. Install it by placing the program on your boot root directory and
+add the statement DEVICE=ANSI.SYS in the file CONFIG.SYS and reboot.
+Desqview users type DVANSI.COM in the DnDBBS partition before running dnd.
+
+COMPILING AND LINKING WITH QUICKBASIC 4.5
+-----------------------------------------
+The MICROSOFT QUICKBASIC Version 4.5 allows the separate compilation of
+program modules so the 64K restriction is broken. Each source code module
+occupies its own 64K segment in memory. This way programs can grow to the
+maximum of 640K. The data segment is 64K and shared by all source code
+modules. The DnDBBS opening screen will display the number of bytes free
+in the BASIC data segment. QB 4.5 DOES require a DTR compiler patch!
+QuickBASIC also allows memory to be allocated to the heap which is an area
+of RAM beyond the program data segment and code segment. When fixed strings
+and numeric arrays are redimensioned they are allocated to extra hundreds
+of K of RAM in the heap. This allows full use of all memory by DnDBBS.
+
+To compile the source programs type the following: (or use the batch programs)
+
+BC DNDBBS/S/X/O;
+BC DNDSUB1/S/X/O;
+BC DNDSUB2/S/X/O;
+BC DNDSUB3/S/X/O;
+
+/S to write strings to the disk without overflowing the compiler memory.
+/X to error trap and resume to next or same statement.
+/O so the program will run without the runtime files.
+
+To link the object modules type:
+
+LINK DNDBBS+DNDSUB1+DNDSUB2+DNDSUB3+DNDUTIL,,,QB.LIB/E;
+
+/E to reduce executable filesize and make it load faster
+
+QB.LIB is a Quick BASIC 4.5 library which contains precompiled code supporting
+the CALL INTERRUPT statement. This is used to support the FOSSIL driver and
+the DOS function calls. BCOM45.LIB is the default library also used to link
+into DnDBBS for the /O switch on the compiler command line.
+
+The assembly program DNDUTIL.ASM provided with the source can be compiled
+with the Macro Assembler 5.0. This file contains a generic screen driver
+which provides special cases of scrolling before line 25 used by BASIC for
+the status line, and has routines to save and restore the cursor when
+displaying the status line. This file also contains an assembly routine
+which  provides an interface to DOS to allow DnDBBS to check the disk for
+an existing file without creating it. This is used for multipartition and
+networking systems to send messages in multinodes.
+
+Compile Batch programs are distributed with the source in DND27-4.ZIP. If you
+have the following files in your DnDBBS directory you can compile the source
+with a batch program:
+
+*.BAS, *.INC,
+DNDUTIL.OBJ, MASM.EXE, QB.EXE, LINK.EXE, BCOM45.LIB, QB.LIB
+
+COMMAND LINE OPTIONS
+--------------------
+The command line options are parameters you type type after the command
+DNDBBS at the DOS prompt. If there are any parameters at all, the first must
+be the node number. All command line options must be separated by a space.
+The other two optional parameters are LOCAL and DEBUG. For example:
+
+DNDBBS 1
+DNDBBS 1 LOCAL
+DNDBBS LOCAL DEBUG
+DNDBBS 1 DEBUG
+DNDBBS 1 LOCAL DEBUG
+
+There are two extra command line options to the DNDBBS command. They toggle
+printer and disk session logging. For disk logging the session is logged to
+the file DNDBBSx.LOG (where x is the node number). The command switch for
+disk logging is /L and the command switch for printer logging is /P. They
+must be the last options on the DNDBBS command. For example:
+
+DNDBBS LOCAL /L /P
+
+The disk and printer toggles are displayed on the opening screen in the area
+right of the status and memory displays. These options can also be toggled
+from within the opening menu by pressing ALT-L for disk logging and ALT-P
+for printer logging. They can also be toggled at any time during the program
+when a remote user is online. The status line will be updated with the word
+PRT and LOG in the last half of the user name in the status line when toggled
+on. The statusline can be toggled from user statistics to the interactive
+sysop function keys with the escape key.
+
+RUNNING DNDBBS AS A SINGLE USER PROGRAM
+---------------------------------------
+To run the adventure at your computer without a modem or serial port type
+DNDBBS LOCAL and you will be able to enter the program from your keyboard.
+This way you do not require to run as a bulletin board service, or need to
+have a modem, or have the fossil driver installed.
+
+PROBLEMS
+--------
+The modem does not answer the phone. This is probably because the modem is
+not initializing correctly. Try rebooting and then running the program.
+Also try initializing the modem with another communications program. If none
+of these work then your modem might not support the Hayes command set. When
+you boot DnDBBS the copyright screen is displayed for five seconds, fossil
+is initialized, then the opening screen appears. The status indicator will
+show the message "Waiting for Calls" if the modem has initialized correctly.
+
+If the status indicator shows "Reset Timeout" or "Init Timeout" this means
+the modem has not sent the string "OK" back to DnDBBS and the modem may not
+have initialized properly. In this case DnDBBS continues normally.
+
+The modem must send the string RING so the DnDBBS knows when to tell the
+modem to answer the phone. DnDBBS will send the modem command ATA to pick
+the phone off hook and initiate carrier.
+
+CONFIGURATION PROBLEMS
+----------------------
+1) The program does not read the configuration file.
+   Delete all .CFG files and start over with DNDCNFG. Dndcnfg loads
+   zero into all config values. Load your .CFG file with control-r or
+   load default values with control-d in dndcnfg.
+2) The program does not recognize the configuration in step 1.
+   You have not written a new one out to disk. Make sure you use the
+   control-w command before exiting config. Or the .cfg is file is from an
+   old version. (See step 3.)
+3) When installing a new version of DnDBBS, the config structure may have
+   changed. Delete all old .cfg files and rebuild from scratch in dndcnfg.
+
+DnDBBS(R) v2.7a   SYSOP DOCUMENTATION -- CONFIGURING AND SETUP  (01/01/90)
+
+SETUP INSTRUCTIONS
+------------------
+This text file assumes you are installing DnDBBS into a fixed disk system, and
+that your computer is an MS-DOS compatible, or 100% IBM compatible clone. This
+software does not support other machines which claim to run IBM programs (such
+as an atari or amiga with IBM emulators) because the source code is written for
+MS-DOS bios and function calls, and uses ANSI escape sequences for IBM.
+
+Create a subdirectory on your fixed disk unit and copy the DnDBBS .ZIPs or
+files (if you have already unzipped them). DnDBBS looks for files in various
+DOS directories depending on your configuration. 
+
+CONFIGURING INSTRUCTIONS
+------------------------
+This section is primarily text on creating and maintaining the configure file
+for DnDBBS. The program will look for this file in the default directory it is
+booted from. If the configure file is not found then the program aborts with
+an error message to run dndcnfg.
+
+Start the configure program by changing to its DOS directory and typing:
+
+DNDCNFG  (optionally, dndcnfg can be loaded while in DnDBBS by typing
+          *config, or function key 3 from the opening screen.)
+
+You will be presented with a color screen containing eight options:
+
+        Logon Variables                         Command Variables
+        Processing Variables                    Modem Variables
+        File Variables                          Custom Equations
+        Rooms Variables                         Quit Configure
+
+And a selection on the bottom line:
+
+Cursor Select  -|> Enter Choice
+^d Load Config Defaults  ^w Write Config  ^r Read Config
+
+At this point you can select one of eight options with the cursor keypad,
+and the enter key. The screen will clear with the parameters which can be
+configured for that option.
+
+To select the option for loading configuration files or defaults, and to
+write the configure file, type control-r or control-d and control-w. The ^
+symbol is short for the control key, then the letter at the same time.
+
+The critical operating parameters are the datapath to the .DAT files, the
+datapath to the .DOC files, the datapath to the temporary work directory
+(or a RAM disk), and datapath to the DOOR information file. These are in the
+file variables screen. The modem variables contains the door path and type.
+
+When you have entered the critical options, write the configuration out to the
+DNDBBS.CFG file. Note: if you are running DnDBBS as a door you must use a Node
+Number. The node number is used for the configuration filename. For node 1 the
+file created is DNDBBS1.CFG for node 2 it is DNDBBS2.CFG, etc. You will be
+prompted for the node number, or to press enter for no node number. The plain
+configuration file DNDBBS.CFG is read by LOCAL mode (i.e. when the sysop runs
+the program from DOS or boots as a standalone BBS.)
+
+Once you have written a configuration file to disk, you can run DnDBBS as a
+local program with the command DNDBBS LOCAL, or run it in BBS mode with the
+command DnDBBS. In this mode the program takes control of the modem and
+answers it for incoming calls. The status indicator in the opening screen
+shows the activity of the modem before the caller gets connected. DnDBBS will
+answer at speeds up to 9600 baud. Your modem must be 100% Hayes compatible and
+support the entire Hayes command set. Here is a sample of the DnDBBS to modem
+conversation while in BBS mode:
+
+From DnDBBS to modem:
+ATZ
+From modem to DnDBBS
+OK     (status indicator will display "Reset OK")
+From DnDBBS to modem:
+ATQ1E0S0=0S2=255     (or some similiar modem intialization code)
+From modem to DnDBBS:
+OK     (status indicator will display "Init OK")
+(Now DnDBBS should show the status "Waiting for Call")
+From modem to DnDBBS:
+RING   (text string sent by the modem when the phone rings)
+From DnDBBS to modem:
+ATA
+From modem to DnDBBS:
+CONNECT 1200  (or connect 2400 or 9600)
+(at this point if DnDBBS has not detected a carrier signal within 30
+seconds then it hangs up the modem DTR signal and recycles)
+
+FURTHER CONFIGURING FOR COMMUNICATIONS PORTS
+--------------------------------------------
+For sysops using multinode systems, networks, or multitasking applications,
+you may need to configure DnDBBS for a specific communication port number
+besides the default of COM1. Config modem variables screen allows you to
+set the port to any other number from 1 to 8 (The fossil device driver
+can access up to 8 ports on an AT). In order to do this you must modify
+the command line on the device=x00.sys in config.sys. Read x00.doc for
+further information. If you do not have fossil loaded then you have to
+specify the serial port address for ports above 2. The default for port 1
+is 3f8 and for port 2 is 2f8. They must be entered in hexidecimal. Technically
+DnDBBS is capable of accessing any modem port in any range by the addressing
+of the UART chip port (be it 2F8, 3F8, or 9F8).
+
+DOOR INFORMATION AND NODES
+--------------------------
+To run DnDBBS as a DOOR place the node number after the DNDBBS command (for
+example: DNDBBS 1). To specify the node parameter from a Batch file use the
+node number for the first replacement parameter (for example: DNDBBS %1).
+Select the option in dndcnfg for the DOOR type. There are three options:
+RBBS, OPUS, PCBOARD12 and PCBOARD14. They read DORINFOx.DEF, LASTUSEx.BBS,
+and PCBOARD.SYS, respectively. The RBBS door information file contains the
+communications port. OPUS may be running as a multiple node setup or as a
+single partition with no node numbers. In the last case, DnDBBS will first
+look for LASTUSEx.BBS then look for LASTUSER.BBS regardless of which node
+is specified. Select the dndcnfg option for the pathname where the DOOR
+information file is to be found. Dndcnfg will add the trailing \ if you
+forget it, for example: C:\OPUS\  Then select the dndcnfg option for the
+communications port.
+
+Here is a sample batch file to call DnDBBS from RBBS (this batch file is named
+DND.BAT and it is called from RCTTY.BAT from RBBS.BAT with the command DND 1):
+
+CD\DND26
+DNDBBS %1
+CD\RBBS
+
+For futher RBBS batch file programming read the RBBS documentation. There are
+many involved batch routines for files RBBS.BAT, RCTTY.BAT, and RBBSTM.BAT.
+RBBS uses the file MENU5 to look for the keyword to boot the batch file.
+I.E. In MENU5 you must have the batch file name in uppercase surrounded by
+spaces so RBBS can find it. Then RBBS attaches .BAT to this string and
+checks the disk for the filename. For example, MENU5 could look like this:
+
+                             RBBS DOORS MENU SYSTEM
+ 
+Type in one of the following door options to run:
+ 
+DND - The Adventure System
+DND500 - DND 500 Sectors
+
+SYSTEM ENVIRONMENT
+------------------
+An environment string is a system variable locally known to DOS and the
+program DOS executes. Basically you place an environment string into the DOS
+system variable space with the SET command. DnDBBS will recognize these strings
+and use them for disk access. There are five environment strings for DnDBBS:
+Place the strings into the DOS environment with SET command. For example:
+
+SET DNDBBS=C:\RBBS\DND\
+SET DNDDAT=C:\RBBS\DND\DATA\
+SET DNDDOC=C:\RBBS\DND\DOC\
+SET DNDDOOR=C:\RBBS\
+SET DNDTEMP=E:\
+
+The PATH command can also be included to point to your DnDBBS executable
+directory. Say the path C:\RBBS\DND\ is the actual directory you have the
+files on your disk. With this feature you could also place the path to look
+for DNDBBS.EXE to boot up from any drive at any time by combining the
+environment strings with the PATH command. For example:
+
+PATH=C:\RBBS\DND\
+
+Now, with the path command, and all set commands, DnDBBS will boot up from
+anywhere in your computer. Note: The environment strings set for DOS will
+over-ride all configuration pathname options. Make sure to place a trailing \
+after the SET statements. DnDBBS will put them there if you forget.
+
+FILES USED
+----------
+A well organized DnDBBS system would make full use of the datapath options.
+The disk drive structure could look something like this:
+
+C:\              C:\RBBS\DND                 C:\RBBS\DND\DATA
+CONFIG.SYS       DND*.EXE        ROOMS.DAT     WELCOME.DAT  BANK.HLP
+AUTOEXEC.BAT     DNDBBSx.CFG     OBJECTS.DAT   NOTICE.DAT   CASINO.HLP
+X00.SYS          PLAYER.LOG      TREASURE.DAT  PRELOG.DAT   MAIL.HLP
+SHARE.EXE        DNDBBS.ERR      MONSTERS.DAT  LOGOFF.DAT   MAILEDIT.HLP
+ANSI.SYS         DNDBBS.DAY      MONCLASS.DAT  PRIMESS.DAT  DNDEDIT.HLP
+                 DNDBBSx.LOG     MONTALK.DAT   PRITABLE.DAT *.CTN
+                 DNDRANK.DAT     SPELLS.DAT    PUBMESS.DAT
+                                               PUBTABLE.DAT
+
+C:\RBBS\DND\DOC  E:\                         C:\RBBS\DND\SOURCE
+DNDBBS.DOC       DNDEXITx.DAT    *.BAS *.INC *.BAT *.OBJ *.MAP *.BAK *.ASM
+README.1ST       NODEWRKx.DA?    QB.LIB MASM.EXE BC.EXE BCOM45.LIB LINK.EXE
+SYSOP.DOC        MESSWRKx.DAT 
+X00.DOC          (or RAM disk)
+               
+
+DOOR INFORMATION FILE STRUCTURES
+--------------------------------
+The following DOOR files have all been verified to work:
+
+Door option 1-RBBS(17.1-2) 13 lines ascii text
+
+ZIPPIT RBBS                  (bbs name)
+ERIK                         (bbs sysop first name)
+OREDSON                      (bbs sysop last name)
+COM1                         (comm port used, COM0 for RBBS local sysop)
+9600 BAUD,N,8,1              (baud rate and parameters string)
+ 1                           (network type)
+SYSOP                        ("SYSOP" for local access, otherwise the user's
+                              first name, and this line last name)
+MPLS, MN.                    (users city state)
+ 2                           (graphics preference)
+ 100                         (the user level)
+ 359                         (user time left)
+ 20                          (time remaining)
+
+Door option 2-OPUS(1.03b) random record, binary stuff. DnDBBS reads bytes
+165 and 166 as a packed integer with cvi (basic convert two byte string to
+integer) which is the baud rate. This door has been verified to work on
+1.03b and it most likely works on other OPUS versions.
+
+BCOM45.LIB DTR Patch
+--------------------
+Much to my dismay I discovered the QB4.5 DOES require a DTR patch. Here is
+the text to apply the patch.
+
+Before beginning, make sure you have backup copies of BCOM45.LIB.
+
+With Debug in a DOS path, type:
+
+ debug
+
+Type:
+
+ n=bcom45.lib
+ l
+
+Type:
+
+ s cs:0 ffff b0 00 e3 01
+
+Debug should show:
+
+ xxxx:1529
+
+where xxxx can be any number depending upon where Debug loaded the program
+into memory.  In any case, the number is not important.
+
+Type:
+
+ u 1529
+
+Debug should show:
+
+ MOV   AL,00
+ JCXZ  152E
+ INC   AX
+ ADD   DX,+04
+ OUT   DX,AL
+
+This is where QB graciously resets the comm port to parameters it thinks the
+comm port should have.
+
+To fix the problem, Type:
+
+ a 1529
+
+ mov   al,01
+ [Enter]
+ (then hit control-c to exit entry)
+
+ a 152d
+
+ nop
+ [Enter]
+ (then hit control-c to exit entry)
+ where [Enter] is the Enter key (do not type the characters)!
+
+To verify that you typed everything correctly, Type:
+
+ u 1529
+
+Debug should show:
+
+ MOV   AL,01
+ JCXZ  152E
+ NOP
+ ADD   DX,+04
+ OUT   DX,AL
+
+To save the corrections Type:
+
+ w
+
+Debug should show:
+
+Writing 35EF7 bytes
+
+Now type Q and you are finished patching BCOM45.LIB
+
+                  ========== END OF DOCUMENTATION ==========

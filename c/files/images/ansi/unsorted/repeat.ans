@@ -1,0 +1,117 @@
+Repeat ANSIs
+------------
+    Repeat ANSIs are a feature probably only known to people who have used 
+Oblivion/2.  It is a very simple, yet powerful way to make your BBS 
+configurable.  For example, to make a Last Callers ANSI in Eternity you would
+simply make 3 ANSIs:  LASTTOP.ANS, LASTMID.ANS, and LASTBOT.ANS.  These three
+ansis would contain the following:
+LASTTOP.ANS - This file would contain the top of the ANSI, it will be displayed
+              first.  At the end of this file, it is logical to have an EOF
+              (end-of-file) marker so that Eternity knows not to print an
+              extra line or two.  Therefore, at the end of the last line of
+              your header, you need to put an EOF marker.  This is done by
+              pressing Ctrl-Z or Alt-26.  Usually, however, you must either
+              press Ctrl-P or Ctrl-Q first.
+
+              For example, in MS-DOS edit, to place an EOF marker on a file,
+              press Ctrl-P, Ctrl-Z.  This will make a little arrow that points
+              to the right.  In some weird editors, such as the technical
+              editor v2.5, you need to press Ctrl-Q instead of Ctrl-P.
+              If you have the PC-DOS editor (E.EXE) which comes with PC-DOS
+              6.2 or 7.0, press Alt-X instead of Ctrl-P.
+              
+LASTMID.ANS - This is the most complicated of the three ANSIs.  Generally it 
+              contains one or more OPTEXT (OT for short) MCI codes.  The
+              middle file of the ansi is displayed XX amount of times until
+              you have reached the number of times you want to display 
+              information.  Check below for a list of OT codes.
+              
+LASTBOT.ANS - This file would contain the bottom of the ansi, it will be 
+              displayed last.
+        When Eternity is run, it would then piece these three ANSIs together.
+When viewed they appear as one whole ansi, displaying the information
+(in this case, last callers), XX amount of times so the ANSI looks whole and
+no one can tell the difference! :)
+
+
+
+1LIN - Oneliners Display
+------------------------
+OT = Oneliner
+O1 = Author of Oneliner
+O2 = Oneliner Number (ascending)
+O3 = Oneliner Number (descending)
+
+CONF - Conference Listing
+-------------------------
+OT = Conference Name
+O1 = Conference Number
+O2 = Conference ID #
+        
+ELST - Email Listing
+--------------------
+OT = Message Number
+O1 = Message Sender
+O2 = Message Title
+O3 = Date Sent  (Jan 01 1980  00:00:00)
+
+FARE - File Area Listing      
+------------------------
+OT = Base Number
+O1 = Base Name
+O2 = Scan (On/Off) [UNUSED]        
+O3 = No Ratios (On/Off)
+O4 = GifSpecs (On/Off)
+
+LAST - Last Few Callers Listing
+-------------------------------
+OT = System Call #        
+O1 = Caller Name
+O2 = Caller's User #
+O3 = Caller's User Note
+O4 = Caller's City/State
+O5 = Time of Logoff
+O6 = Date of Logoff
+O7 = Speed        
+
+MARE - Message Area Listing
+---------------------------
+OT = Message Base Number      
+O1 = Message Base Name
+O2 = Scan Yes/No [SEE MSCN]
+O3 = Echo Yes/No
+O4 = Real Names Yes/No
+O5 = Ansi Yes/No      
+
+MLST - Message Listing
+----------------------
+OT = Message #                    
+O1 = Sender
+O2 = Receiver
+O3 = Title
+
+MSCN - Message Scan Area Listing
+--------------------------------
+Same as MARE except that O2 is
+*ACTIVE*.
+
+PROT - Protocol Listing
+-----------------------
+OT = Keys to run protocol
+O1 = Description of protocol          
+
+RUMR - Rumour Listing
+---------------------
+OT = Rumour Number
+O1 = Rumour
+O2 = Author
+
+USER - User Listing
+-------------------
+OT = User Number      
+O1 = User name
+O2 = User's Area Code
+O3 = Date of last Call
+O4 = User's SL
+O5 = User's public note
+

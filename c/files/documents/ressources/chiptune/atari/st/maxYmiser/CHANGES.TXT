@@ -1,0 +1,761 @@
+Change History
+==============
+
+v1.24
+-----
+Release version
+
+ - Removed an extra malloc in the Falcon
+    code path.
+
+ - Removed a free() in the DMA deinit
+
+
+v1.23
+-----
+Internal version
+
+ - Tweaked behaviour of fix detune + fix
+    sequence
+
+ - Added 520ST mode,  removed ice, digi,
+    sample, microwire functions and  the
+    start screen
+
+ - Reduced SID  waveform  and syncbuzzer
+    steps in 520ST version
+
+ - Added new more informative disk error
+    messages for the new 520ST version
+    
+ - Tidied menu system  in  520ST version
+ 
+ - Fixed for NTSC ST/STe machines
+ 
+ - Reduced number  of  mallocs by one on
+    STe/TT
+
+
+v1.22
+-----
+Release version
+
+ - MIDI clock  out  now  works  with all
+    song speeds 
+
+ - sync24  output   with  parallel  port
+    interface
+
+ - reliable  midi -> sync24   conversion
+
+ - partial rewrite  of  midi  in/out and
+    sync24 output
+
+ - sync24  input   with   joystick  port
+    interface
+
+ - selectable  internal/midi/sync24 sync
+
+ - changed year to 2008
+
+
+V1.21
+-----
+Internal version
+
+ - Disabled certain  effects under track
+    mute
+
+ - Added special looping pattern
+
+ - Fixed slight  timing  issues  in song
+    editor outside of live mode
+
+ - Changed year to 2007
+
+ - Disabled special  patterns when track
+    mute on. Allows for smoother adlibs.
+
+ - Added  midi  controllers  16->20  for
+    track mutes
+
+ - Added controllers 21 and  22 for song 
+    speed and position
+
+ - 23 controls  jam  mode,   24 controls
+    song/pattern play
+
+ - added config function to disable midi
+    controllers
+
+ - made midi program  changes polyphonic
+
+ - try  all  tracks  with  correct  midi
+    channel for note off
+
+ - MIDI key  jazz  -  pseudo  polyphonic
+    note ons ;)
+
+ - added support for  midi song position
+    this gives  sync  with digital multi
+    trackers, ableton live, etc etc
+
+ - CC 60-66  Instrument sequences
+ - CC 109 -> Instrument volume
+ - CC 110 -> Instrument sequence speed
+ - CC 111 -> Instrument digi sample
+ - CC 112 -> Instrument digi rate
+ - CC 113 -> Instrument buzzer waveform
+ - CC 114 -> Instrument start sync
+ - CC 115 -> Instrument coarse detune
+ - CC 116 -> Instrument fine detune
+
+ - store midi clock / midi cc enables in
+    config file
+
+ - send midi clock, start,stop, continue
+    out when song speed is 6
+
+ - pattern position CC 25
+ - instrument select CC 26
+ - mouse pointer select CC 27
+
+ - CC28 Global noise transpose
+ - CC29 Track noise transpose 1
+ - CC30 Track noise transpose 2
+ - CC31 Track noise transpose 3
+
+ - CC32 Global transpose
+ - CC33 Track transp 1
+ - CC34 Track transp 2
+ - CC35 Track transp 3
+ - CC36 Track transp 4  <- not in global
+ - CC37 Track transp 5  <- not in global
+
+ - CC38 Global volume
+ - CC39 Track vol 1
+ - CC40 Track vol 2
+ - CC41 Track vol 3
+ - CC42 Track vol 4
+ - CC43 Track vol 5
+ - these  changes  have  meant  the  way
+    volume  works with  buzzer sounds is
+    different,    your  songs  may  need 
+    changes
+
+ - CC44 Next pattern 1
+ - CC45 Next pattern 2
+ - CC46 Next pattern 3
+ - CC47 Next pattern 4
+
+ - CC48 Uwire volume
+ - CC49 Uwire pan
+ - CC50 Uwire bass
+ - CC51 Uwire treble
+
+ - Online help listing controllers
+ - Turned  off  note  entry  audio  when
+    scroll=off  play=on  and  record=on.
+    Allows smoother live beat entry.
+ - Turned off midi clock output when not
+    playing
+ - Always use  internal  interrupt  when
+    not playing -  allows instruments to
+    sound in midi clock mode.
+ - Added MMC start and stop
+
+
+V1.20
+-----
+Internal version
+
+ - Fixed some more bugs  in editing with
+    pattern scrolling off
+
+ - Made it easier  to  select instrument
+    $20 (505 request)
+
+ - Attempted  to  fix  Alive  shell  bug
+    (Cyclone request)
+
+
+V1.19
+-----
+Release version
+ 
+ - Fixed  bug  in  STe  native mode with
+    zero length samples.
+
+ - Fixed  some  bugs   in  editing  with
+    pattern scrolling off.
+
+
+V1.18
+-----
+Internal version
+
+ - Advanced  edit  mask  toggler (Dma-Sc
+    request)
+
+ - Added 'note off' preset pattern
+
+
+v1.17
+-----
+Internal version
+
+ - Added preset blank  pattern, use back
+    space key to reach it.
+  
+ - Fixed editor,  and  pattern packer to
+    take advantage of this new preset.
+
+ - Added minimum DMA  volume  control to
+    config menu. 
+
+ - Modified DMA  routines  to  use  this
+    control   for   speed   and   memory
+    optimisations.
+
+ - Removed some DMA  initialisations for
+    added usability.
+
+
+v1.16
+-----
+Internal version
+
+ - Updated manual.
+
+ - Changed year to 2006.
+
+ - Included updated  version of SNDH_CPU
+    in the archive.
+
+ - Fixed bug in Falcon non-editor replay
+
+ - Removed check  for  DMA  channel when
+    squishing non-DMA music.
+
+ - Fixed bug in octave down routine that
+    caused the  stack to be trashed from
+    time to time.
+
+ - Changed instrument bank selector text
+    (Dubmood request)
+
+
+v1.15
+-----
+Internal version
+
+ - Low  level  support   for   TT  video
+    hardware.   Operating   system  only
+    support available  until now.  (earx
+    request, thanks to  sh3 for the loan
+    of his TT)
+
+ - Added GUI option  for  single channel
+    DMA with native STe sample rates.
+
+ - Fixed channel  mute  display  for new
+    native mode.
+
+ - Added  preliminary   support  in  the
+    driver for the native mode.  Note on
+    and off only, for now.
+
+ - Added support for all four STe replay
+    rates.
+
+ - Added volume  preshifts in native STe
+    mode.  As a side effect, this should
+    cause all this STe native rate stuff
+    to also work  on TT,  thanks sh3 for
+    the loan of his TT.
+
+ - Added  extra   help   screen  listing
+    native STe rates.
+
+ - Fixed all this to work on Falcon.. :/
+
+
+v1.14b
+------
+Internal version
+
+ - Graceful handling of  timer disabling
+    in dynamic  timer   allocation  (505
+    request)
+
+ - Attempt fix for  the  classic  falcon
+    fileselector  bug (505 request, help
+    from No/Escape - cheers!)
+
+
+v1.14a
+------
+Release version
+
+ - Fixed  memory   leak  caused  by  new
+    changes (505 bug report)
+
+ - Added check for insane timer settings
+    to improve stability(Marcer request)
+
+ - Added fast save sndh shortcut(Ctrl+S)
+    and   changed   fast   song   editor
+    shortcut to Ctrl+O (Dubmood request)
+
+
+v1.14
+-----
+Internal version
+
+ - Minor opimisation  to  replay routine
+
+ - Bug fix to binary version of replayer
+
+ - Bug fix 'instrument  clear'  shortcut
+
+ - Bug fix to  pattern  packing routines
+    allows pattern  $FF  to be used with
+    no crashing (Divag/Dubmood report)
+
+ - Limited maximum pattern number to $EF
+    for future expansion
+
+ - Small change to allow nonsample tunes
+    to  work in  emulated  players  like
+    WinJAM etc.  Doesn't  count as a bug
+    fix :))
+    
+ - Attempt bug fix  for  realtime  timer
+    adjustment (505 report)
+ 
+
+v1.13a
+------
+Release vesrion
+
+ - Fixed bug  preventing  0 DMA channels
+    falcon (frequent/ephi bug report)
+
+ - Improved   'foreground'   function  a
+    little
+
+
+v1.13
+-----
+Release version
+
+ - Added DMA  replay  rate  reference in
+    the help  menu.   Tweaked  microwire
+    help text.
+
+
+v1.12e
+------
+Internal version
+
+ - Disabled  timer  interrupts  in  ACIA
+    interrupt handler. Hopefully this is
+    the  final  fix   to  the  MIDI  and
+    spurious keyboard press issues noted
+    by divag and dma-sc. My previous fix
+    attempts  have  not  been  wasted ;)
+    They made  the  ACIA  routine pretty
+    fast  -  ok so  i  can  squeeze more
+    speed,  but not that much.  Now that
+    interrupts are  disabled during ACIA
+    SID quality is reduced a little when
+    using the mouse,  keyboard and MIDI,
+    but the fast  routine minimises this
+    in practical situations (i hope ;) )
+
+ - Fixed bug when  loading  old SNDH and
+    MYV on the 1Mb version.
+
+ - Fixed dirty  evil  YM  digidrum bug I
+    just discovered
+
+
+v1.12d
+------
+Internal version
+
+ - Disabled  pattern  selection  in  jam
+    song mode,  for  safety and laziness
+    reasons :)
+
+ - Attempted   spurious   keypress   fix
+    (dma-sc bug complaint)
+
+
+v1.12c
+------
+Internal version
+
+ - Added sample  truncation if digi size
+    is too big.   This  allows  for safe
+    creation of  maxymiser versions with
+    more or less sample memory.
+
+ - Fix overflow  errors on sample adjust
+    which lead to  brutal crashing  (505
+    bug report)
+
+
+v1.12b
+------
+Internal version
+
+ - Added semitone and fine tuning sample
+    editing function (505 request)
+
+ - Added flush  cache  for  030  cpus to
+    fix  potential  problems  with  self
+    generating and  self relocating code
+    (actually none have been observed)
+
+ - Fixed pattern pointer table generator
+    to work with  variable  sample start
+    offset,   so  no  more weird crashes
+    when trimming the sample start.
+
+ - Fixed FDI support,  now  working with
+    STe DMA  channels at 44.1 and 48kHz,
+    and SPDIF output  toggle  between YM
+    and DMA.
+
+ - Added flush  cache  for  060  cpus to
+    fix FDI frequency  switching problem
+    caused by self generating code.
+
+
+v1.12
+-----
+Internal version
+
+ - Added  octave   +/-   sample  editing
+    function.   The  octave down uses an
+    linear interpolation  alogorithm for
+    better audio quality
+
+ - Added trimmer for sample start
+
+ - Attempted to  fix  midi  activity bug
+    whilst  loading  the  software (Nemo
+    request)
+
+ - Fixed keyboard  adjustment of current
+    digi sample
+
+ - Fixed RGB resolution switch on Falcon
+    with boosted bus
+
+ - Fixed DMA routines  to work on Falcon
+    (stereo 16bit 49khz) this breaks the
+    SP-DIF  support,   but  I'll  fix it
+    later
+
+ - Shortened   fade   in/out  times  for
+    impatient people - hi 505!! ;)))
+
+ - Shortened intro logo display time for
+    impatient people - hi Frequent!! :P
+
+ - Fixed master volume and pan microwire
+    code for Falcon
+
+ - Extended maximum sample size limit to
+    32k (505 request)
+
+
+v1.11
+-----
+Internal version
+
+ - Renabled ste dma
+ 
+ - Fixed jittery 2nd  channel when 2 dma
+    channels are active (dma-sc request)
+
+ - Fixed normal  menu  panel  up/down to
+    work in jam sequencing mode
+
+ - Fixed keyboard  shortcuts  to work in
+    jam mode
+
+ - Modifed song  editor  a  bit  for jam
+    mode, no major changes however
+
+ - Optimised pattern number display rout
+    and changed for jam mode
+
+ - Added save,  sign/unsign  and  length
+    adjustment to sample editor
+
+
+v1.10
+-----
+Internal version
+ 
+ - Another optimisation to MIDI routines
+    for attempted stuck note fix
+
+ - Display pattern/song mode
+
+ - Fix jump to  column keyboard shortcut
+
+ - Fixed 0/1/2 dma channel selection and
+    sample editing  problems,   now much
+    smoother
+
+ - Fixed insert  and  backspace  keys to
+    work on 5 channels (dma-sc request)
+
+ - Temporarily disabled ste dma for this
+    test version
+
+
+v1.09
+-----
+Internal version
+
+ - Updated MIDI to  work with 5 channels
+    and also allow to  disable midi on a
+    channel
+
+ - Added toggle between  1 and 2 ste dma
+    channels
+
+ - Attempted  to  remove   delay  before
+    beginning playback  with a dma sound
+    system pre-initialisation
+
+
+v1.08
+-----
+Internal version
+
+ - After trying some mixing algorithms I
+    finally settled  on the simplest for
+    memory reasons. So maxYMiser has two
+    working DMA channels now.
+
+
+v1.07
+-----
+Internal version
+
+ - Reduced  maximum  digidrum  frequency
+    back to 25kHz
+
+ - Retain path  between  disk operations
+    (Frequent request)
+
+ - Added  some   lame   sample   editing
+    functions in the  S.E.Extension menu
+
+ - Converted all  editing functions to 5
+    channels - nightmare!! ;)
+
+
+v1.06b
+------
+Internal version
+
+ - Fixed a microwire stability bug
+
+
+v1.06
+-----
+Internal version
+
+ - Ignoring empty samples in DMA routine
+
+ - Fixed  small   bug   in  mute  on/off
+    shortcuts
+
+ - Implemented code generated resampling
+    algorithm,  and  reduced sample rate
+    to 25033Hz - big performance boost!!
+
+ - Modified STe  code  to  be compatible
+    with TT machines (untested)
+
+ - Added shortcuts to select digi sounds
+    when on STe DMA channel
+
+ - Added 'U' tracker command.  This code
+    allows  creative  use  of  the STe's
+    LMC1992  stereo   tone  and   volume
+    circuit:
+
+    U00->U0C      Set bass     (U06=0db)
+    U10->U1C      Set treble   (U16=0db)
+    U80->UA0      Set master volume
+    UC0->UD0->UE0 Set panning position
+
+    'U' stands for  the  greek letter mu
+    which is often  used  for 'micro' as
+    in 'microwire'...   the interface to
+    the LMC1992 chip :)
+
+
+v1.05
+-----
+Internal version
+
+ - Single DMA  channel  with  volume and
+    pitch implemented
+
+ - Display   last   used   pattern   and
+    sequence (Nemo request)
+
+
+v1.04
+-----
+Internal version
+
+ - Added config option  to switch on and
+    off dma  sound  in  the editor,  and
+    changed  the  editing  functions  to
+    work  properly  with  this   (Dma Sc
+    request)
+
+ - Saving MIDI  settings  in  .cnf  file
+    (Sidabitball request)
+
+
+v1.03
+-----
+Internal version
+
+ - Fixed all functions to work with four
+    channels
+
+ - Changes YM3/DMA toggle to a scrolling
+    operation
+
+ - Added more  shortcuts  for  selecting
+    instruments (Divag request)
+
+ - Added  possibility  to  auto-load all
+    filetypes .MYI, .MYS, .MYV, .SND etc
+    from the file DEFAULT.??? Needed big
+    changes   to   the   file   handling
+    functions.
+
+ - Changed pattern/song  position select
+    shortcuts to be more logical
+
+ - Moved expand/shrink  functions to the
+    advanced edit menu
+
+ - Added toggle for  the jam mode on the
+    normal menu (and F10 shortcut)
+
+ - Added Shift+N and Ctrl+N shortcuts to
+    get new patterns
+
+
+v1.02
+-----
+Internal version
+
+ - Changed   behaviour  of  song/pattern
+    play/record keys  to  allow punch in
+    and  out   without   retriggering  a
+    playing  pattern.   Better  for live
+    jamming around.   To stop complaints
+    menu buttons work as previous.
+
+ - Changed  behaviour  of  channel mutes
+    and solos.   Now functions closer to
+    Fasttracker 2, but the main thing is
+    that its now possible to user jam on
+    a muted channel  for realtime fun ;)
+
+ - Added  keyboard  shortcuts  for track
+    mute and unmute -  Shift + Q, W or E
+
+ - Added a special mode to make entering
+    drum sounds and  effects more easily
+    this is activated with F9. With this
+    mode active each key triggers middle
+    C on a different instrument. In this
+    this  mode  releasing  a  key has no
+    effect.
+
+ - Special drum mode now also active for
+    midi input!   It is activated in the
+    editor by selecting  voice $DD for a
+    particular midi channel by scrolling
+    above $20, or below $01. It can also
+    be  activated   over   midi  with  a
+    program change above voice $20.   So
+    maxYMiser  is  now  compatible  with
+    midi drum pads - boo yeah ;)
+
+ - Increased  range  of  digidrum replay
+    frequencies.  In preparation for STe
+    DMA sound the  upper  limit is now a
+    little over  50kHz,  and inspired by
+    Ray's Wolf  3D  conversion the lower
+    limit is now just 3kHz.
+
+ - New MYI and MYV format files for 8bit
+    digidrums.  Any old 4bit sample data
+    which is loaded in is reconverted to
+    8bit  precision.  Detects  this with
+    the new MYM1DIGI tag.
+
+ - Added compiler  variable  for maximum
+    sample length.
+
+ - Added  extra  keyboard  shortcuts for
+    various pattern/song play options as
+    requested by Dma-Sc.
+
+ - Modified  the  look  of  the  GUI  to
+    include  a  fourth   STe  DMA  sound
+    channel.   The  new functions do not
+    work so far :)   F10 toggles between
+    displaying Ch3 and the STe DMA. Made
+    fix for Alt+QWER shortcut.
+
+
+v1.01
+-----
+Internal version
+
+ - Cleaned up  MIDI  routines for future
+    expansion
+
+ - Attempted fix  for  stuck  MIDI notes
+    (divag request)
+
+v1.00
+-----
+Release version
+
+- Removed a YM  special  timer effect so
+   Outline   version   will   always  be
+   unique
+
+- Fixed  bug   in   midi  input  support
+   related   to   sounds   using   timer
+   effects
+
+- Included  'Chipping 4 Ca$h'  demo song
+   by gwEm and Dma-Sc
+
+
+v0.99
+-----
+Release version
+
+Special version  released at the Outline
+2005 demo party

@@ -1,0 +1,176 @@
+
+                  Telegard Bulletin Board Software, v3.00
+                         Installation Documentation
+
+                      Copyright (C) 1995 by Tim Strike
+                            All Rights Reserved.
+
+
+       INTRODUCTION
+       
+       Welcome to Telegard Bulletin Board Software, version 3.00.  This 
+       documentation contains quick instructions for installing Telegard 
+       for the first time, or for completing an upgrade from previous 
+       versions of the Telegard software.
+       
+       Please read these instructions very carefully.  The steps we have 
+       outlined are designed to ensure that you install our system with
+       minimal effort and with success the FIRST time!
+
+       If you are upgrading from a previous version of Telegard, you should 
+       refer to the section titled "UPGRADE INSTRUCTIONS", otherwise if you 
+       are a first time user of Telegard, please follow the "NEW 
+       INSTALLATION" section.
+       
+        
+       SYSTEM REQUIREMENTS
+
+       Memory                        440K minimum
+       Diskspace, installation       2 megs
+                  post-installation  1 meg + messages + files + doors + data
+                  recommended        10+ megs at least
+       Fossil Driver (level 5)
+       Share/OS-equivalent (for multinode)
+
+       
+       NEW INSTALLATION
+
+       1)  Create a new directory for your Telegard BBS
+
+       2)  Copy INSTALL.TG into the new directory
+
+       3)  Type "PKUNZIP INSTALL.TG -sALIVE" at the DOS command prompt, 
+           without the quotes.  This will extract the necessary install
+           files for your system.
+
+       4)  Type "TELEGARD" at the DOS command prompt, without the quotes.  
+           This will start the installation process.  We will ask you a few 
+           simple questions regarding the placement of the remaining data 
+           files.  You should configure these directories in such a manner 
+           that the directory structure is not obvious (i.e. do not use 
+           /DATA/ as your data directory).
+
+       5)  The installation process will build the desired directory 
+           structure, unpack the enclosed data files, and create any other
+           data files which are needed for BBS installation.
+
+       6)  Follow the remaining instructions as provided by the 
+           installation process.
+        
+       7)  You may delete INSTALL.TG and *.TWS after the installation has 
+           been completed.  These files are only temporary installation 
+           files and are not used in the general operation of the BBS.  You 
+           should save a copy of the original archive (TG_nnn@n.ZIP) in 
+           case you want or need to reinstall the software at a later date.
+
+
+       UPGRADING INSTRUCTIONS
+
+       If you are upgrading from Telegard 2.7, please refer to the section
+       immediately following this text.  If you are upgrading from a 
+       gamma release of Telegard 3.0, please skip to the section for gamma
+       upgrades.
+
+       
+       TELEGARD 2.7 UPGRADING INSTRUCTIONS
+       
+       The differences between Telegard 2.7 and Telegard 3.0 are quite 
+       profound.  We suggest that you take the upgrade slowly and tackle
+       it over a couple of days to ensure that you get the upgrade right
+       before putting your new 3.0 system online.
+       
+       To successfully upgrade from 2.7 to 3.0, you will need the archive 
+       "TG_UPG30.ZIP", distributed at the same time that Telegard 3.0 was 
+       distributed.  This file contains the upgrade program which is needed 
+       to upgrade from Telegard 2.7.
+       
+       Create a backup of your 2.7 BBS system.  This will ensure you have
+       a downgrade path if necessary.
+       
+       Telegard 3.0 should be placed in a new directory -- your old BBS
+       directory will no longer be used.  This will mean that many of your
+       system files will have to point towards new directories, etc.  This
+       is good for two reasons; firstly, it will ensure that you use 
+       software which is only compatible with Telegard 3.0, and secondly; 
+       it will ensure that your system security is preserved.
+       
+       1)  Create a new directory for your Telegard BBS
+
+       2)  Copy INSTALL.TG into the new directory
+
+       3)  Type "PKUNZIP INSTALL.TG -sALIVE" at the DOS command prompt, 
+           without the quotes.  This will extract the necessary install
+           files for your system.
+
+       4)  Type "TELEGARD" at the DOS command prompt, without the quotes.  
+           This will start the installation process.  We will ask you a few 
+           simple questions regarding the placement of the remaining data 
+           files.  You should configure these directories in such a manner 
+           that the directory structure is not obvious (i.e. do not use 
+           /DATA/ as your data directory).
+
+       5)  The installation process will build the desired directory 
+           structure, unpack the enclosed data files, and create any other
+           data files which are needed for BBS installation.
+
+       6)  Follow the remaining instructions as provided by the 
+           installation process, except skip "INDEX ALL BUILD" for now.
+        
+       7)  You may delete INSTALL.TG and *.TWS after the installation has 
+           been completed.  These files are only temporary installation 
+           files and are not used in the general operation of the BBS.  You 
+           should save a copy of the original archive (TG_nnn@n.ZIP) in 
+           case you want or need to reinstall the software at a later date.       
+       
+       8)  Copy the "TG_UPG30.ZIP" file into your new directory.
+       
+       9)  Type "PKUNZIP TG_UPG30.ZIP" at the DOS command prompt,
+           without the quotes.  This will extract the necessary upgrade
+           files for your system.
+           
+       10) Review UPGRADE.DOC to familiarize yourself with the upgrade
+           instructions.
+       
+       11) Type "UPGRADE" at the DOS command prompt, without the quotes.
+           When prompted, input your Telegard 2.7 information and then
+           follow the remaining instructions for the upgrade.
+           
+       12) Type "INDEX BUILD ALL" at the DOS command prompt, to complete
+           the update of your index files.
+
+           
+       TELEGARD 3.0 GAMMA UPGRADING INSTRUCTIONS
+
+       1)  Copy INSTALL.TG into your BBS directory
+
+       2)  Type "PKUNZIP INSTALL.TG -sALIVE" at the DOS command prompt, 
+           without the quotes.  This will extract the necessary install
+           files for your system.  You should replace TELEGARD.EXE,
+           TELEGARD.OVR and UNPACK.EXE as well as replace *.TWS files.
+
+       3)  You should then run UNPACK for each of the .TWS files in order
+           to update the data files that are in use on the system.  To do
+           this type "UNPACK <filename> <location>" at the DOS command 
+           prompt, without the quotes, replacing <filename> with the .TWS
+           filename and <location> with the directory for the unpacking.
+           
+               FILENAME        LOCATION                  OVERWRITE?
+               notes.tws       /notes/ directory            yes
+               defaults.tws    data directory               yes*  
+               language.tws    languages directory          yes**
+               utility.tws     main bbs directory           yes
+               text.tws        default text directory
+               menus.tws       default menus directory
+        
+           *  overwrite TELEGARD.* files, MENUS.DAT and HARDWARE.DAT files.
+           ** overwrite ORIGINAL.TXT and if you desire, ENGLISH.TXT (this 
+              will wipe out any changes that you did to your language file)
+              
+       4)  Review WHATSNEW.300 for changes done since the previous gamma.
+           There will be several instructions in this file on things which
+           need to be updated (i.e. language strings which are new, no
+           longer used or changed, etc.).
+       
+       5)  You may delete INSTALL.TG and *.TWS after the upgrade has 
+           been completed.
+

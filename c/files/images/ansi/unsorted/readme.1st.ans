@@ -1,0 +1,92 @@
+Oblivion/2 v2.25 Release - 06/19/94
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yes folks, the release of Oblivion/2 v2.25 is finally here. It's been LONG
+overdue. This release adds a myriad of new features as well as fixing bugs
+from previous versions. For a complete listing of changes from v2.10, please
+read HISTORY.DOC. Some of the major changes include:
+
+        -- DATAMAIL.EXE utility written to allow networking of any data
+           area. You can now echo BBS Lists, Rumors, or any data area
+           between boards.
+        -- Increased speed and effiency for OBVMAIL.EXE.
+        -- You can now create QWK packets by using date constraints.
+        -- Scrollable file listings. (Similar to a file listing in PCBoard)
+        -- You can now make generic menus. These menus are automatically
+           updated by the BBS whenever you add or change a menu command.
+        -- The deleted list gives the SysOp total control of who's not
+           welcome on the system.
+        -- Obv/2 can optionally create a file catalog to aid in quick
+           searches and duplicate checking.
+        -- RIP Graphics support and auto-detection.
+        -- RIP Mouse Support.
+        -- .REP packet duplicate checking.
+        -- Special Login option allows you to completely customize your
+           BBS's login sequence.
+        -- Multiple Infoform Sets - Allow you to have more than 5 infoforms.
+        -- Unlimited file description size.
+        -- Support for 28.8k modems, includes 115,200bps port locking.
+        -- Improved ACS parser.
+        -- Support for SAUCE ansi comments.
+        -- E-Mail Tags (See HISTORY.DOC)
+        -- Improved documentation with sections on OS/2 setup, ANSI.SYS,
+           and creating ansis.
+        -- New menu commands for added flexibility.
+        -- More configurable screens for the custom look.
+
+For more information on certain features, please consult HISTORY.DOC.
+
+There are a few things about the software that you should know before you
+proceed any further.
+
+This version was due out a long time ago. Due to conflicts with time and
+resources, it was delayed. We do NOT like this at all, and I'm sure you as
+SysOps don't either. We're sorry for the long delay. As the saying goes,
+"The best come to those who wait."
+
+In the future, we'll be releasing periodic maintenance updates of the BBS
+to registered SysOps. These updates will fix minor bugs, and add new
+features. Periodic maintenance releases should insure that everyone is
+running a current version of the BBS at all times.
+
+With this version, you will need a new serial number. These are made
+available to registered sysops on the Fringes. If you cannot find your
+validator, please leave me (Lord Tracer) mail about it, and we'll correct
+the problem.
+
+Due to the numerous fake releases of v2.20, that version has been skipped.
+The new version number is 2.25. We'd like to thank all responsible parties
+for the fake releases. Thanks for being stupid.
+
+There have been many sysops coming to me and asking about beta sites. After
+this version is released, all current beta sites are going to be re-evaluated.
+If they don't participate in beta discussions, and call the Fringes regularly,
+their beta access will be revoked. We will be accepting new beta sites
+after this evaluation is done. In order for you to qualify, you must be a
+member of ImpactNet, and call the Fringes regularly. When it comes to beta
+testing, there are no free rides.
+
+During the 2.20 beta testing period, there were NUMEROUS beta leaks. We're
+working on a solution to help stop this problem. If you are caught
+distributing any beta versions of Oblivion/2, your registration will be
+REVOKED. No questions asked. NO EXCEPTIONS.
+
+To clear up some misconceptions about registration, there are NO area code
+limits. All that we ask of prospective applicants is that they have an
+already registered sysop vouch for their system. If this is a problem,
+please send mail to me (Lord Tracer) on the Fringes.
+
+Many people should be thanked for this release. Here are a few that deserve
+extra special thanks:
+
+BeerBum    - Your constant suggestions and detailed bug reports helped make
+             things much easier.
+DeLuxe     - Your documentation additions were excellent.
+Farmicus   - The RIP setup looks great. Thanks for your hard work.
+
+And of course the many others who are too numerous to mention, but have not
+been forgotten.
+
+I'd once again like to thank you for checking out Oblivion/2. I'm sure that
+you'll find the new additions and changes will make the BBS system much
+friendlier for you and your users.

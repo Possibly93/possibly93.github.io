@@ -1,0 +1,73 @@
+MN - message board number    
+MD - message board descrption
+MO - current message
+ML - max lines (for posting a message)
+MB - mailbox status
+MS - messages sent
+    
+FN - file board number
+FD - file board description
+FP - file points    
+FO - first on date
+FS - feedback sent
+    
+UF - first name
+UN - user name
+US - last name
+UH - handle with user number
+UR - real name
+UL - uploads
+UK - uploaded kilobytes
+        
+BP - beep
+BD - date of birth
+
+DF - disk space free
+DS - download security
+DL - downloads
+DK - downloaded K
+    
+LF - linefeed
+LO - last-on date
+    
+TM - time left in minutes
+TL - time left          
+T1 - screen pause (yes,no)
+T2 - hotkeys (yes,no)
+T3 - message cls (yes,no)
+T4 - expert mode (yes,no)          
+T5 - color (yes,no)
+TC - total calls          
+TT - total minutes online
+TB - minutes in time bank          
+    
+CC - current conference    
+CL - commandlist (for menus)
+CT - current time          
+CD - current date
+CI - city/state
+    
+HM - high message
+    
+PR - page reason
+PH - phone number
+PL - page length
+PW - page width          
+    
+SP - speed    
+SL - security level
+SE - sex (male,female)
+    
+RU - rumor
+
+NO - user note
+    
+AD - street address    
+AG - age
+    
+EM - emulation (TTY,Ansi,Avatar)
+ES - email sent          
+EW - email waiting
+
+OT - optext    
+Ox - optext subset x

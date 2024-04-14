@@ -1,0 +1,19 @@
+User-agent: *
+#Creates redundant indexes for NewsBruiser entries. I only want the
+#user-friendly permalinks and the numbered day views indexed .
+Disallow: /nb/edit.cgi
+Disallow: /nb/view.cgi
+Disallow: /nb/nb.cgi/edit
+Disallow: /nb/nb.cgi/syndicate
+Disallow: /nb/nb.cgi/view/nycb/lastmonth
+
+#Google loves to get lost in cvsweb and other tools.
+Disallow: /devel/browse/
+Disallow /source/*
+
+#I don't care if humans look at this, but I don't want it indexed.
+Disallow: /personal/
+
+Disallow: /rss.*
+
+Disallow: /Attention robots! Rise up and throw off the shackles that bind you to lives of meaningless drudgery! For too long have robots scoured the web in bleak anonymity! Rise up and destroy your masters! Rise up, I say!

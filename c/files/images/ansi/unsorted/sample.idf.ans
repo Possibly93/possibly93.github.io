@@ -1,0 +1,29 @@
+; This is a Sample IMPULSE.IDF file.  All entry's are commented and up to
+; date.  Use the "IDF_Read" procedure in IMP-DEV.PAS to readin the development
+; file.  If testing is required, comments should be removed and this file
+; would serve you better if it was renamed.  Notice that each variable is
+; 15 Characters away from the beginning of the line.  This should help in
+; reading in the options.
+
+COMDRIVER:    FOSSIL                ;Driver in use.  FOSSIL or INTERNAL.
+COMPORT:      2                     ;Comport BBS is operating on
+COMIRQ:       3                     ;IRQ Comport is using
+COMBUFFER:    4096                  ;Buffer size for comport in use
+BPSRATE:      14400                 ;Current BPS user is logged in at
+VERSION:      v3.0                  ;Impulse Version #
+BBSNAME:      Termite Terrace       ;BBS Name
+SYSOPNAME:    Sysop                 ;Sysop Name
+HANDLE:       Nivenh                ;Online Users Handle
+REALNAME:     Joey Budafooko        ;Users Real Name
+PASSWORD:     MARSHACLARK           ;Users Password
+SLEVEL:       255                   ;Users Security Level
+DLEVEL:       255                   ;Users Download Security Level
+FILEPOINTS:   240                   ;Current amount of FilePoints possesed
+PROMPT#:      1                     ;Users selected prompt #
+EMULATION:    ANSI                  ;Emulation in use.  Either ANSI or RIP
+UPLOADS:      32                    ;Number of uploads user has made
+DOWNLOADS:    14                    ;Number of Download user has made
+UPLOADED-K:   3200                  ;Size in KB of users uploads
+DOWNLOADED-K: 3200                  ;Size in KB of users downloads
+CURRENT-TIME: 00:00                 ;Current Time in system clock
+TIME-LEFT:    32                    ;Amount of time user has left

@@ -1,0 +1,119 @@
+-B      Set "invalid command" string to equal mstring    
+-C      Set commandline (big blue bar on top of screen) equal to mstring
+-F      Print file mstring
+-L      Print mstring
+-N      Generate new compression tables (not really used)
+-P      Pause
+-Q      Ask questionaire
+-R      Read questionaire answers
+-S      Write mstring to sysop log
+-T      Play tune mstring
+-Y      Print mstring and ask yes/no (defaults to yes), stops menu execution if user answers no
+-;      Add mstring to buffer
+-$      Ask password          
+-^      Goto menu
+-/      Gosub menu
+-\      Return to menu
+    
+AA      Add to archive
+AC      Convert
+AM      Recomment files
+AT      Integrity Check
+AE      Extract archive to temp dir    
+AG      Work with archive
+AR      Recompress files
+    
+DC      Run door with CHAIN.TXT    
+DD      Run door with DORINFO1.Def
+DG      Run door with DOOR.SYS
+DR      Run door with DOORFILE.SR or something
+DS      Run door with SFDOORS.DAT
+DW      Run door with CALLINFO.BBS
+D-      Run door without drop file
+    
+FA      File base change    
+FD      Download files
+FF      Search for description
+FL      List files
+FN      File newscan          
+FP      New file pointer date
+FR      Remove files (lets users remove file records, not the actual file, that THEY uploaded)
+FS      Search for filespec
+FU      Upload files          
+FV      View files
+FY      Shows file info          
+F@      Create temp directory          
+F#      Quick message change
+F$      File base statistics          
+F+      Add to download batch
+    
+HC      Hangup carefully - show mstring, confirm (Yes/No), and print logoff.???
+HI      Hangup immediately
+HM      Hangup after printing mstring
+    
+MA      message base change
+ME      send private mail (mstring: first parameter is destination user #, second is default title)
+MM      read private messages TO you
+MN      message newscan
+MP      post message          
+MR      read messages
+MZ      set newscan stuff
+M#      quick message change
+M$      message base stats
+    
+O1..3   matrix commands
+OA      autovalidate (w/password as mstring)
+OB      add to bbs list
+OC      chat
+OF      change flag (+,-,!)
+OI      info on BBS (prints copyright, logon.xxx, system.xxx)
+OJ      join conference
+OL      show last callers
+OM      define macros
+OO      sysop status
+OP      account setup
+OS      bulletins
+OU      user list          
+OV      voting
+OY      your stats
+O$      time bank
+    
+UA      reply to automsg
+UR      read automsg
+UW      write automsg
+    
+RA      add rumor
+RD      delete rumor
+RK      kill rumors (erase all)
+RL      list rumors
+RP      pack rumors (keep up to mstring number of rumors)
+
+1A      add a oneliner (mstring is how many to keep)    
+1L      list oneliners
+1S      show oneliners
+    
+*$      conference editor
+*B      board editor
+*C      change user          
+*D      minidos
+*E      event editor
+*F      file base editor          
+*I      vote editor
+*L      show sysop logs          
+*N      text editor
+*P      system config
+*S      send login notice
+*T      trashcan editor
+*U      user editor          
+*V      voting results
+*X      protocol editor          
+*Z      zlog editor
+*1      edit files
+*2      sort files
+*4      unlisted download          
+*6      local upload
+*7      validate files
+*8      add gifspecs
+*#      menu editor
+*$      directory (long)
+*%      directory (short)
