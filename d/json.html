@@ -7,16 +7,17 @@
 </head>
 <body>
     <h1>URLs to JSON Converter</h1>
-    <p>Enter the URLs below (one per line) and click the button to generate the JSON:</p>
-    <textarea id="urls" rows="10" cols="50"></textarea><br>
+    <p>Enter the URLs below (one per line) or paste any text containing URLs and click the button to generate the JSON:</p>
+    <textarea id="input" rows="10" cols="50"></textarea><br>
     <button onclick="generateJSON()">Generate JSON</button><br><br>
     <textarea id="output" rows="20" cols="50"></textarea><br><br>
     <button onclick="copyJSON()">Copy JSON</button>
 
     <script>
         function generateJSON() {
-            let urlsTextarea = document.getElementById('urls');
-            let urls = urlsTextarea.value.trim().split('\n');
+            let inputTextarea = document.getElementById('input');
+            let text = inputTextarea.value.trim();
+            let urls = extractURLs(text);
 
             let nestedJSON = {};
             urls.forEach(url => {
@@ -35,7 +36,14 @@
             let finalJSON = convertToDesiredFormat(nestedJSON);
 
             let outputTextarea = document.getElementById('output');
-            outputTextarea.value = JSON.stringify(finalJSON, null, 2);
+            // Minify the JSON output
+            outputTextarea.value = JSON.stringify(finalJSON);
+        }
+
+        function extractURLs(text) {
+            // Regular expression to match URLs
+            let regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
+            return text.match(regex) || [];
         }
 
         function convertToDesiredFormat(nestedJSON) {
