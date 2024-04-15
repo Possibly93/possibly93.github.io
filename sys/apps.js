@@ -3459,10 +3459,10 @@ system42("apps", function(le) {
         var data = {
           url:
             "/d/json.html",
-          icon: "c/files/images/icons/necronomicoin.png",
+          icon: "/c/sys/skins/w93/type/x-msdownload.png",
           title: "JPATH",
-          width: 700,
-          height: 560,
+          width: 850,
+          height: 710,
         };
         $window(data);
       },
