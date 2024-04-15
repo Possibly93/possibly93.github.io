@@ -4,10 +4,12 @@ import asyncio
 import aiohttp
 import random
 from colorama import Fore, Style
+
 WEBSITE = "https://example.com" # do not include the last slash
 TAG = f"{Fore.BLUE}[JPATH]{Style.RESET_ALL} "
 INPUT_COLOR = f"{Fore.YELLOW}"
 USER_INPUT_COLOR = f"{Fore.WHITE}"
+
 def get_script_name():
     return os.path.basename(__file__)
 def set_cmd_title(title):
