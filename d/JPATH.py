@@ -4,23 +4,19 @@ import asyncio
 import aiohttp
 import random
 from colorama import Fore, Style
-
+WEBSITE = "https://example.com" # do not include the last slash
 TAG = f"{Fore.BLUE}[JPATH]{Style.RESET_ALL} "
 INPUT_COLOR = f"{Fore.YELLOW}"
 USER_INPUT_COLOR = f"{Fore.WHITE}"
-
 def get_script_name():
     return os.path.basename(__file__)
-
 def set_cmd_title(title):
     if title:
         os.system(f'title "JPATH | {title}"')
-
 async def download_file(session, url, filepath):
     if os.path.exists(filepath):
-        # print(TAG + f"{Fore.YELLOW}Skipping{Style.RESET_ALL} {os.path.basename(filepath)} as it already exists.")
+        print(TAG + f"{Fore.YELLOW}Skipping{Style.RESET_ALL} {os.path.basename(filepath)} as it already exists.")
         return
-
     try:
         async with session.get(url) as response:
             if response.status == 200:
@@ -31,7 +27,6 @@ async def download_file(session, url, filepath):
                 print(TAG + f"{Fore.RED}Failed{Style.RESET_ALL} to download {os.path.basename(filepath)} from {url}")
     except aiohttp.ClientError as e:
         print(TAG + f"{Fore.RED}Error:{Style.RESET_ALL}", e)
-
 async def download_files_from_json(json_data, base_url, download_path, script_name):
     async with aiohttp.ClientSession() as session:
         try:
@@ -57,16 +52,14 @@ async def download_files_from_json(json_data, base_url, download_path, script_na
             await asyncio.gather(*tasks)
         finally:
             await session.close()
-
 async def async_input(prompt):
     print(prompt, end='', flush=True)
     return (await asyncio.get_event_loop().run_in_executor(None, input))
-
 async def main():
     script_name = get_script_name()
     default_cmd_title = "Downloader"
     set_cmd_title(default_cmd_title)
-
+    print(f"{Fore.RED} Note: You have to set what website you would like the downloader to download from.")
     while True:
         set_cmd_title(default_cmd_title)
 
@@ -90,12 +83,11 @@ async def main():
             print(TAG + f"{Fore.RED}Invalid JSON format:{Style.RESET_ALL}", e)
             continue
 
-        await download_files_from_json(json_data, "https://windows93.net", download_path, script_name)
+        await download_files_from_json(json_data, WEBSITE, download_path, script_name)
 
         completion_message = f"{TAG}{Fore.GREEN}Downloaded all files to {Style.RESET_ALL}{USER_INPUT_COLOR}{download_path}{Style.RESET_ALL}{Fore.GREEN}!{Style.RESET_ALL}(remember this if you chose the default location!)"
         print(completion_message)
 
     set_cmd_title(default_cmd_title)
-
 if __name__ == "__main__":
     asyncio.run(main())
