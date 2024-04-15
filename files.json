@@ -60337,9 +60337,9 @@
               "8ohms10": {
                 "4ueyes": {
                   "ascii-stuff": {
-                    "- adv.nah-kolor.05.(78*19) -.p": 0,
-                    "- adv.appendix.01.(75*19) -.pp": 0,
-                    "- adv.blaze.168.(76*11) -.pp": 0
+                    "adv.nah-kolor.05": 0,
+                    "adv.appendix.01": 0,
+                    "adv.blaze.168.(76*11)": 0
                   }
                 }
               }
