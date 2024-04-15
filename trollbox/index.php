@@ -16,9 +16,6 @@
   <link rel="stylesheet" href="/c/sys42.css?v=2.4.8">
   <link rel="stylesheet" href="/c/sys/skins/w93.css?v=2.4.8" id="w93_skin">
   <link rel="stylesheet" href="/sys/hotfix.css?v=2.4.8"></head>
-  <script>
-    //if (location.protocol != 'https:'){ window.location='https://windows93.net/trollbox/' }
-  </script>
   <link rel="stylesheet" href="/trollbox/trollbox.css?v=3">
   <script src="/c/libs/jquery.min.js"></script>
   <script type="text/javascript" src="suncalc.js"></script>
