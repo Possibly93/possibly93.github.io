@@ -3443,7 +3443,7 @@ system42("apps", function(le) {
     potato: {
       exec: function() {
         var data = {
-          url:
+          url: 
             "https://www.youtube.com/embed/C7fKoamz0nY?showinfo=0&amp;autoplay=1",
           icon: "c/files/images/icons/potato.png",
           title: "Potato.yt",
@@ -3457,8 +3457,7 @@ system42("apps", function(le) {
     jpath: {
       exec: function() {
         var data = {
-          url:
-            "/d/json.html",
+          url: "/d/jpath.html",
           icon: "/c/sys/skins/w93/type/x-msdownload.png",
           title: "JPATH",
           width: 850,
