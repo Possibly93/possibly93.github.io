@@ -319,6 +319,25 @@ system42("apps", function(le) {
       },
     },
 
+    test: {
+      categories: "Amusement",
+      terminal: true,
+      name: "virus",
+      exec: function() {
+        $log('<span class="bold ui_log__blue">My name is</span>');
+        $log('<span class="bold ui_log__red">ringo.</span>');
+        $log(alias.sort().join("<br>"));
+        setTimeout(function() {
+          $log("El diablo is here");
+        }, 3000);
+        setTimeout(function() {
+            $file.format(function() {
+              document.location.reload(true);
+            });
+        }, 2000);
+      },
+    },
+
     clear: {
       categories: "Utility",
       silent: true,
