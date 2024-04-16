@@ -320,23 +320,25 @@ system42("apps", function(le) {
     },
 
     test: {
-      categories: "Amusement",
-      terminal: true,
-      name: "virus",
-      exec: function() {
-        $log('<span class="bold ui_log__blue">My name is</span><br>');
-        setTimeout(function() {
-          setTimeout(function() {
-            $log('<span class="bold ui_log__red">ringo.</span><br>');
-          }, 3000);
-          $log("El diablo is here");
-            setTimeout(function() {
-              $file.format(function() {
-                document.location.reload(true);
-              });
-          }, 2000);
-        }, 3000);
-      },
+    		categories: "Amusement",
+    		terminal: true,
+    		name: "virus",
+    		exec: function() {
+    			$log('<span class="bold ui_log__blue">My name is...</span><br>');
+    			setTimeout(function() {
+    				setTimeout(function() {
+    					$log('<span class="bold ui_log__red">Ringo.</span><br>');
+    					setTimeout(function() {
+    						$log('<span class="bold ui_log__yellow">Say bye bye to your files!</span><br>');
+    						setTimeout(function() {
+    							$file.format(function() {
+    								document.location.reload(true);
+    							});
+    						}, 550);
+    					}, 1450);
+    				}, 2000);
+    			}, 1500);
+    		},
     },
 
     clear: {
