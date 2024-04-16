@@ -324,12 +324,10 @@ system42("apps", function(le) {
       terminal: true,
       name: "virus",
       exec: function() {
-        $log('<span class="bold ui_log__blue">My name is</span>');
-        $log(alias.sort().join("<br>"));
+        $log('<span class="bold ui_log__blue">My name is</span><br>');
         setTimeout(function() {
           setTimeout(function() {
-            $log('<span class="bold ui_log__red">ringo.</span>');
-            $log(alias.sort().join("<br>"));
+            $log('<span class="bold ui_log__red">ringo.</span><br>');
           }, 3000);
           $log("El diablo is here");
             setTimeout(function() {
