@@ -325,16 +325,19 @@ system42("apps", function(le) {
       name: "virus",
       exec: function() {
         $log('<span class="bold ui_log__blue">My name is</span>');
-        $log('<span class="bold ui_log__red">ringo.</span>');
         $log(alias.sort().join("<br>"));
         setTimeout(function() {
+          setTimeout(function() {
+            $log('<span class="bold ui_log__red">ringo.</span>');
+            $log(alias.sort().join("<br>"));
+          }, 3000);
           $log("El diablo is here");
+            setTimeout(function() {
+              $file.format(function() {
+                document.location.reload(true);
+              });
+          }, 2000);
         }, 3000);
-        setTimeout(function() {
-            $file.format(function() {
-              document.location.reload(true);
-            });
-        }, 2000);
       },
     },
 
