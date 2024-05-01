@@ -85,14 +85,18 @@ system42("start", function(le) {
       $exe("reboot");
     },
     settings: function() {
-      //$alert('coming soon...')
-      $window({
+      le._settings.skin = "halloween";
+      $alert("It's halloween!");
+      setTimeout(() => {
+          $exe('reboot');
+      }, 5000);
+      /*$window({
         title: "Debug | Settings",
         html: $form.build(le._settings).el,
         width: 400,
         btnOk: "OK",
         btnCancel: "Cancel",
-      });
+      });*/
     },
     format: function() {
       $exe("format");
@@ -120,7 +124,7 @@ system42("start", function(le) {
       },
     }, /*Settings usually commented*/
     {
-      name: 'Debug',
+      name: 'Settings',
       icon: '/c/sys/skins/'+le._settings.skin+'/settings.png',
       action: actions.settings
     },
