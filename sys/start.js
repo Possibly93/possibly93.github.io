@@ -122,7 +122,7 @@ system42("start", function(le) {
       items: function() {
         return menuFromFileTree(le._files.c, "c/");
       },
-    }, /*Settings usually commented*/
+    }, /* Settings usually commented */
     {
       name: 'Settings',
       icon: '/c/sys/skins/'+le._settings.skin+'/settings.png',
