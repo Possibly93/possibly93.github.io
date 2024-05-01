@@ -1,7 +1,9 @@
 system42("upgrade", function(le, voila) {
   "use strict";
   // console.log(le._settings)
-  le._settings.skin = "w93";
+  if (le._settings.skin) {} else {
+    le._settings.skin = "w93";
+  }
   voila();
 });
 
