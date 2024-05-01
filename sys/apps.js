@@ -1603,22 +1603,6 @@ system42("apps", function(le) {
           bodyClass: "skin_inset_deep skin_light",
           width: 530,
           height: 530,
-          onopen: function() {
-            var cnt = 317;
-            function notResp() {
-              if (cnt === 317) $alert("Program not responding...", notResp);
-              else if (cnt > 0)
-                $alert(
-                  "Program not responding...<br>(remaining retry: " + cnt + ")",
-                  notResp
-                );
-              else
-                $alert("Issue Resolved<br>317 clicks has corrected the error");
-              cnt--;
-            }
-            notResp();
-          },
-        };
         $window.call(this, data);
       },
     },
