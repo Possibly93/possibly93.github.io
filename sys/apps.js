@@ -1603,6 +1603,22 @@ system42("apps", function(le) {
           bodyClass: "skin_inset_deep skin_light",
           width: 530,
           height: 530,
+          onopen: function() {
+            var cnt = 317;
+            function notResp() {
+              if (cnt === 317) $alert("Program not responding...", notResp);
+              else if (cnt > 0)
+                $alert(
+                  "Program not responding...<br>(remaining retry: " + cnt + ")",
+                  notResp
+                );
+              else
+                $alert("Issue Resolved<br>317 clicks has corrected the error");
+              cnt--;
+            }
+            notResp();
+          },
+        };
         $window.call(this, data);
       },
     },
@@ -3460,19 +3476,6 @@ system42("apps", function(le) {
       },
     },
 
-    jpath: {
-      exec: function() {
-        var data = {
-          url: "/d/jpath.html",
-          icon: "/c/sys/skins/w93/type/x-msdownload.png",
-          title: "JPATH",
-          width: 850,
-          height: 710,
-        };
-        $window(data);
-      },
-    },
-
     superplayer: {
       exec: function() {
         var data = {
@@ -3559,6 +3562,19 @@ system42("apps", function(le) {
         $log(
           "Jankenpopp & Zombectro are running the thing, the Mighty Doctor House is hosting the thing."
         );
+      },
+    },
+    
+    jpath: {
+      exec: function() {
+        var data = {
+          url: "/d/jpath.html",
+          icon: "/c/sys/skins/w93/type/x-msdownload.png",
+          title: "JPATH",
+          width: 850,
+          height: 710,
+        };
+        $window(data);
       },
     },
   };
